@@ -1,0 +1,317 @@
+form,
+fieldset {
+    margin: 0;
+    padding: 0;
+    border-style: none;
+}
+
+input[type='text'],
+input[type='tel'],
+input[type='email'],
+input[type='search'],
+input[type='password'],
+//input[type='url'],
+// input[type='date'],
+textarea {
+    -webkit-appearance: none;
+    width: 100%;
+    border-radius: 10px;
+    box-sizing: border-box;
+    border: 1px solid #C7C7CC;
+    padding: $form-element-padding;
+    // &:hover {
+    // }
+    &:focus {
+        border-color: none;
+    }
+    &:hover {
+        border-color: #206BFF;
+    }
+    @include placeholder {
+        color: $placeholder-color;
+    }
+}
+
+select {
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
+    vertical-align: top;
+}
+
+button,
+input[type='button'],
+input[type='reset'],
+input[type='file'],
+input[type='submit'] {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    cursor: pointer;
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+.dropdown {
+    position: relative;
+    font-size: 14px;
+    color: #333;
+    z-index: 213;
+    label {
+        transition: border-color .3s;
+    }
+    &:hover {
+        label {
+            border-color: #007bff;
+        }
+    }
+    &::before {
+        content: "\e919";
+        color: #8E8E93;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 10px;
+        font-size: 20px;
+        /* use !important to prevent issues with browser extensions that change fonts */
+        font-family: 'icomoon' !important;
+        speak: never;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .select-all {
+        display: none !important;
+    }
+    .dropdown-list {
+        padding: 12px;
+        background: #fff;
+        position: absolute;
+        top: 36px;
+        left: 2px;
+        right: 2px;
+        border-radius: 16px;
+        box-shadow: 0 1px 2px 1px rgba(0, 0, 0, .15);
+        transform-origin: 50% 0;
+        transform: scale(1, 0);
+        transition: transform .15s ease-in-out .15s;
+        max-height: 66vh;
+        overflow-y: scroll;
+    }
+    .dropdown-option {
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        opacity: 0;
+        transition: opacity .15s ease-in-out;
+        .title {
+            padding-left: 10px;
+        }
+    }
+    .dropdown-label {
+        display: block;
+        height: 35px;
+        color: #3C3C4399;
+        background-color: #fff;
+        border-radius: 8px;
+        border: 1px solid #C7C7CC;
+        padding: 8px 12px 8px 36px;
+        cursor: pointer;
+        &:before {
+            content: "\e901";
+            font-size: 20px;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            /* use !important to prevent issues with browser extensions that change fonts */
+            font-family: 'icomoon' !important;
+            speak: never;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            /* Better Font Rendering =========== */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    }
+    &.on {
+        .dropdown-list {
+            transform: scale(1, 1);
+            transition-delay: 0s;
+            .dropdown-option {
+                opacity: 1;
+                transition-delay: .2s;
+            }
+        }
+        .dropdown-label:before {
+            content: "\e901";
+            float: right;
+            /* use !important to prevent issues with browser extensions that change fonts */
+            font-family: 'icomoon' !important;
+            speak: never;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            /* Better Font Rendering =========== */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    }
+    [type="checkbox"] {
+        position: relative;
+        top: -1px;
+        margin-right: 4px;
+    }
+}
+
+.form-control {
+    margin-bottom: 20px;
+    @include media(">=desktop") {
+        margin-bottom: 0;
+    }
+}
+
+.custom-radio-group .custom-btn {
+    background-color: transparent;
+    border: none;
+    color: #000;
+    border-radius: 5px;
+    padding: 8px 15px;
+    transition: background-color 0.3s, color 0.3s;
+    &:hover,
+    &.active {
+        background-color: #007bff;
+        color: #fff;
+    }
+    input[type="radio"] {
+        display: none;
+    }
+}
+
+.search-input {
+    position: relative;
+    margin-bottom: 0;
+    @include media("<tablet") {
+        margin-bottom: 20px;
+    }
+    input {
+        padding-left: 36px;
+    }
+    &::before {
+        content: "\e919";
+        position: absolute;
+        color: #8E8E93;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 10px;
+        font-size: 20px;
+        /* use !important to prevent issues with browser extensions that change fonts */
+        font-family: 'icomoon' !important;
+        speak: never;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+.custom-input,
+.custom-select {
+    border-radius: 10px;
+    border: 1px solid #C7C7CC;
+    padding: 8px 12px;
+    box-shadow: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    &:focus {
+        border-color: #007bff;
+    }
+}
+
+.custom-select {
+    appearance: none;
+    background-color: #fff;
+    &::-ms-expand {
+        display: none;
+    }
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.custom-radio {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 36px;
+    color: #000;
+    span {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        border: 1px solid #C7C7CC;
+        border-radius: 50%;
+        background-color: white;
+        &::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 9px;
+            height: 9px;
+            background-color: #fff;
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 24px;
+            height: 24px;
+            background-color: #206BFF;
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+        }
+    }
+    input[type="radio"]:checked+& span::after,
+    input[type="radio"]:checked+& span::before {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    label {
+        margin-left: 5px;
+    }
+}
+
+.select-all {
+    &.custom-checkbox .checkmark::after {
+        content: "\ea0b";
+    }
+}

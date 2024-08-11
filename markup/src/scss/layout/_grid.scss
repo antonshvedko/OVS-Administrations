@@ -1,0 +1,304 @@
+//SCSS Variables:
+$bg-color: #f2f6f9;
+$active-color: #25be64;
+$inactive-color: #dadde4;
+$new-color: #febf02;
+$text-color: #C7C7CC;
+$table-bg-color: #F2F2F7;
+$table-head-bg-color: #EAF5FF;
+$table-border-color: #C7C7CC;
+$hover-bg-color: #fb4f83;
+$hover-text-color: #ffffff;
+//Responsive Breakpoint SCSS Mixin:
+@mixin mobile-xxs {
+    @media (max-width: 400px) {
+        @content;
+    }
+}
+
+//min-sm
+@mixin min-tablet {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+//md
+@mixin desktop {
+    @media (max-width: 991px) {
+        @content;
+    }
+}
+
+//sm to md
+@mixin tablet-to-desktop {
+    @media (min-width: 768px) and (max-width: 991px) {
+        @content;
+    }
+}
+
+
+/* Responsive Table Style */
+
+@mixin mobile {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+.responsive-table__head__title {
+    .title {
+        font-weight: 300;
+        color: #8e8e93;
+    }
+}
+
+.responsive-table {
+    background-color: #fff;
+    border-collapse: collapse;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.02);
+    width: 100%;
+    margin: 2rem 0 0 0;
+    &__row {
+        display: grid;
+        border-bottom: 1px solid $table-border-color;
+        padding: 0 1.5rem;
+        @include min-tablet {
+            grid-template-columns: 2fr 1fr 1fr 2fr 2fr 0.5fr;
+        }
+        @include tablet-to-desktop {
+            grid-template-columns: 2fr 1fr 1fr 2fr 2fr 0.5fr;
+        }
+        @include desktop {
+            grid-template-columns: 2fr 1fr 1fr 2fr 2fr 0.5fr;
+        }
+        // mobile
+        @include mobile {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem 0;
+        }
+        th,
+        td {
+            padding: 10px 4px;
+            text-align: left;
+            // mobile
+            @include mobile {
+                display: block;
+                width: 100%;
+                padding: 0.5rem 0;
+                text-align: left;
+                &:before {
+                    // content: attr(data-title);
+                    font-weight: bold;
+                    display: inline-block;
+                    width: 50%;
+                }
+            }
+        }
+    }
+    &__head {
+        @include desktop {
+            // display: none;
+        }
+        @include mobile {
+            // display: none;
+        }
+    }
+    &__body {
+        .responsive-table__row {
+            transition: 0.1s linear;
+            transition-property: color, background;
+            &:last-child {
+                border-bottom: none;
+            }
+            &:hover {
+                // color: $hover-text-color;
+                // background-color: $hover-bg-color;
+            }
+        }
+    }
+    .selected-row {
+        background-color: #e9f6fe;
+    }
+}
+
+
+/* SVG Up Arrow Style */
+
+.up-arrow {
+    height: 100%;
+    max-height: 1.8rem;
+    margin-left: 1rem;
+}
+
+
+/* SVG User Icon Style */
+
+.user-icon {
+    width: 100%;
+    max-width: 4rem;
+    height: auto;
+    margin-right: 1rem;
+}
+
+
+/* Status Indicator Style */
+
+.status-indicator {
+    display: inline-block;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    background: #222222;
+    margin-right: 0.5rem;
+    &--active {
+        background: $active-color;
+    }
+    &--inactive {
+        background: $inactive-color;
+    }
+    &--new {
+        background: $new-color;
+    }
+}
+
+.responsive-table {
+    .responsive-table__body {
+        background-color: #fff;
+    }
+    .custom-checkbox {
+        padding-right: 20px;
+        display: flex;
+    }
+    .responsive-table__body__text {
+        display: flex;
+        align-items: center;
+        &.main-item {
+            .content {
+                span {
+                    font-size: 16px;
+                    margin-bottom: 3px;
+                    @include media(">tablet") {
+                        margin-bottom: 0;
+                    }
+                }
+                @include media(">tablet") {
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+        .main-item-holder {
+            @include media("<tablet") {
+                display: flex;
+                justify-content: space-between;
+                width: 85%;
+            }
+            .autor {
+                @include media(">tablet") {
+                    display: none;
+                }
+            }
+            span {
+                font-size: 15px !important;
+            }
+        }
+        .secondary-text {
+            display: block;
+            color: #8E8E93;
+        }
+        .instructor,
+        .name {
+            text-decoration: underline;
+            display: block;
+        }
+        .stars {
+            color: #FFCC00;
+        }
+        .hours {
+            color: #206BFF;
+            padding-right: 8px;
+        }
+        .detail-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 -10px;
+            display: flex;
+            li {
+                padding: 0 10px;
+                position: relative;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    right: 0;
+                    bottom: 50%;
+                    transform: translateY(50%);
+                    height: 12px;
+                    width: 1px;
+                    background-color: #8E8E93;
+                }
+                &:last-child {
+                    &::after {
+                        display: none;
+                    }
+                }
+            }
+            .title {
+                color: #8E8E93;
+            }
+        }
+        .main-title {
+            padding-right: 8px;
+        }
+        .pr {
+            padding-right: 8px;
+        }
+    }
+}
+
+.custom-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    .custom-grid-item {
+        box-sizing: border-box;
+        padding: 10px;
+    }
+    .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .col-md-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .col-xl-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .col-xl-4 {
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+    }
+    .col-xl-5 {
+        flex: 0 0 41.6667%;
+        max-width: 41.6667%;
+    }
+    // Responsive adjustments
+    @media (max-width: 1199.98px) {
+        .col-xl-3,
+        .col-xl-4,
+        .col-xl-5 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+    @media (max-width: 767.98px) {
+        .col-md-6 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+}
