@@ -276,7 +276,7 @@ function toggleFullScreen(elem) {
 
 
         if (checked.length <= 0) {
-            this.label.innerHTML = 'Select preset';
+
         } else if (checked.length === this.inputs.length) {
             this.label.innerHTML = 'All Selected';
             this.areAllChecked = true;

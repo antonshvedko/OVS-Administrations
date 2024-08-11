@@ -689,50 +689,114 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group-toggle custom-radio-group" data-toggle="buttons">
                         <label class="btn custom-btn active">
-                            <input type="radio" name="options" id="option1" autocomplete="off" checked> OVS
+                            <input type="radio" name="options" id="option1" autocomplete="off" checked> All users
                         </label>
                         <label class="btn custom-btn">
-                            <input type="radio" name="options" id="option2" autocomplete="off"> Non-OVS
+                            <input type="radio" name="options" id="option2" autocomplete="off"> Admin pinned
                         </label>
                         <label class="btn custom-btn">
-                            <input type="radio" name="options" id="option3" autocomplete="off"> Hidden
+                            <input type="radio" name="options" id="option3" autocomplete="off"> Pinned for me
                         </label>
                     </div>
                     <button class="btn btn-primary new">
-                        <div class="holder"> <i class="icon icomoon-circle-with-plus-1"></i> <div> New course</div>
+                        <div class="holder"> <i class="icon icomoon-circle-with-plus-1"></i> <div> New account</div>
                         </div></button>
                 </div>
                 <div class="custom-grid row" style="margin-top: 10px;">
                     <div class="custom-grid-item col-md-6 col-xl-5">
-                        <div class="search-input form-control">
-                            <input type="text" class="custom-input" placeholder="Course, department, instructor">
+                        <div class="row">
+                            <div class="col">
+                                <div class="search-input form-control">
+                                    <input type="text" class="custom-input" placeholder="Email, name, number">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="dropdown" data-control="checkbox-dropdown">
+                                    <label class="dropdown-label">All types</label>
+                                    <div class="dropdown-list">
+                                        <a href="#" data-toggle="check-all" class="dropdown-option select-all">Check All</a>
+                                        <label class="custom-checkbox dropdown-option">
+                                    <input type="checkbox" name="dropdown-group" value="Preset 1">
+                                    <span class="checkmark"></span>
+                                    <div class="title">Type 1</div>
+                                </label>
+                                        <label class="custom-checkbox dropdown-option">
+                                    <input type="checkbox" name="dropdown-group" value="Preset 2">
+                                    <span class="checkmark"></span>
+                                    <div class="title">Type 2</div>
+                                </label>
+                                        <label class="custom-checkbox dropdown-option">
+                                    <input type="checkbox" name="dropdown-group" value="Preset 3">
+                                    <span class="checkmark"></span>
+                                    <div class="title">Type 3</div>
+                                </label>
+                                        <label class="custom-checkbox dropdown-option">
+                                    <input type="checkbox" name="dropdown-group" value="Preset 4">
+                                    <span class="checkmark"></span>
+                                    <div class="title">Type 4</div>
+                                </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="custom-grid-item dropdown-container col-md-6 col-xl-4">
-                        <div class="dropdown" data-control="checkbox-dropdown">
-                            <label class="dropdown-label">Select</label>
-                            <div class="dropdown-list">
-                                <a href="#" data-toggle="check-all" class="dropdown-option select-all">Check All</a>
-                                <label class="custom-checkbox dropdown-option">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="dropdown" data-control="checkbox-dropdown">
+                                    <label class="dropdown-label">All statuses</label>
+                                    <div class="dropdown-list">
+                                        <a href="#" data-toggle="check-all" class="dropdown-option select-all">Check All</a>
+                                        <label class="custom-checkbox dropdown-option">
                                     <input type="checkbox" name="dropdown-group" value="Preset 1">
                                     <span class="checkmark"></span>
-                                    <div class="title">Preset 1</div>
+                                    <div class="title">Status 1</div>
                                 </label>
-                                <label class="custom-checkbox dropdown-option">
+                                        <label class="custom-checkbox dropdown-option">
                                     <input type="checkbox" name="dropdown-group" value="Preset 2">
                                     <span class="checkmark"></span>
-                                    <div class="title">Preset 2</div>
+                                    <div class="title">Status 2</div>
                                 </label>
-                                <label class="custom-checkbox dropdown-option">
+                                        <label class="custom-checkbox dropdown-option">
                                     <input type="checkbox" name="dropdown-group" value="Preset 3">
                                     <span class="checkmark"></span>
-                                    <div class="title">Preset 3</div>
+                                    <div class="title">Status 3</div>
                                 </label>
-                                <label class="custom-checkbox dropdown-option">
+                                        <label class="custom-checkbox dropdown-option">
                                     <input type="checkbox" name="dropdown-group" value="Preset 4">
                                     <span class="checkmark"></span>
-                                    <div class="title">Preset 4</div>
+                                    <div class="title">Status 4</div>
                                 </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="dropdown" data-control="checkbox-dropdown">
+                                    <label class="dropdown-label">Any courses</label>
+                                    <div class="dropdown-list">
+                                        <a href="#" data-toggle="check-all" class="dropdown-option select-all">Check All</a>
+                                        <label class="custom-checkbox dropdown-option">
+                                    <input type="checkbox" name="dropdown-group" value="Preset 1">
+                                    <span class="checkmark"></span>
+                                    <div class="title">Course 1</div>
+                                </label>
+                                        <label class="custom-checkbox dropdown-option">
+                                    <input type="checkbox" name="dropdown-group" value="Preset 2">
+                                    <span class="checkmark"></span>
+                                    <div class="title">Course 2</div>
+                                </label>
+                                        <label class="custom-checkbox dropdown-option">
+                                    <input type="checkbox" name="dropdown-group" value="Preset 3">
+                                    <span class="checkmark"></span>
+                                    <div class="title">Course 3</div>
+                                </label>
+                                        <label class="custom-checkbox dropdown-option">
+                                    <input type="checkbox" name="dropdown-group" value="Preset 4">
+                                    <span class="checkmark"></span>
+                                    <div class="title">Course 4</div>
+                                </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="mobile-buttons-holder">
@@ -756,14 +820,7 @@
                     </div>
                     <div class="custom-grid-item col-md-12 col-xl-3">
                         <div class="btn-row">
-                            <div class="col">
-                                <button class="btn btn-transparent" type="button" data-toggle="modal" data-target="#newCourse">
-                                    <div class="holder">
-                                        <i class="icon icomoon-circle-with-plus-1"></i>
-                                        <span>New preset</span>
-                                    </div>
-                                </button>
-                            </div>
+
                             <div class="col">
                                 <button class="btn btn-secondary" onclick="toggleFullScreen(document.body)">
                                     <div class="holder">
