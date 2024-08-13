@@ -616,7 +616,8 @@
                         <div class="holder"> <i class="icon icomoon-circle-with-plus-1"></i> <div> New account</div>
                         </div></button>
                 </div>
-                <div class="custom-grid row" style="margin-top: 10px;">
+                <div class="custom-grid-item col-12"><a href="#" class="filterOpen">Filter</a> </div>
+                <div class="custom-grid row dropdown-container filter-container" style="margin-top: 10px;">
                     <div class="custom-grid-item col-md-6 col-xl-5">
                         <div class="row">
                             <div class="col">
@@ -654,7 +655,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="custom-grid-item dropdown-container col-md-6 col-xl-4">
+                    <div class="custom-grid-item dropdown-container col-md-6 col-xl-5">
                         <div class="row">
                             <div class="col-6">
                                 <div class="dropdown" data-control="checkbox-dropdown">
@@ -732,9 +733,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="custom-grid-item col-md-12 col-xl-3">
+                    <div class="custom-grid-item col-md-2 col-xl-2">
                         <div class="btn-row">
-
                             <div class="col">
                                 <button class="btn btn-secondary" onclick="toggleFullScreen(document.body)">
                                     <div class="holder">
@@ -745,9 +745,12 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
-            <table class="responsive-table">
+            <script>
+            </script>
+            <table class="responsive-table users">
                 <thead class="responsive-table__head">
                     <tr class="responsive-table__row">
                         <th class="responsive-table__head__title responsive-table__head__title--name">
@@ -756,28 +759,24 @@
                                     <input type="checkbox" id="select-all">
                                     <span class="checkmark"></span>
                                 </label>
-                                <div class="title mobile-hide"> Course Title</div>
+                                <div class="title mobile-hide"> Name</div>
                                 <div class="title mobile-show">Select All</div>
                             </div>
                         </th>
                         <th class="responsive-table__head__title responsive-table__head__title--department tablet-hide">
-                            <div class="title"> Department</div>
+                            <div class="title"> Contact info</div>
                         </th>
                         <th class="responsive-table__head__title responsive-table__head__title--instructor tablet-hide">
-                            <div class="title">Instructor</div>
+                            <div class="title">Status</div>
                         </th>
                         <th class="responsive-table__head__title responsive-table__head__title--office tablet-hide">
                             <div class="title">
-                                Office Hours
+                                Creation Date/ Last Login
                             </div>
                         </th>
                         <th class="responsive-table__head__title responsive-table__head__title--average tablet-hide">
                             <div class="title">
-                                Average
-                            </div>
-                        </th>
-                        <th class="responsive-table__head__title responsive-table__head__title--enrolled tablet-hide">
-                            <div class="title"> Enrolled
+                                Courses
                             </div>
                         </th>
                     </tr>
@@ -791,8 +790,7 @@
                             </label>
                             <div class="main-item-holder">
                                 <div class="content">
-                                    <span class="name pr">1CLONE(410)</span>
-                                    <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
+                                    <span class="name pr">Jessica Hanson</span>
                                 </div>
                                 <div class="content autor">
                                     <div class="">
@@ -804,9 +802,9 @@
                         <td class="responsive-table__body__text responsive-table__body__text--status">
                             <div class="mobile-holder">
                                 <div class="lebel-mobile">
-                                    Department
+                                    Contact info
                                 </div>
-                                <div class=""> English</div>
+                                <div class="email"> jessica.hanson@example.com</div>
                             </div>
                         </td>
                         <td class="responsive-table__body__text responsive-table__body__text--update tablet-hide">
@@ -821,23 +819,19 @@
                         </td>
                         <td class="responsive-table__body__text responsive-table__body__text--country">
                             <div class="mobile-holder">
-                                <div class="lebel-mobile">Office Hours </div>
-                                <div class="d-flex flex-wrap"><span class="pr">Mon - Tue </span><span class="secondary-text">5pm-6pm</span></div>
+                                <div class="lebel-mobile">Creation Date/ Last Login </div>
+                                <div class="d-flex flex-wrap"><span class="pr">2020-05-03 </span><span class="secondary-text">30 days ago</span></div>
                             </div>
                         </td>
                         <td class="responsive-table__body__text responsive-table__body__text--types">
                             <div class="mobile-holder">
-                                <div class="lebel-mobile">Average</div>
+                                <div class="lebel-mobile">Courses</div>
                                 <div class="d-flex flex-wrap">
-                                    <span class="main-title">Marking Time </span> <span class="hours">8.53 h</span>
-                                    <ul class="detail-list clearfix">
-                                        <li> <span class="title"> Avg</span> <span class="value">90$</span></li>
-                                        <li><span class="title">Med</span><span class="value"> 90%  </span></li>
-                                    </ul>
+                                    <span class="main-title">ENG4U-03, </span> <span class="main-title">ENG4U-03, </span> <span class="main-title">ENG4U-03, </span> <span class="main-title">ENG4U-03</span>
                                 </div>
                             </div>
                         </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--country hover-table">
+                        <!-- <td class="responsive-table__body__text responsive-table__body__text--country hover-table">
                             <div class="mobile-holder">
                                 <div class="lebel-mobile">Enrolled</div>
                                 <div class="mobile-show">
@@ -862,169 +856,7 @@
                                         <p>Suspend</p> <span>90.9% | 93%</span></div>
                                 </div>
                             </div>
-                        </td>
-                    </tr>
-                    <tr class="responsive-table__row">
-                        <td class="responsive-table__body__text main-item responsive-table__body__text--name">
-                            <label class="custom-checkbox">
-                                <input type="checkbox"  class="selectRow">
-                                <span class="checkmark"></span>
-                            </label>
-                            <div class="main-item-holder">
-                                <div class="content">
-                                    <span class="name pr">1CLONE(410)</span>
-                                    <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
-                                </div>
-                                <div class="content autor">
-                                    <div class="">
-                                        <span class="instructor pr">Jane Cooper</span> <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--status">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">
-                                    Department
-                                </div>
-                                <div class=""> English</div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--update tablet-hide">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">
-                                    Instructor
-                                </div>
-                                <div class="d-flex flex-wrap"><span class="instructor pr">
-                                Jane Cooper</span> <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--country">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Office Hours </div>
-                                <div class="d-flex flex-wrap"><span class="pr">Mon - Tue </span><span class="secondary-text">5pm-6pm</span></div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--types">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Average</div>
-                                <div class="d-flex flex-wrap">
-                                    <span class="main-title">Marking Time </span> <span class="hours">8.53 h</span>
-                                    <ul class="detail-list clearfix">
-                                        <li> <span class="title"> Avg</span> <span class="value">90$</span></li>
-                                        <li><span class="title">Med</span><span class="value"> 90%  </span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--country hover-table">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Enrolled</div>
-                                <div class="mobile-show">
-                                    <div class="">
-                                        <div>
-                                            <b>Processed</b> <span>8.53 h</span></div>
-                                        <div>
-                                            <b>Ghost</b> <span>90.9% | 93%</span></div>
-                                        <div>
-                                            <b>Suspend</b> <span>90.9% | 93%</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-wrap hover-trigger">
-                                <span class="pr">12 </span><i class="icomoon-info-1"></i>
-                                <div class="hover-popup">
-                                    <div>
-                                        <p>Processed</p> <span>8.53 h</span></div>
-                                    <div>
-                                        <p>Ghost</p> <span>90.9% | 93%</span></div>
-                                    <div>
-                                        <p>Suspend</p> <span>90.9% | 93%</span></div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="responsive-table__row">
-                        <td class="responsive-table__body__text main-item responsive-table__body__text--name">
-                            <label class="custom-checkbox">
-                                <input type="checkbox"  class="selectRow">
-                                <span class="checkmark"></span>
-                            </label>
-                            <div class="main-item-holder">
-                                <div class="content">
-                                    <span class="name pr">1CLONE(410)</span>
-                                    <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
-                                </div>
-                                <div class="content autor">
-                                    <div class="">
-                                        <span class="instructor pr">Jane Cooper</span> <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--status">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">
-                                    Department
-                                </div>
-                                <div class=""> English</div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--update tablet-hide">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">
-                                    Instructor
-                                </div>
-                                <div class="d-flex flex-wrap"><span class="instructor pr">
-                                Jane Cooper</span> <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--country">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Office Hours </div>
-                                <div class="d-flex flex-wrap"><span class="pr">Mon - Tue </span><span class="secondary-text">5pm-6pm</span></div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--types">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Average</div>
-                                <div class="d-flex flex-wrap">
-                                    <span class="main-title">Marking Time </span> <span class="hours">8.53 h</span>
-                                    <ul class="detail-list clearfix">
-                                        <li> <span class="title"> Avg</span> <span class="value">90$</span></li>
-                                        <li><span class="title">Med</span><span class="value"> 90%  </span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--country hover-table">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Enrolled</div>
-                                <div class="mobile-show">
-                                    <div class="">
-                                        <div>
-                                            <b>Processed</b> <span>8.53 h</span></div>
-                                        <div>
-                                            <b>Ghost</b> <span>90.9% | 93%</span></div>
-                                        <div>
-                                            <b>Suspend</b> <span>90.9% | 93%</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-wrap hover-trigger">
-                                <span class="pr">12 </span><i class="icomoon-info-1"></i>
-                                <div class="hover-popup">
-                                    <div>
-                                        <p>Processed</p> <span>8.53 h</span></div>
-                                    <div>
-                                        <p>Ghost</p> <span>90.9% | 93%</span></div>
-                                    <div>
-                                        <p>Suspend</p> <span>90.9% | 93%</span></div>
-                                </div>
-                            </div>
-                        </td>
+                        </td> -->
                     </tr>
                 </tbody>
             </table>
@@ -1038,14 +870,21 @@
                     </div>
                     <div class="col-custom">
                         <button class="btn btn-transparent"><div class="holder"><i class="icon icomoon-cloud-download"></i><span> Backup</span></div></button>
+                        <!-- <div class="check-box">
+                            <input type="checkbox">
+                        </div> -->
+
                     </div>
                     <div class="col-custom desktop-only edit">
                         <button class="btn btn-transparent"><div class="holder"><i class="icon icomoon-pencil"></i><span> Backup</span></div></button>
+
                     </div>
+
                     <div class="col-custom desktop-only add">
                         <button class="btn btn-transparent" type="button" data-toggle="modal" data-target="#newCourse">
                         <div class="holder"><i class="icon icomoon-circle-with-plus-1"></i><span> Backup</span></div>
                         </button>
+
                     </div>
                     <div class="col-custom delete">
                         <button class="btn btn-primary"><div class="holder"><i class="icon icomoon-trashcan"></i><span> Delete</span></div></button>

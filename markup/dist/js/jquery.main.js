@@ -402,54 +402,57 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    const dropdownToggle = document.getElementById('dropdownMenuButton');
-    const dropdownMenu = document.getElementById('dropdownMenu');
+    var dropdownToggle = document.getElementById('dropdownMenuButton');
+    var dropdownMenu = document.getElementById('dropdownMenu');
 
-    dropdownToggle.addEventListener('click', function(event) {
-        event.stopPropagation(); // Prevent the click event from bubbling up to the document
-        const isExpanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
-        dropdownToggle.setAttribute('aria-expanded', !isExpanded);
-        dropdownMenu.style.display = isExpanded ? 'none' : 'block';
-    });
+    if (dropdownToggle && dropdownMenu) {
+        dropdownToggle.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevent the click event from bubbling up to the document
+            var isExpanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
+            dropdownToggle.setAttribute('aria-expanded', !isExpanded);
+            dropdownMenu.style.display = isExpanded ? 'none' : 'block';
+        });
 
-    // Close the dropdown menu when clicking outside of it
-    document.addEventListener('click', function(event) {
-        if (!dropdownToggle.contains(event.target)) {
-            dropdownMenu.style.display = 'none';
-            dropdownToggle.setAttribute('aria-expanded', 'false');
-        }
-    });
-});
-
-
-(document).ready(function() {
-    function checkWindowSize() {
-        if ($(window).width() < 992) {
-            $('.js-collapse-courses').addClass('show');
-        } else {
-            $('.js-collapse-courses').removeClass('show');
-        }
+        // Close the dropdown menu when clicking outside of it
+        document.addEventListener('click', function(event) {
+            if (!dropdownToggle.contains(event.target)) {
+                dropdownMenu.style.display = 'none';
+                dropdownToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
     }
-
-    checkWindowSize();
-
-    $(window).resize(function() {
-        checkWindowSize();
-    });
-
-    $('#toggleButton').click(function(e) {
-        e.stopPropagation();
-        if ($(this).hasClass('active')) {
-            $('.js-collapse-courses').toggleClass('show');
-        }
-    });
-
-    $(document).click(function(e) {
-        if (!$(e.target).closest('.js-collapse-courses').length && !$(e.target).is('#toggleButton')) {
-            $('.js-collapse-courses').removeClass('show');
-        }
-    });
 });
+
+
+
+// $(document).ready(function() {
+//     function checkWindowSize() {
+//         if ($(window).width() < 992) {
+//             $('.js-collapse-courses').addClass('show');
+//         } else {
+//             $('.js-collapse-courses').removeClass('show');
+//         }
+//     }
+
+//     checkWindowSize();
+
+//     $(window).resize(function() {
+//         checkWindowSize();
+//     });
+
+//     $('#toggleButton').click(function(e) {
+//         e.stopPropagation();
+//         if ($(this).hasClass('active')) {
+//             $('.js-collapse-courses').toggleClass('show');
+//         }
+//     });
+
+//     $(document).click(function(e) {
+//         if (!$(e.target).closest('.js-collapse-courses').length && !$(e.target).is('#toggleButton')) {
+//             $('.js-collapse-courses').removeClass('show');
+//         }
+//     });
+// });
 
 document.addEventListener('DOMContentLoaded', function() {
     var accountButton = document.getElementById('accountButton');
@@ -466,3 +469,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+window.onload = function() {
+    var filterOpen = document.querySelector('.filterOpen');
+    var filterContainer = document.querySelector('.filter-container');
+
+    function checkWindowSize() {
+        if (window.innerWidth < 992) {
+            filterOpen.style.display = 'block';
+        } else {
+            filterOpen.style.display = 'none';
+            filterContainer.classList.remove('active');
+        }
+    }
+
+    filterOpen.addEventListener('click', function(e) {
+        e.preventDefault();
+        filterContainer.classList.toggle('active');
+    });
+
+    checkWindowSize();
+
+    window.addEventListener('resize', checkWindowSize);
+};
