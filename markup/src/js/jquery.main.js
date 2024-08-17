@@ -7,27 +7,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Select all functionality
-    var selectAllCheckbox = document.getElementById('select-all');
-    if (selectAllCheckbox) {
-        selectAllCheckbox.addEventListener('change', function() {
-            var isChecked = this.checked;
-            var rows = document.querySelectorAll('.responsive-table__row');
-            rows.forEach(function(row) {
-                var checkbox = row.querySelector('.selectRow');
-                if (checkbox) {
-                    checkbox.checked = isChecked;
-                    if (isChecked) {
-                        row.classList.add('selected-row');
-                    } else {
-                        row.classList.remove('selected-row');
-                    }
-                }
-            });
-            updateBodyClass();
-        });
-    }
-
     // Handle individual row selection
     document.querySelectorAll('.selectRow').forEach(function(checkbox) {
         checkbox.addEventListener('change', function() {
@@ -500,317 +479,347 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 window.onload = function() {
-    const users = [{
-            "Id": 1,
-            "Name": "Jessica Hanson",
-            "Email": "jessica.hanson@example.com",
-            "Status": [
-                { "icon": "text", "name": "18+" },
-                { "icon": "icomoon-briefcase", "name": "Business" },
-                { "icon": "icomoon-flag red", "name": "Red Flag" },
-                { "icon": "icomoon-man", "name": "Adult" }
-            ],
-            "Flag": "red",
-            "CreationDate": "2020-05-03",
-            "LastLogin": "30 days ago",
-            "Courses": ["ENG4U-03", "ENG4U-03", "ENG4U-03", "ENG4U-03"]
-        },
-        {
-            "Id": 2,
-            "Name": "Jessica Hanson",
-            "Email": "jessica.hanson@example.com",
-            "Status": [
-                { "icon": "text", "name": "18+" },
-                { "icon": "icomoon-briefcase", "name": "Business" },
-                { "icon": "icomoon-flag blue", "name": "Blue Flag" },
-                { "icon": "icomoon-man", "name": "Adult" }
-            ],
-            "Flag": "blue",
-            "CreationDate": "2020-05-03",
-            "LastLogin": "10 days ago",
-            "Courses": ["ENG4U-03", "ENG4U-03", "ENG4U-03", "ENG4U-03"]
-        },
-        {
-            "Id": 3,
-            "Name": "Jessica Hanson",
-            "Email": "jessica.hanson@example.com",
-            "Status": [
-                { "icon": "text", "name": "18+" },
-                { "icon": "icomoon-briefcase", "name": "Business" },
-                { "icon": "icomoon-flag green", "name": "Green Flag" },
-                { "icon": "icomoon-man", "name": "Adult" }
-            ],
-            "Flag": "green",
-            "CreationDate": "2020-05-03",
-            "LastLogin": "23 days ago",
-            "Courses": ["TYIOF-03", "ENG4U-03", "ENG4U-03", "ENG4U-03"]
-        },
-        {
-            "Id": 4,
-            "Name": "Jessica Hanson",
-            "Email": "jessica.hanson@example.com",
-            "Status": [
-                { "icon": "text", "name": "18+" },
-                { "icon": "icomoon-briefcase", "name": "Business" },
-                { "icon": "icomoon-flag green", "name": "Green Flag" },
-                { "icon": "icomoon-man", "name": "Adult" }
-            ],
-            "Flag": "green",
-            "CreationDate": "2020-05-03",
-            "LastLogin": "23 days ago",
-            "Courses": ["TYIOF-03", "ENG4U-03", "ENG4U-03", "ENG4U-03"]
-        },
-    ];
+        const users = [{
+                "Id": 1,
+                "Name": "Jessica Hanson",
+                "Email": "jessica.hanson@example.com",
+                "Status": [
+                    { "icon": "text", "name": "18+" },
+                    { "icon": "icomoon-briefcase", "name": "Business" },
+                    { "icon": "icomoon-flag red", "name": "Red Flag" },
+                    { "icon": "icomoon-man", "name": "Adult" }
+                ],
+                "Flag": "red",
+                "CreationDate": "2020-05-03",
+                "LastLogin": "30 days ago",
+                "Courses": ["ENG4U-03", "ENG4U-03", "ENG4U-03", "ENG4U-03"]
+            },
+            {
+                "Id": 2,
+                "Name": "Jessica Hanson",
+                "Email": "jessica.hanson@example.com",
+                "Status": [
+                    { "icon": "text", "name": "18+" },
+                    { "icon": "icomoon-briefcase", "name": "Business" },
+                    { "icon": "icomoon-flag blue", "name": "Blue Flag" },
+                    { "icon": "icomoon-man", "name": "Adult" }
+                ],
+                "Flag": "blue",
+                "CreationDate": "2020-05-03",
+                "LastLogin": "10 days ago",
+                "Courses": ["ENG4U-03", "ENG4U-03", "ENG4U-03", "ENG4U-03"]
+            },
+            {
+                "Id": 3,
+                "Name": "Jessica Hanson",
+                "Email": "jessica.hanson@example.com",
+                "Status": [
+                    { "icon": "text", "name": "18+" },
+                    { "icon": "icomoon-briefcase", "name": "Business" },
+                    { "icon": "icomoon-flag green", "name": "Green Flag" },
+                    { "icon": "icomoon-man", "name": "Adult" }
+                ],
+                "Flag": "green",
+                "CreationDate": "2020-05-03",
+                "LastLogin": "23 days ago",
+                "Courses": ["TYIOF-03", "ENG4U-03", "ENG4U-03", "ENG4U-03"]
+            },
+            {
+                "Id": 4,
+                "Name": "Jessica Hanson",
+                "Email": "jessica.hanson@example.com",
+                "Status": [
+                    { "icon": "text", "name": "18+" },
+                    { "icon": "icomoon-briefcase", "name": "Business" },
+                    { "icon": "icomoon-flag green", "name": "Green Flag" },
+                    { "icon": "icomoon-man", "name": "Adult" }
+                ],
+                "Flag": "green",
+                "CreationDate": "2020-05-03",
+                "LastLogin": "23 days ago",
+                "Courses": ["TYIOF-03", "ENG4U-03", "ENG4U-03", "ENG4U-03"]
+            },
+        ];
 
-    const usersPerPage = 2; // Number of users per page
-    let currentPage = 1;
-    let filteredUsers = [...users]; // Filtered list of users, initially contains all users
+        const usersPerPage = 2; // Number of users per page
+        let currentPage = 1;
+        let filteredUsers = [...users]; // Filtered list of users, initially contains all users
 
-    // Function to display users with pagination
-    function displayUsers(usersToDisplay, page, perPage) {
-        const userTableBody = document.querySelector('.responsive-table.users .responsive-table__body');
-        userTableBody.innerHTML = ''; // Clear the table before adding new data
+        // Function to display users with pagination
+        function displayUsers(usersToDisplay, page, perPage) {
+            const userTableBody = document.querySelector('.responsive-table.users .responsive-table__body');
+            userTableBody.innerHTML = ''; // Clear the table before adding new data
 
-        const start = (page - 1) * perPage;
-        const end = start + perPage;
-        const paginatedUsers = usersToDisplay.slice(start, end);
+            const start = (page - 1) * perPage;
+            const end = start + perPage;
+            const paginatedUsers = usersToDisplay.slice(start, end);
 
-        paginatedUsers.forEach(user => addUserRow(user));
-        document.getElementById('total-count-users').textContent = usersToDisplay.length;
+            paginatedUsers.forEach(user => addUserRow(user));
+            document.getElementById('total-count-users').textContent = usersToDisplay.length;
 
-        // Update pagination controls
-        document.getElementById('prev-page').classList.toggle('disabled', page === 1);
-        document.getElementById('next-page').classList.toggle('disabled', end >= usersToDisplay.length);
-        document.getElementById('current-page').value = page;
+            // Update pagination controls
+            document.getElementById('prev-page').classList.toggle('disabled', page === 1);
+            document.getElementById('next-page').classList.toggle('disabled', end >= usersToDisplay.length);
+            document.getElementById('current-page').value = page;
 
-        // Re-initialize the "Select all" functionality after rendering rows
-        initSelectAll();
-    }
+            // Re-initialize the "Select all" functionality after rendering rows
+            initSelectAll();
 
-    // Function to filter users
-    function filterUsers() {
-        const query = document.getElementById('users-search').value.toLowerCase();
-        const selectedStatuses = Array.from(document.querySelectorAll('#user-status .dropdown-option input[type="checkbox"]:checked')).map(cb => cb.value.toLowerCase());
-        const selectedCourses = Array.from(document.querySelectorAll('#user-courses .dropdown-option input[type="checkbox"]:checked')).map(cb => cb.value.toLowerCase());
+            // Initialize row selection and expand/collapse functionality
+            initRowInteractions();
+        }
 
-        filteredUsers = users.filter(user => {
-            const matchesSearch = user.Name.toLowerCase().includes(query) ||
-                user.Email.toLowerCase().includes(query) ||
-                user.Courses.join(',').toLowerCase().includes(query);
+        // Function to filter users
+        function filterUsers() {
+            const query = document.getElementById('users-search').value.toLowerCase();
+            const selectedStatuses = Array.from(document.querySelectorAll('#user-status .dropdown-option input[type="checkbox"]:checked')).map(cb => cb.value.toLowerCase());
+            const selectedCourses = Array.from(document.querySelectorAll('#user-courses .dropdown-option input[type="checkbox"]:checked')).map(cb => cb.value.toLowerCase());
 
-            const matchesStatus = selectedStatuses.length === 0 || selectedStatuses.every(status =>
-                user.Status.some(userStatus => userStatus.name.toLowerCase() === status)
-            );
+            filteredUsers = users.filter(user => {
+                const matchesSearch = user.Name.toLowerCase().includes(query) ||
+                    user.Email.toLowerCase().includes(query) ||
+                    user.Courses.join(',').toLowerCase().includes(query);
 
-            const matchesCourses = selectedCourses.length === 0 || selectedCourses.every(course =>
-                user.Courses.map(c => c.toLowerCase()).includes(course)
-            );
+                const matchesStatus = selectedStatuses.length === 0 || selectedStatuses.every(status =>
+                    user.Status.some(userStatus => userStatus.name.toLowerCase() === status)
+                );
 
-            return matchesSearch && matchesStatus && matchesCourses;
+                const matchesCourses = selectedCourses.length === 0 || selectedCourses.every(course =>
+                    user.Courses.map(c => c.toLowerCase()).includes(course)
+                );
+
+                return matchesSearch && matchesStatus && matchesCourses;
+            });
+
+            // Reset current page to the first one after filtering
+            currentPage = 1;
+            displayUsers(filteredUsers, currentPage, usersPerPage);
+        }
+
+        // Attach event listeners
+        document.getElementById('prev-page').addEventListener('click', function() {
+            if (currentPage > 1) {
+                currentPage--;
+                displayUsers(filteredUsers, currentPage, usersPerPage);
+            }
         });
 
-        // Reset current page to the first one after filtering
-        currentPage = 1;
-        displayUsers(filteredUsers, currentPage, usersPerPage);
-    }
+        document.getElementById('next-page').addEventListener('click', function() {
+            if (currentPage * usersPerPage < filteredUsers.length) {
+                currentPage++;
+                displayUsers(filteredUsers, currentPage, usersPerPage);
+            }
+        });
 
-    // Attach event listeners
-    document.getElementById('prev-page').addEventListener('click', function() {
-        if (currentPage > 1) {
-            currentPage--;
-            displayUsers(filteredUsers, currentPage, usersPerPage);
-        }
-    });
+        document.getElementById('current-page').addEventListener('input', function() {
+            let pageNumber = parseInt(this.value);
+            if (pageNumber > 0 && pageNumber <= Math.ceil(filteredUsers.length / usersPerPage)) {
+                currentPage = pageNumber;
+                displayUsers(filteredUsers, currentPage, usersPerPage);
+            }
+        });
 
-    document.getElementById('next-page').addEventListener('click', function() {
-        if (currentPage * usersPerPage < filteredUsers.length) {
-            currentPage++;
-            displayUsers(filteredUsers, currentPage, usersPerPage);
-        }
-    });
-
-    document.getElementById('current-page').addEventListener('input', function() {
-        let pageNumber = parseInt(this.value);
-        if (pageNumber > 0 && pageNumber <= Math.ceil(filteredUsers.length / usersPerPage)) {
-            currentPage = pageNumber;
-            displayUsers(filteredUsers, currentPage, usersPerPage);
-        }
-    });
-
-    document.getElementById('users-search').addEventListener('input', function() {
-        filterUsers();
-    });
-
-    const statusCheckboxes = document.querySelectorAll('#user-status .dropdown-option input[type="checkbox"]');
-    statusCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
+        document.getElementById('users-search').addEventListener('input', function() {
             filterUsers();
         });
-    });
 
-    const courseCheckboxes = document.querySelectorAll('#user-courses .dropdown-option input[type="checkbox"]');
-    courseCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            filterUsers();
+        const statusCheckboxes = document.querySelectorAll('#user-status .dropdown-option input[type="checkbox"]');
+        statusCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                filterUsers();
+            });
         });
-    });
 
-    // Simulate a long load time
-    setTimeout(() => {
-        displayUsers(filteredUsers, currentPage, usersPerPage);
-    }, 1000);
+        const courseCheckboxes = document.querySelectorAll('#user-courses .dropdown-option input[type="checkbox"]');
+        courseCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                filterUsers();
+            });
+        });
 
-    // Display skeleton during data loading
-    displaySkeleton();
+        // Simulate a long load time
+        setTimeout(() => {
+            displayUsers(filteredUsers, currentPage, usersPerPage);
+        }, 1000);
 
-    // Function to initialize the "Select all" functionality
-    function initSelectAll() {
-        const selectAllCheckbox = document.getElementById('select-all');
-        if (selectAllCheckbox) {
-            selectAllCheckbox.addEventListener('change', function() {
-                const isChecked = this.checked;
-                const rows = document.querySelectorAll('.responsive-table__row');
-                rows.forEach(function(row) {
-                    const checkbox = row.querySelector('.selectRow');
-                    if (checkbox) {
-                        checkbox.checked = isChecked;
-                        if (isChecked) {
-                            row.classList.add('selected-row');
-                        } else {
-                            row.classList.remove('selected-row');
+        // Display skeleton during data loading
+        displaySkeleton();
+
+        // Function to initialize the "Select all" functionality
+        function initSelectAll() {
+            const selectAllCheckbox = document.getElementById('select-all');
+            if (selectAllCheckbox) {
+                selectAllCheckbox.addEventListener('change', function() {
+                    const isChecked = this.checked;
+                    const rows = document.querySelectorAll('.responsive-table__row');
+                    rows.forEach(function(row) {
+                        const checkbox = row.querySelector('.selectRow');
+                        if (checkbox) {
+                            checkbox.checked = isChecked;
+                            if (isChecked) {
+                                row.classList.add('selected-row');
+                            } else {
+                                row.classList.remove('selected-row');
+                            }
                         }
-                    }
+                    });
+                    updateBodyClass(); // Update the body class after the selection
                 });
-                updateBodyClass(); // Update the body class after the selection
+            }
+        }
+
+        // Function to initialize row interactions (selection and expand/collapse)
+        function initRowInteractions() {
+            // Handle individual row selection
+            document.querySelectorAll('.selectRow').forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    var row = this.closest('.responsive-table__row');
+                    if (this.checked) {
+                        row.classList.add('selected-row');
+                    } else {
+                        row.classList.remove('selected-row');
+                    }
+                    updateBodyClass();
+                });
+            });
+
+            // Expand/collapse row functionality
+            document.querySelectorAll('.responsive-table__row').forEach(function(row) {
+                row.addEventListener('click', function() {
+                    this.classList.toggle('expanded');
+                    updateBodyClass();
+                });
             });
         }
-    }
 
-    // Function to update body class based on row selection
-    function updateBodyClass() {
-        const body = document.body;
-        const selectedRows = document.querySelectorAll('.responsive-table__row .selectRow:checked');
-        console.log('Selected rows count:', selectedRows.length); // Debugging log
-        if (selectedRows.length > 0) {
-            body.classList.add('has-selected-rows');
-            console.log('Class "has-selected-rows" added to body');
-        } else {
-            body.classList.remove('has-selected-rows');
-            console.log('Class "has-selected-rows" removed from body');
+        // Function to update body class based on row selection
+        function updateBodyClass() {
+            var checkedItems = document.querySelectorAll('.selectRow:checked').length;
+
+            if (checkedItems === 0) {
+                console.log('Selected 0 items');
+                document.body.classList.remove('has-selected-rows', 'item-rows-1', 'item-rows-2');
+            } else if (checkedItems === 1) {
+                console.log('Selected 1 item');
+                document.body.classList.add('has-selected-rows', 'item-rows-1');
+                document.body.classList.remove('item-rows-2');
+            } else if (checkedItems >= 2) {
+                document.body.classList.add('has-selected-rows', 'item-rows-2');
+                document.body.classList.remove('item-rows-1');
+            }
         }
-    }
-};
 
-// Adding a user row to the table
-function addUserRow(userData) {
-    const userTableBody = document.querySelector('.responsive-table.users .responsive-table__body');
+        // Adding a user row to the table
+        function addUserRow(userData) {
+            const userTableBody = document.querySelector('.responsive-table.users .responsive-table__body');
 
-    const newRow = document.createElement('tr');
-    newRow.classList.add('responsive-table__row');
+            const newRow = document.createElement('tr');
+            newRow.classList.add('responsive-table__row');
 
-    const nameCell = document.createElement('td');
-    nameCell.classList.add('responsive-table__body__text', 'main-item', 'responsive-table__body__text--name');
-    nameCell.innerHTML = `
-        <label class="custom-checkbox">
-            <input type="checkbox" class="selectRow">
-            <span class="checkmark"></span>
-        </label>
-        <div class="main-item-holder">
-            <div class="content">
-                <span class="name pr">${userData.Name}</span>
+            const nameCell = document.createElement('td');
+            nameCell.classList.add('responsive-table__body__text', 'main-item', 'responsive-table__body__text--name');
+            nameCell.innerHTML = `
+            <label class="custom-checkbox">
+                <input type="checkbox" class="selectRow">
+                <span class="checkmark"></span>
+            </label>
+            <div class="main-item-holder">
+                <div class="content">
+                    <span class="name pr">${userData.Name}</span>
+                </div>
+                <div class="content autor">
+                    <div class="d-flex flex-wrap icon-row">
+                        ${userData.Status.map(status => status.icon === 'text' ? `<span class="icon" title="${status.name}">${status.name}</span>` : `<i class="icon ${status.icon}" title="${status.name}"></i>`).join('')}
+                    </div>
+                </div>
             </div>
-            <div class="content autor">
+        `;
+
+        const emailCell = document.createElement('td');
+        emailCell.classList.add('responsive-table__body__text', 'responsive-table__body__text--status');
+        emailCell.innerHTML = `
+            <div class="mobile-holder">
+                <div class="lebel-mobile">Contact info</div>
+                <div class="email">${userData.Email}</div>
+            </div>
+        `;
+
+        const statusCell = document.createElement('td');
+        statusCell.classList.add('responsive-table__body__text', 'responsive-table__body__text--update', 'tablet-hide');
+        statusCell.innerHTML = `
+            <div class="mobile-holder">
+                <div class="lebel-mobile">Instructor</div>
                 <div class="d-flex flex-wrap icon-row">
                     ${userData.Status.map(status => status.icon === 'text' ? `<span class="icon" title="${status.name}">${status.name}</span>` : `<i class="icon ${status.icon}" title="${status.name}"></i>`).join('')}
                 </div>
             </div>
-        </div>
-    `;
-
-    const emailCell = document.createElement('td');
-    emailCell.classList.add('responsive-table__body__text', 'responsive-table__body__text--status');
-    emailCell.innerHTML = `
-        <div class="mobile-holder">
-            <div class="lebel-mobile">Contact info</div>
-            <div class="email">${userData.Email}</div>
-        </div>
-    `;
-
-    const statusCell = document.createElement('td');
-    statusCell.classList.add('responsive-table__body__text', 'responsive-table__body__text--update', 'tablet-hide');
-    statusCell.innerHTML = `
-        <div class="mobile-holder">
-            <div class="lebel-mobile">Instructor</div>
-            <div class="d-flex flex-wrap icon-row">
-                ${userData.Status.map(status => status.icon === 'text' ? `<span class="icon" title="${status.name}">${status.name}</span>` : `<i class="icon ${status.icon}" title="${status.name}"></i>`).join('')}
-            </div>
-        </div>
-    `;
-
-    const creationDateCell = document.createElement('td');
-    creationDateCell.classList.add('responsive-table__body__text', 'responsive-table__body__text--country');
-    creationDateCell.innerHTML = `
-        <div class="mobile-holder">
-            <div class="lebel-mobile">Creation Date/ Last Login</div>
-            <div class="d-flex flex-wrap">
-                <span class="pr">${userData.CreationDate}</span>
-                <span class="secondary-text">${userData.LastLogin}</span>
-            </div>
-        </div>
-    `;
-
-    const coursesCell = document.createElement('td');
-    coursesCell.classList.add('responsive-table__body__text', 'responsive-table__body__text--types');
-    coursesCell.innerHTML = `
-        <div class="mobile-holder">
-            <div class="lebel-mobile">Courses</div>
-            <div class="d-flex flex-wrap">
-                ${userData.Courses.map(course => `<span class="main-title">${course}</span>`).join(',')}
-            </div>
-        </div>
-    `;
-
-    newRow.appendChild(nameCell);
-    newRow.appendChild(emailCell);
-    newRow.appendChild(statusCell);
-    newRow.appendChild(creationDateCell);
-    newRow.appendChild(coursesCell);
-
-    userTableBody.appendChild(newRow);
-}
-
-// Display skeleton during data loading
-function displaySkeleton() {
-    const userTableBody = document.querySelector('.responsive-table.users .responsive-table__body');
-    userTableBody.innerHTML = ''; // Clear the table before adding the skeleton
-
-    // Create 5 skeleton rows
-    for (let i = 0; i < 5; i++) {
-        const skeletonRow = document.createElement('tr');
-        skeletonRow.classList.add('responsive-table__row');
-
-        skeletonRow.innerHTML = `
-        <td>
-            <div class="d-flex align-items-center gap-2">
-                <div class="w-100">
-                    <div class="skeleton-item animate-pulse  rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
-                </div>
-            </div>
-        </td>
-        <td>
-            <div class="skeleton-item  animate-pulse  rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
-        </td>
-        <td>
-            <div class="skeleton-item animate-pulse  rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
-        </td>
-        <td>
-            <div class="skeleton-item animate-pulse  rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
-        </td>
-        <td>
-            <div class="skeleton-item animate-pulse rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
-        </td>
         `;
 
-        userTableBody.appendChild(skeletonRow);
+        const creationDateCell = document.createElement('td');
+        creationDateCell.classList.add('responsive-table__body__text', 'responsive-table__body__text--country');
+        creationDateCell.innerHTML = `
+            <div class="mobile-holder">
+                <div class="lebel-mobile">Creation Date/ Last Login</div>
+                <div class="d-flex flex-wrap">
+                    <span class="pr">${userData.CreationDate}</span>
+                    <span class="secondary-text">${userData.LastLogin}</span>
+                </div>
+            </div>
+        `;
+
+        const coursesCell = document.createElement('td');
+        coursesCell.classList.add('responsive-table__body__text', 'responsive-table__body__text--types');
+        coursesCell.innerHTML = `
+            <div class="mobile-holder">
+                <div class="lebel-mobile">Courses</div>
+                <div class="d-flex flex-wrap">
+                    ${userData.Courses.map(course => `<span class="main-title">${course}</span>`).join(',')}
+                </div>
+            </div>
+        `;
+
+        newRow.appendChild(nameCell);
+        newRow.appendChild(emailCell);
+        newRow.appendChild(statusCell);
+        newRow.appendChild(creationDateCell);
+        newRow.appendChild(coursesCell);
+
+        userTableBody.appendChild(newRow);
     }
-}
+
+    // Display skeleton during data loading
+    function displaySkeleton() {
+        const userTableBody = document.querySelector('.responsive-table.users .responsive-table__body');
+        userTableBody.innerHTML = ''; // Clear the table before adding the skeleton
+
+        // Create 5 skeleton rows
+        for (let i = 0; i < 5; i++) {
+            const skeletonRow = document.createElement('tr');
+            skeletonRow.classList.add('responsive-table__row');
+
+            skeletonRow.innerHTML = `
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="w-100">
+                        <div class="skeleton-item animate-pulse  rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="skeleton-item  animate-pulse  rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
+            </td>
+            <td>
+                <div class="skeleton-item animate-pulse  rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
+            </td>
+            <td>
+                <div class="skeleton-item animate-pulse  rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
+            </td>
+            <td>
+                <div class="skeleton-item animate-pulse rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
+            </td>
+            `;
+
+            userTableBody.appendChild(skeletonRow);
+        }
+    }
+};
