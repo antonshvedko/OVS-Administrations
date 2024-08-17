@@ -978,3 +978,25 @@
         opacity: 0.1;
         margin: 12px 0;
     }
+    
+    .item-per-page {
+        display: flex;
+        align-items: center;
+        .title {
+            width: 140px;
+            padding-right: 5px;
+        }
+        select {
+            background-color: transparent;
+            padding: 0px;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 1px solid #000;
+            max-width: 40px;
+        }
+    }
+    
+    .control-page {
+        display: flex;
+    }

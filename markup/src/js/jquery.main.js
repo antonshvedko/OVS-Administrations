@@ -547,38 +547,49 @@ window.onload = function() {
 
         // Function to display users with pagination
         function displayUsers(usersToDisplay, page, perPage) {
-            const userTableBody = document.querySelector('.responsive-table.users .responsive-table__body');
-            userTableBody.innerHTML = ''; // Clear the table before adding new data
+            // Display the skeleton while changing pages
+            displaySkeleton(perPage);
 
-            const start = (page - 1) * perPage;
-            const end = start + perPage;
-            const paginatedUsers = usersToDisplay.slice(start, end);
+            // Simulate a short delay before displaying the paginated users
+            setTimeout(() => {
+                const userTableBody = document.querySelector('.responsive-table.users .responsive-table__body');
+                userTableBody.innerHTML = ''; // Clear the table before adding new data
 
-            paginatedUsers.forEach(user => addUserRow(user));
-            document.getElementById('total-count-users').textContent = usersToDisplay.length;
+                const start = (page - 1) * perPage;
+                const end = start + perPage;
+                const paginatedUsers = usersToDisplay.slice(start, end);
 
-            // Update pagination controls
-            document.getElementById('prev-page').classList.toggle('disabled', page === 1);
-            document.getElementById('next-page').classList.toggle('disabled', end >= usersToDisplay.length);
-            document.getElementById('current-page').value = page;
+                paginatedUsers.forEach(user => addUserRow(user));
+                document.getElementById('total-count-users').textContent = usersToDisplay.length;
 
-            // Re-initialize the "Select all" functionality after rendering rows
-            initSelectAll();
+                // Update pagination controls
+                document.getElementById('prev-page').classList.toggle('disabled', page === 1);
+                document.getElementById('next-page').classList.toggle('disabled', end >= usersToDisplay.length);
+                document.getElementById('current-page').value = page;
 
-            // Initialize row selection and expand/collapse functionality
-            initRowInteractions();
+                // Re-initialize the "Select all" functionality after rendering rows
+                initSelectAll();
+
+                // Initialize row selection and expand/collapse functionality
+                initRowInteractions();
+            }, 500); // Adjust the delay (500ms) as needed for the skeleton visibility
         }
 
         // Function to filter users
         function filterUsers() {
-            const query = document.getElementById('users-search').value.toLowerCase();
+            // Combine input from both search fields
+            const query1 = document.getElementById('users-search').value.toLowerCase();
+            const query2 = document.getElementById('users-search-1').value.toLowerCase();
+            const combinedQuery = `${query1} ${query2}`.trim(); // Combine and trim the queries
+
             const selectedStatuses = Array.from(document.querySelectorAll('#user-status .dropdown-option input[type="checkbox"]:checked')).map(cb => cb.value.toLowerCase());
             const selectedCourses = Array.from(document.querySelectorAll('#user-courses .dropdown-option input[type="checkbox"]:checked')).map(cb => cb.value.toLowerCase());
 
-            filteredUsers = users.filter(user => {
-                const matchesSearch = user.Name.toLowerCase().includes(query) ||
-                    user.Email.toLowerCase().includes(query) ||
-                    user.Courses.join(',').toLowerCase().includes(query);
+            // Determine the number of users that would match the filter
+            const filteredUsersCount = users.filter(user => {
+                const matchesSearch = user.Name.toLowerCase().includes(combinedQuery) ||
+                    user.Email.toLowerCase().includes(combinedQuery) ||
+                    user.Courses.join(',').toLowerCase().includes(combinedQuery);
 
                 const matchesStatus = selectedStatuses.length === 0 || selectedStatuses.every(status =>
                     user.Status.some(userStatus => userStatus.name.toLowerCase() === status)
@@ -589,11 +600,33 @@ window.onload = function() {
                 );
 
                 return matchesSearch && matchesStatus && matchesCourses;
-            });
+            }).length;
 
-            // Reset current page to the first one after filtering
-            currentPage = 1;
-            displayUsers(filteredUsers, currentPage, usersPerPage);
+            // Display the skeleton while filtering, with a number of skeleton rows equal to filteredUsersCount
+            displaySkeleton(Math.min(filteredUsersCount, usersPerPage));
+
+            // Simulate a short delay before displaying the filtered users
+            setTimeout(() => {
+                filteredUsers = users.filter(user => {
+                    const matchesSearch = user.Name.toLowerCase().includes(combinedQuery) ||
+                        user.Email.toLowerCase().includes(combinedQuery) ||
+                        user.Courses.join(',').toLowerCase().includes(combinedQuery);
+
+                    const matchesStatus = selectedStatuses.length === 0 || selectedStatuses.every(status =>
+                        user.Status.some(userStatus => userStatus.name.toLowerCase() === status)
+                    );
+
+                    const matchesCourses = selectedCourses.length === 0 || selectedCourses.every(course =>
+                        user.Courses.map(c => c.toLowerCase()).includes(course)
+                    );
+
+                    return matchesSearch && matchesStatus && matchesCourses;
+                });
+
+                // Reset current page to the first one after filtering
+                currentPage = 1;
+                displayUsers(filteredUsers, currentPage, usersPerPage);
+            }, 500); // Adjust the delay (500ms) as needed for the skeleton visibility
         }
 
         // Attach event listeners
@@ -623,6 +656,10 @@ window.onload = function() {
             filterUsers();
         });
 
+        document.getElementById('users-search-1').addEventListener('input', function() {
+            filterUsers();
+        });
+
         const statusCheckboxes = document.querySelectorAll('#user-status .dropdown-option input[type="checkbox"]');
         statusCheckboxes.forEach(checkbox => {
             checkbox.addEventListener('change', function() {
@@ -642,8 +679,8 @@ window.onload = function() {
             displayUsers(filteredUsers, currentPage, usersPerPage);
         }, 1000);
 
-        // Display skeleton during data loading
-        displaySkeleton();
+        // Display skeleton during data loading with 10 skeleton rows initially
+        displaySkeleton(10);
 
         // Function to initialize the "Select all" functionality
         function initSelectAll() {
@@ -787,13 +824,13 @@ window.onload = function() {
         userTableBody.appendChild(newRow);
     }
 
-    // Display skeleton during data loading
-    function displaySkeleton() {
+    // Display skeleton during data loading, based on the number of expected rows
+    function displaySkeleton(numRows) {
         const userTableBody = document.querySelector('.responsive-table.users .responsive-table__body');
         userTableBody.innerHTML = ''; // Clear the table before adding the skeleton
 
-        // Create 5 skeleton rows
-        for (let i = 0; i < 5; i++) {
+        // Create skeleton rows based on the number of expected rows
+        for (let i = 0; i < numRows; i++) {
             const skeletonRow = document.createElement('tr');
             skeletonRow.classList.add('responsive-table__row');
 

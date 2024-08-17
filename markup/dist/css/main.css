@@ -31256,6 +31256,28 @@ h3 {
   margin: 12px 0;
 }
 
+.item-per-page {
+  display: flex;
+  align-items: center;
+}
+.item-per-page .title {
+  width: 140px;
+  padding-right: 5px;
+}
+.item-per-page select {
+  background-color: transparent;
+  padding: 0px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #000;
+  max-width: 40px;
+}
+
+.control-page {
+  display: flex;
+}
+
 .btn {
   display: inline-block;
   vertical-align: top;
