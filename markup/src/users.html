@@ -2,99 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/main.min.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
-    
-    <script src="js/jquery.main.js?v=1.0" defer></script>
-    <!-- <script src="js/libs.js"></script> -->
-    
-    <title>Title</title>
+    //= layout/head.html
 </head>
 
 <body class="side-menu-closed">
     <!-- HEADER -->
-    <header class="header fixed-top">
-        <div class="container-fluid">
-            <div class="row align-items-center gx-8 gx-xs-16">
-                <div class="col-auto">
-                    <div class="row align-items-center gx-8 gx-xs-12 gx-lg-20 gy-4">
-                        <div class="col-auto">
-                            <a class="header__logo" href="#">
-                                <img src="images/logo.png" alt="Logo">
-                            </a>
-                        </div>
-                        <div class="col-auto">
-                            <h5 class="mb-0">Administrations</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="search-input form-control searchMain visible" id="">
-                    <button type="submit"><i class="icomoon-search1"></i></button>
-                    <input type="text" placeholder="Search" class="search custom-input">
-                </div>
-                <div class="col">
-                    <div class="row align-items-center justify-content-end gx-4 gx-xs-16 gx-lg-40 gy-8">
-                        <div class="col-auto d-none d-lg-block">
-                            <div class="row gx-40 gy-4">
-                                <div class="col-auto">
-                                    <a class="link-secondary text-sm" href="#">How-To Video</a>
-                                </div>
-                                <div class="col-auto">
-                                    <a class="link-secondary text-sm" href="#">System Checker</a>
-                                </div>
-                                <div class="col-auto">
-                                    <a class="link-secondary text-sm" href="#">Help</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto d-none d-lg-block">
-                            <div class="dropdown">
-                                <button class="dropdown-toggle btn-account" id="accountButton">
-                                    <span class="btn-account__photo">
-                                        <img class="of-cover" src="images/avatar.svg" alt="Photo">
-                                    </span>
-                                    <span class="btn-account__text">ovsadmin</span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end" id="accountDropdownMenu">
-                                    <li>
-                                        <a class="dropdown-item" href="#">My Account</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Change Password</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item text-danger" href="#">
-                                            <span class="icomoon-log-out"></span>
-                                            <span>Log Out</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-auto d-md-none">
-                            <button class="btn-action" type="button" id="openSearch">
-                                <span class="icomoon-search"></span>
-                            </button>
-                        </div>
-                        <div class="col-auto d-lg-none">
-                            <button class="btn-action" type="button" aria-label="Toggle menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-side-menu" aria-controls="offcanvas-side-menu">
-                                <span class="hamburger-menu ">
-                                    <span class="hamburger-menu__wrap ">
-                                        <span class="hamburger-menu__bars "></span>
-                                    </span>
-                                </span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    //= layout/header.html
     <main class="main">
         <aside class="side-menu offcanvas-lg offcanvas-start js-side-menu" id="offcanvas-side-menu" tabindex="-1">
             <button class="side-menu__toggle first-level js-toggle-side-menu" type="button">
@@ -110,14 +23,14 @@
                             </a>
                         </div>
                         <div class="mb-10">
-                            <button class="btn-side-menu with-icon collapsed" type="button" data-bs-toggle="collapse" data-bs-target=".js-collapse-users" aria-expanded="false">
+                            <button class="btn-side-menu with-icon active" type="button" data-bs-toggle="collapse" data-bs-target=".js-collapse-users" aria-expanded="false">
                                 <span class="icomoon-people"></span>
                                 <span class="btn-side-menu__text">Users</span>
                             </button>
-                            <div class="js-collapse-users collapse d-lg-none js-sub-menu-collapse" data-bs-parent="#side-menu">
+                            <div class="js-collapse-courses collapse d-lg-none js-sub-menu-collapse show" data-bs-parent="#side-menu">
                                 <div class="px-24 py-16 remove-last-child-margin">
                                     <div class="mb-8">
-                                        <a class="btn-side-menu" href="overview.html">Overview</a>
+                                        <a class="btn-side-menu active" href="overview.html">Overview</a>
                                     </div>
                                     <div class="mb-8">
                                         <a class="btn-side-menu" href="#">Create User Account</a>
@@ -165,14 +78,14 @@
                             </div>
                         </div>
                         <div class="mb-10">
-                            <button class="btn-side-menu with-icon active" type="button" data-bs-toggle="collapse" data-bs-target=".js-collapse-courses" aria-expanded="true">
+                            <button class="btn-side-menu with-icon " type="button" data-bs-toggle="collapse" data-bs-target=".js-collapse-courses" aria-expanded="true" style="background-color: transparent;">
                                 <span class="icomoon-school"></span>
                                 <span class="btn-side-menu__text">Courses</span>
                             </button>
                             <div class="js-collapse-courses collapse d-lg-none js-sub-menu-collapse show" data-bs-parent="#side-menu">
                                 <div class="px-24 py-16 remove-last-child-margin">
                                     <div class="mb-8">
-                                        <a class="btn-side-menu active" href="#">Overview</a>
+                                        <a class="btn-side-menu " href="#">Overview</a>
                                     </div>
                                     <div class="mb-8">
                                         <a class="btn-side-menu" href="#">Create Course</a>
@@ -685,7 +598,7 @@
                 </div>
             </div>
         </aside>
-        <div class="container-fluid" id="mainContent">
+        <div class="container-fluid users-main" id="mainContent">
             <div class=" ">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group-toggle custom-radio-group" data-toggle="buttons">
@@ -699,130 +612,169 @@
                             <input type="radio" name="options" id="option3" autocomplete="off"> Pinned for me
                         </label>
                     </div>
-                    <button class="btn btn-primary new">
-                        <div class="holder"> <i class="icon icomoon-circle-with-plus-1"></i> <div> New account</div>
-                        </div></button>
                 </div>
-                <div class="custom-grid-item col-12"><a href="#" class="filterOpen">Filter</a> </div>
-                <div class="custom-grid row dropdown-container filter-container" style="margin-top: 10px;">
-                    <div class="custom-grid-item col-md-6 col-xl-5">
-                        <div class="row">
-                            <div class="col">
+                <div class="custom-grid-item col-12 pall-0"><a href="#" class="filterOpen"><i class="icomoon-equalizer"></i> Filter <span><i class="icon icomoon-keyboard_arrow_down"></i></span></a> </div>
+                <div class="custom-grid row dropdown-container filter-container">
+                    <div class="custom-grid-item col-12 col-lg-6 col-xl-5 pb-0">
+                        <div class="custom-grid">
+                            <div class="custom-grid-item col-12 col-xl-6 mobile-hide">
                                 <div class="search-input form-control">
                                     <input type="text" class="custom-input" placeholder="Email, name, number">
                                 </div>
                             </div>
-                            <div class="col">
-                                <div class="dropdown" data-control="checkbox-dropdown">
-                                    <label class="dropdown-label">All types</label>
+                            <div class="custom-grid-item col-12 col-xl-6 pb-0">
+                                <div class="dropdown searchEnable" data-control="checkbox-dropdown">
+                                    <label class="dropdown-label">All types </label>
                                     <div class="dropdown-list">
-                                        <a href="#" data-toggle="check-all" class="dropdown-option select-all">Check All</a>
+                                        <div class="mobile-block">
+                                            <div class="title">Type</div>
+                                            <button class="closeDropdown"><i class="icomoon-x"></i></button>
+                                        </div>
+                                        <div class="search-input form-control">
+                                            <input type="text" id="search-input" placeholder="Search">
+                                        </div>
+                                        <div id="no-results" style="display: none; padding: 8px; text-align: center; color: #888;">
+                                            No results found
+                                        </div>
+                                        <a href="#" data-toggle="check-all" class="select-all">Check All</a>
                                         <label class="custom-checkbox dropdown-option">
-                                    <input type="checkbox" name="dropdown-group" value="Preset 1">
-                                    <span class="checkmark"></span>
-                                    <div class="title">Type 1</div>
-                                </label>
+                                            <input type="checkbox" name="dropdown-group" value="Preset 1">
+                                            <span class="checkmark"></span>
+                                            <div class="title">Course 1</div>
+                                        </label>
                                         <label class="custom-checkbox dropdown-option">
-                                    <input type="checkbox" name="dropdown-group" value="Preset 2">
-                                    <span class="checkmark"></span>
-                                    <div class="title">Type 2</div>
-                                </label>
+                                            <input type="checkbox" name="dropdown-group" value="Preset 2">
+                                            <span class="checkmark"></span>
+                                            <div class="title">Course 2</div>
+                                        </label>
                                         <label class="custom-checkbox dropdown-option">
-                                    <input type="checkbox" name="dropdown-group" value="Preset 3">
-                                    <span class="checkmark"></span>
-                                    <div class="title">Type 3</div>
-                                </label>
+                                            <input type="checkbox" name="dropdown-group" value="Preset 3">
+                                            <span class="checkmark"></span>
+                                            <div class="title">Course 3</div>
+                                        </label>
                                         <label class="custom-checkbox dropdown-option">
-                                    <input type="checkbox" name="dropdown-group" value="Preset 4">
-                                    <span class="checkmark"></span>
-                                    <div class="title">Type 4</div>
-                                </label>
+                                            <input type="checkbox" name="dropdown-group" value="Preset 4">
+                                            <span class="checkmark"></span>
+                                            <div class="title">Course 4</div>
+                                        </label>
+                                        <div class="mobile-block button-block">
+                                            <button class="btn btn-transparent">Reset</button>
+                                            <button class="btn btn-transparent">Confirm</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="custom-grid-item dropdown-container col-md-6 col-xl-5">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="dropdown" data-control="checkbox-dropdown">
-                                    <label class="dropdown-label">All statuses</label>
+                    <div class="custom-grid-item dropdown-container col-12 col-lg-6 col-xl-5">
+                        <div class="custom-grid">
+                            <div class="custom-grid-item col-12 col-xl-6">
+                                <div class="dropdown searchEnable" data-control="checkbox-dropdown">
+                                    <label class="dropdown-label">All statuses </label>
                                     <div class="dropdown-list">
-                                        <a href="#" data-toggle="check-all" class="dropdown-option select-all">Check All</a>
+                                        <div class="mobile-block">
+                                            <div class="title">Status</div>
+                                            <button class="closeDropdown"><i class="icomoon-x"></i></button>
+                                        </div>
+                                        <div class="search-input form-control">
+                                            <input type="text" id="search-input" placeholder="Search">
+                                        </div>
+                                        <div id="no-results" style="display: none; padding: 8px; text-align: center; color: #888;">
+                                            No results found
+                                        </div>
+                                        <a href="#" data-toggle="check-all" class="select-all">Check All</a>
                                         <label class="custom-checkbox dropdown-option">
-                                    <input type="checkbox" name="dropdown-group" value="Preset 1">
-                                    <span class="checkmark"></span>
-                                    <div class="title">Status 1</div>
-                                </label>
+                                            <input type="checkbox" name="dropdown-group" value="Preset 1">
+                                            <span class="checkmark"></span>
+                                            <div class="title">Status 1</div>
+                                        </label>
                                         <label class="custom-checkbox dropdown-option">
-                                    <input type="checkbox" name="dropdown-group" value="Preset 2">
-                                    <span class="checkmark"></span>
-                                    <div class="title">Status 2</div>
-                                </label>
+                                            <input type="checkbox" name="dropdown-group" value="Preset 2">
+                                            <span class="checkmark"></span>
+                                            <div class="title">Status 2</div>
+                                        </label>
                                         <label class="custom-checkbox dropdown-option">
-                                    <input type="checkbox" name="dropdown-group" value="Preset 3">
-                                    <span class="checkmark"></span>
-                                    <div class="title">Status 3</div>
-                                </label>
+                                            <input type="checkbox" name="dropdown-group" value="Preset 3">
+                                            <span class="checkmark"></span>
+                                            <div class="title">Status 3</div>
+                                        </label>
                                         <label class="custom-checkbox dropdown-option">
-                                    <input type="checkbox" name="dropdown-group" value="Preset 4">
-                                    <span class="checkmark"></span>
-                                    <div class="title">Status 4</div>
-                                </label>
+                                            <input type="checkbox" name="dropdown-group" value="Preset 4">
+                                            <span class="checkmark"></span>
+                                            <div class="title">Status 4</div>
+                                        </label>
+                                        <div class="mobile-block button-block">
+                                            <button class="btn btn-transparent">Reset</button>
+                                            <button class="btn btn-transparent">Confirm</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="dropdown" data-control="checkbox-dropdown">
-                                    <label class="dropdown-label">Any courses</label>
+                            <div class="custom-grid-item col-12 col-xl-6">
+                                <div class="dropdown searchEnable" data-control="checkbox-dropdown">
+                                    <label class="dropdown-label">Any courses </label>
                                     <div class="dropdown-list">
-                                        <a href="#" data-toggle="check-all" class="dropdown-option select-all">Check All</a>
+                                        <div class="mobile-block">
+                                            <div class="title">Type</div>
+                                            <button class="closeDropdown"><i class="icomoon-x"></i></button>
+                                        </div>
+                                        <div class="search-input form-control">
+                                            <input type="text" id="search-input" placeholder="Search">
+                                        </div>
+                                        <div id="no-results" style="display: none; padding: 8px; text-align: center; color: #888;">
+                                            No results found
+                                        </div>
+                                        <a href="#" data-toggle="check-all" class="select-all">Check All</a>
                                         <label class="custom-checkbox dropdown-option">
-                                    <input type="checkbox" name="dropdown-group" value="Preset 1">
-                                    <span class="checkmark"></span>
-                                    <div class="title">Course 1</div>
-                                </label>
+                                            <input type="checkbox" name="dropdown-group" value="Preset 1">
+                                            <span class="checkmark"></span>
+                                            <div class="title">Course 1</div>
+                                        </label>
                                         <label class="custom-checkbox dropdown-option">
-                                    <input type="checkbox" name="dropdown-group" value="Preset 2">
-                                    <span class="checkmark"></span>
-                                    <div class="title">Course 2</div>
-                                </label>
+                                            <input type="checkbox" name="dropdown-group" value="Preset 2">
+                                            <span class="checkmark"></span>
+                                            <div class="title">Course 2</div>
+                                        </label>
                                         <label class="custom-checkbox dropdown-option">
-                                    <input type="checkbox" name="dropdown-group" value="Preset 3">
-                                    <span class="checkmark"></span>
-                                    <div class="title">Course 3</div>
-                                </label>
+                                            <input type="checkbox" name="dropdown-group" value="Preset 3">
+                                            <span class="checkmark"></span>
+                                            <div class="title">Course 3</div>
+                                        </label>
                                         <label class="custom-checkbox dropdown-option">
-                                    <input type="checkbox" name="dropdown-group" value="Preset 4">
-                                    <span class="checkmark"></span>
-                                    <div class="title">Course 4</div>
-                                </label>
+                                            <input type="checkbox" name="dropdown-group" value="Preset 4">
+                                            <span class="checkmark"></span>
+                                            <div class="title">Course 4</div>
+                                        </label>
+                                        <div class="mobile-block button-block">
+                                            <button class="btn btn-transparent">Reset</button>
+                                            <button class="btn btn-transparent">Confirm</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="mobile-buttons-holder">
-                            <div class="row">
-                                <div class="col">
+                            <div class="custom-grid row ">
+                                <div class="custom-grid-item col-md-6 ">
                                     <button class="btn btn-transparent">
                                         <div class="holder">
                                             <span>Reset Filter</span>
                                         </div>
                                     </button>
                                 </div>
-                                <div class="col">
+                                <div class="custom-grid-item col-md-6">
                                     <button class="btn btn-primary">
                                         <div class="holder">
-                                            <span>Filter</span>
+                                        <span>Filter</span>
                                         </div>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="custom-grid-item col-md-2 col-xl-2">
+                    <div class="custom-grid-item col-md-2 col-xl-2 ">
                         <div class="btn-row">
-                            <div class="col">
+                            <div class="col  custom-grid-item  fullscreen-col pr-0">
                                 <button class="btn btn-secondary" onclick="toggleFullScreen(document.body)">
                                     <div class="holder">
                                         <i class="icon icomoon-fullscreen"></i>
@@ -832,11 +784,11 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-            <script>
-            </script>
+            <div class="search-input form-control input-control">
+                <input type="text" class="custom-input" placeholder="Email, name, number">
+            </div>
             <table class="responsive-table users">
                 <thead class="responsive-table__head">
                     <tr class="responsive-table__row">
@@ -846,12 +798,12 @@
                                     <input type="checkbox" id="select-all">
                                     <span class="checkmark"></span>
                                 </label>
-                                <div class="title mobile-hide"> Name</div>
+                                <div class="title mobile-hide">Name</div>
                                 <div class="title mobile-show">Select All</div>
                             </div>
                         </th>
                         <th class="responsive-table__head__title responsive-table__head__title--department tablet-hide">
-                            <div class="title"> Contact info</div>
+                            <div class="title">Contact info</div>
                         </th>
                         <th class="responsive-table__head__title responsive-table__head__title--instructor tablet-hide">
                             <div class="title">Status</div>
@@ -880,8 +832,11 @@
                                     <span class="name pr">Jessica Hanson</span>
                                 </div>
                                 <div class="content autor">
-                                    <div class="">
-                                        <span class="instructor pr">Jane Cooper</span> <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
+                                    <div class="d-flex flex-wrap icon-row">
+                                        <span class="icon">18+</span>
+                                        <i class="icon icomoon-briefcase"></i>
+                                        <i class="icon icomoon-flag red"></i>
+                                        <i class="icon icomoon-man"></i>
                                     </div>
                                 </div>
                             </div>
@@ -899,8 +854,11 @@
                                 <div class="lebel-mobile">
                                     Instructor
                                 </div>
-                                <div class="d-flex flex-wrap"><span class="instructor pr">
-                                Jane Cooper</span> <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
+                                <div class="d-flex flex-wrap icon-row">
+                                    <span class="icon">18+</span>
+                                    <i class="icon icomoon-briefcase"></i>
+                                    <i class="icon icomoon-flag red"></i>
+                                    <i class="icon icomoon-man"></i>
                                 </div>
                             </div>
                         </td>
@@ -918,66 +876,141 @@
                                 </div>
                             </div>
                         </td>
-                        <!-- <td class="responsive-table__body__text responsive-table__body__text--country hover-table">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Enrolled</div>
-                                <div class="mobile-show">
-                                    <div class="">
-                                        <div>
-                                            <b>Processed</b> <span>8.53 h</span></div>
-                                        <div>
-                                            <b>Ghost</b> <span>90.9% | 93%</span></div>
-                                        <div>
-                                            <b>Suspend</b> <span>90.9% | 93%</span></div>
+                    </tr>
+                    <tr class="responsive-table__row">
+                        <td class="responsive-table__body__text main-item responsive-table__body__text--name">
+                            <label class="custom-checkbox">
+                                <input type="checkbox"  class="selectRow">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="main-item-holder">
+                                <div class="content">
+                                    <span class="name pr">Jessica Hanson</span>
+                                </div>
+                                <div class="content autor">
+                                    <div class="d-flex flex-wrap icon-row">
+                                        <span class="icon">18+</span>
+                                        <i class="icon icomoon-briefcase"></i>
+                                        <i class="icon icomoon-flag green"></i>
+                                        <i class="icon icomoon-man"></i>
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex flex-wrap hover-trigger">
-                                <span class="pr">12 </span><i class="icomoon-info-1"></i>
-                                <div class="hover-popup">
-                                    <div>
-                                        <p>Processed</p> <span>8.53 h</span></div>
-                                    <div>
-                                        <p>Ghost</p> <span>90.9% | 93%</span></div>
-                                    <div>
-                                        <p>Suspend</p> <span>90.9% | 93%</span></div>
+                        </td>
+                        <td class="responsive-table__body__text responsive-table__body__text--status">
+                            <div class="mobile-holder">
+                                <div class="lebel-mobile">
+                                    Contact info
+                                </div>
+                                <div class="email"> jessica.hanson@example.com</div>
+                            </div>
+                        </td>
+                        <td class="responsive-table__body__text responsive-table__body__text--update tablet-hide">
+                            <div class="mobile-holder">
+                                <div class="lebel-mobile">
+                                    Instructor
+                                </div>
+                                <div class="d-flex flex-wrap icon-row">
+                                    <span class="icon">18+</span>
+                                    <i class="icon icomoon-briefcase"></i>
+                                    <i class="icon icomoon-flag green"></i>
+                                    <i class="icon icomoon-man"></i>
                                 </div>
                             </div>
-                        </td> -->
+                        </td>
+                        <td class="responsive-table__body__text responsive-table__body__text--country">
+                            <div class="mobile-holder">
+                                <div class="lebel-mobile">Creation Date/ Last Login </div>
+                                <div class="d-flex flex-wrap"><span class="pr">2020-05-03 </span><span class="secondary-text">30 days ago</span></div>
+                            </div>
+                        </td>
+                        <td class="responsive-table__body__text responsive-table__body__text--types">
+                            <div class="mobile-holder">
+                                <div class="lebel-mobile">Courses</div>
+                                <div class="d-flex flex-wrap">
+                                    <span class="main-title">ENG4U-03, </span> <span class="main-title">ENG4U-03, </span> <span class="main-title">ENG4U-03, </span> <span class="main-title">ENG4U-03</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="responsive-table__row">
+                        <td class="responsive-table__body__text main-item responsive-table__body__text--name">
+                            <label class="custom-checkbox">
+                                <input type="checkbox"  class="selectRow">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="main-item-holder">
+                                <div class="content">
+                                    <span class="name pr">Jessica Hanson</span>
+                                </div>
+                                <div class="content autor">
+                                    <div class="d-flex flex-wrap icon-row">
+                                        <span class="icon">18+</span>
+                                        <i class="icon icomoon-briefcase"></i>
+                                        <i class="icon icomoon-flag blue"></i>
+                                        <i class="icon icomoon-man"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="responsive-table__body__text responsive-table__body__text--status">
+                            <div class="mobile-holder">
+                                <div class="lebel-mobile">
+                                    Contact info
+                                </div>
+                                <div class="email"> jessica.hanson@example.com</div>
+                            </div>
+                        </td>
+                        <td class="responsive-table__body__text responsive-table__body__text--update tablet-hide">
+                            <div class="mobile-holder">
+                                <div class="lebel-mobile">
+                                    Instructor
+                                </div>
+                                <div class="d-flex flex-wrap icon-row">
+                                    <span class="icon">18+</span>
+                                    <i class="icon icomoon-briefcase"></i>
+                                    <i class="icon icomoon-flag blue"></i>
+                                    <i class="icon icomoon-man"></i>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="responsive-table__body__text responsive-table__body__text--country">
+                            <div class="mobile-holder">
+                                <div class="lebel-mobile">Creation Date/ Last Login </div>
+                                <div class="d-flex flex-wrap"><span class="pr">2020-05-03 </span><span class="secondary-text">30 days ago</span></div>
+                            </div>
+                        </td>
+                        <td class="responsive-table__body__text responsive-table__body__text--types">
+                            <div class="mobile-holder">
+                                <div class="lebel-mobile">Courses</div>
+                                <div class="d-flex flex-wrap">
+                                    <span class="main-title">ENG4U-03, </span> <span class="main-title">ENG4U-03, </span> <span class="main-title">ENG4U-03, </span> <span class="main-title">ENG4U-03</span>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
             <div class="button-edit-row">
                 <div class="row-holder-button">
-                    <div class="col-custom">
-                        <button class="btn btn-transparent"><div class="holder"><i class="icon icomoon-copy"></i><span> Clone Course</span></div></button>
+                    <div class="col-custom none-2">
+                        <button class="btn btn-transparent"><div class="holder"><i class="icon icomoon-key"></i><span> Password</span></div></button>
                     </div>
-                    <div class="col-custom">
-                        <button class="btn btn-transparent"><div class="holder"><i class="icon icomoon-folder"></i><span> Course Resources</span></div></button>
+                    <div class="col-custom none-2">
+                        <button class="btn btn-transparent"><div class="holder"><i class="icon icomoon-graduation-cap"></i><span> Enrollment</span></div></button>
                     </div>
-                    <div class="col-custom">
-                        <button class="btn btn-transparent"><div class="holder"><i class="icon icomoon-cloud-download"></i><span> Backup</span></div></button>
-                        <!-- <div class="check-box">
+                    <div class="col-custom checkboxControl">
+                        <div class="title">Enable:</div>
+                        <div class="check-box">
                             <input type="checkbox">
-                        </div> -->
-
-                    </div>
-                    <div class="col-custom desktop-only edit">
-                        <button class="btn btn-transparent"><div class="holder"><i class="icon icomoon-pencil"></i><span> Backup</span></div></button>
-
-                    </div>
-
-                    <div class="col-custom desktop-only add">
-                        <button class="btn btn-transparent" type="button" data-toggle="modal" data-target="#newCourse">
-                        <div class="holder"><i class="icon icomoon-circle-with-plus-1"></i><span> Backup</span></div>
-                        </button>
-
+                        </div>
                     </div>
                     <div class="col-custom delete">
                         <button class="btn btn-primary"><div class="holder"><i class="icon icomoon-trashcan"></i><span> Delete</span></div></button>
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="container-fluid" id="formContent">
             <a href="/" class="back-button"> <i class="icon icomoon-keyboard_arrow_left"></i> <span>Back</span></a>

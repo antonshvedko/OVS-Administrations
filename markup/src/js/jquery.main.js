@@ -172,7 +172,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
-    // Инициализация меню при загрузке страницы
     document.addEventListener('DOMContentLoaded', initSideMenu);
 
 
@@ -238,7 +237,6 @@ function toggleFullScreen(elem) {
         document.body.classList.remove("fullscreen");
     }
 }
-
 (function() {
     var CheckboxDropdown = function(el) {
         var _this = this;
@@ -246,7 +244,7 @@ function toggleFullScreen(elem) {
         this.areAllChecked = false;
         this.el = el;
         this.label = this.el.querySelector('.dropdown-label');
-
+        this.closeBtn = this.el.querySelector('.closeDropdown');
         this.inputs = this.el.querySelectorAll('[type="checkbox"]');
 
         this.onCheckBox();
@@ -256,7 +254,12 @@ function toggleFullScreen(elem) {
             _this.toggleOpen();
         });
 
-
+        if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                _this.toggleOpen(false);
+            });
+        }
 
         this.inputs.forEach(function(input) {
             input.addEventListener('change', function(e) {
@@ -274,13 +277,11 @@ function toggleFullScreen(elem) {
 
         this.areAllChecked = false;
 
-
         if (checked.length <= 0) {
-
+            // this.label.innerHTML = 'Select options';
         } else if (checked.length === this.inputs.length) {
             this.label.innerHTML = 'All Selected';
             this.areAllChecked = true;
-
         } else {
             var selectedTexts = Array.from(checked).map(function(input) {
                 return input.parentNode.textContent.trim();
@@ -289,16 +290,24 @@ function toggleFullScreen(elem) {
         }
     };
 
-
     CheckboxDropdown.prototype.toggleOpen = function(forceOpen) {
         var _this = this;
 
         if (!this.isOpen || forceOpen) {
+            var otherDropdowns = this.el.closest('.filter-container').querySelectorAll('[data-control="checkbox-dropdown"].on');
+            otherDropdowns.forEach(function(dropdown) {
+                if (dropdown !== _this.el) {
+                    dropdown.classList.remove('on');
+                    dropdown.querySelector('.dropdown-label').dataset.instance.isOpen = false;
+                }
+            });
+
             this.isOpen = true;
             this.el.classList.add('on');
+
             document.addEventListener('click', function clickHandler(e) {
                 if (!e.target.closest('[data-control="checkbox-dropdown"]')) {
-                    _this.toggleOpen();
+                    _this.toggleOpen(false);
                     document.removeEventListener('click', clickHandler);
                 }
             });
@@ -311,7 +320,8 @@ function toggleFullScreen(elem) {
     document.addEventListener('DOMContentLoaded', function() {
         var checkboxesDropdowns = document.querySelectorAll('[data-control="checkbox-dropdown"]');
         checkboxesDropdowns.forEach(function(dropdown) {
-            new CheckboxDropdown(dropdown);
+            var instance = new CheckboxDropdown(dropdown);
+            dropdown.querySelector('.dropdown-label').dataset.instance = instance;
         });
     });
 })();
@@ -425,35 +435,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
 
-// $(document).ready(function() {
-//     function checkWindowSize() {
-//         if ($(window).width() < 992) {
-//             $('.js-collapse-courses').addClass('show');
-//         } else {
-//             $('.js-collapse-courses').removeClass('show');
-//         }
-//     }
-
-//     checkWindowSize();
-
-//     $(window).resize(function() {
-//         checkWindowSize();
-//     });
-
-//     $('#toggleButton').click(function(e) {
-//         e.stopPropagation();
-//         if ($(this).hasClass('active')) {
-//             $('.js-collapse-courses').toggleClass('show');
-//         }
-//     });
-
-//     $(document).click(function(e) {
-//         if (!$(e.target).closest('.js-collapse-courses').length && !$(e.target).is('#toggleButton')) {
-//             $('.js-collapse-courses').removeClass('show');
-//         }
-//     });
-// });
-
 document.addEventListener('DOMContentLoaded', function() {
     var accountButton = document.getElementById('accountButton');
     var accountDropdownMenu = document.getElementById('accountDropdownMenu');
@@ -470,7 +451,40 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
 window.onload = function() {
+    window.onload = function() {
+        var searchInputs = document.querySelectorAll('.search-input');
+
+        searchInputs.forEach(function(searchInput) {
+            searchInput.addEventListener('keyup', function() {
+                var searchTerm = this.value.toLowerCase();
+                var container = this.closest('.search-container');
+                var options = container.querySelectorAll('.searchEnable .dropdown-option');
+                var noResults = container.querySelector('.no-results');
+                var matchFound = false;
+
+                options.forEach(function(option) {
+                    var titleText = option.querySelector('.title').textContent.toLowerCase();
+
+                    if (titleText.includes(searchTerm)) {
+                        option.style.display = 'flex';
+                        matchFound = true;
+                    } else {
+                        option.style.display = 'none';
+                    }
+                });
+
+                if (!matchFound) {
+                    noResults.style.display = 'flex';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            });
+        });
+    };
+
+
     var filterOpen = document.querySelector('.filterOpen');
     var filterContainer = document.querySelector('.filter-container');
 
@@ -480,12 +494,14 @@ window.onload = function() {
         } else {
             filterOpen.style.display = 'none';
             filterContainer.classList.remove('active');
+            filterOpen.classList.remove('active');
         }
     }
 
     filterOpen.addEventListener('click', function(e) {
         e.preventDefault();
         filterContainer.classList.toggle('active');
+        this.classList.toggle('active');
     });
 
     checkWindowSize();
