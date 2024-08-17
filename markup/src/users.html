@@ -619,7 +619,7 @@
                         <div class="custom-grid">
                             <div class="custom-grid-item col-12 col-xl-6 mobile-hide">
                                 <div class="search-input form-control">
-                                    <input type="text" class="custom-input" placeholder="Email, name, number">
+                                    <input type="text" class="custom-input" id="users-search" placeholder="Email, name, number">
                                 </div>
                             </div>
                             <div class="custom-grid-item col-12 col-xl-6 pb-0">
@@ -669,7 +669,7 @@
                     <div class="custom-grid-item dropdown-container col-12 col-lg-6 col-xl-5">
                         <div class="custom-grid">
                             <div class="custom-grid-item col-12 col-xl-6">
-                                <div class="dropdown searchEnable" data-control="checkbox-dropdown">
+                                <div class="dropdown searchEnable" id="user-status" data-control="checkbox-dropdown">
                                     <label class="dropdown-label">All statuses </label>
                                     <div class="dropdown-list">
                                         <div class="mobile-block">
@@ -684,24 +684,24 @@
                                         </div>
                                         <a href="#" data-toggle="check-all" class="select-all">Check All</a>
                                         <label class="custom-checkbox dropdown-option">
-                                            <input type="checkbox" name="dropdown-group" value="Preset 1">
+                                            <input type="checkbox" name="dropdown-group" value="18+">
                                             <span class="checkmark"></span>
-                                            <div class="title">Status 1</div>
+                                            <div class="title">18+</div>
                                         </label>
                                         <label class="custom-checkbox dropdown-option">
-                                            <input type="checkbox" name="dropdown-group" value="Preset 2">
+                                            <input type="checkbox" name="dropdown-group" value="Business">
                                             <span class="checkmark"></span>
-                                            <div class="title">Status 2</div>
+                                            <div class="title">Business</div>
                                         </label>
                                         <label class="custom-checkbox dropdown-option">
-                                            <input type="checkbox" name="dropdown-group" value="Preset 3">
+                                            <input type="checkbox" name="dropdown-group" value="Red Flag">
                                             <span class="checkmark"></span>
-                                            <div class="title">Status 3</div>
+                                            <div class="title"> Red Flag</div>
                                         </label>
                                         <label class="custom-checkbox dropdown-option">
-                                            <input type="checkbox" name="dropdown-group" value="Preset 4">
+                                            <input type="checkbox" name="dropdown-group" value="Adult">
                                             <span class="checkmark"></span>
-                                            <div class="title">Status 4</div>
+                                            <div class="title">Adult</div>
                                         </label>
                                         <div class="mobile-block button-block">
                                             <button class="btn btn-transparent">Reset</button>
@@ -711,7 +711,7 @@
                                 </div>
                             </div>
                             <div class="custom-grid-item col-12 col-xl-6">
-                                <div class="dropdown searchEnable" data-control="checkbox-dropdown">
+                                <div class="dropdown searchEnable" id="user-courses" data-control="checkbox-dropdown">
                                     <label class="dropdown-label">Any courses </label>
                                     <div class="dropdown-list">
                                         <div class="mobile-block">
@@ -726,24 +726,14 @@
                                         </div>
                                         <a href="#" data-toggle="check-all" class="select-all">Check All</a>
                                         <label class="custom-checkbox dropdown-option">
-                                            <input type="checkbox" name="dropdown-group" value="Preset 1">
+                                            <input type="checkbox" name="dropdown-group" value="ENG4U-03">
                                             <span class="checkmark"></span>
-                                            <div class="title">Course 1</div>
+                                            <div class="title"> ENG4U-03</div>
                                         </label>
                                         <label class="custom-checkbox dropdown-option">
-                                            <input type="checkbox" name="dropdown-group" value="Preset 2">
+                                            <input type="checkbox" name="dropdown-group" value="TYIOF-03">
                                             <span class="checkmark"></span>
-                                            <div class="title">Course 2</div>
-                                        </label>
-                                        <label class="custom-checkbox dropdown-option">
-                                            <input type="checkbox" name="dropdown-group" value="Preset 3">
-                                            <span class="checkmark"></span>
-                                            <div class="title">Course 3</div>
-                                        </label>
-                                        <label class="custom-checkbox dropdown-option">
-                                            <input type="checkbox" name="dropdown-group" value="Preset 4">
-                                            <span class="checkmark"></span>
-                                            <div class="title">Course 4</div>
+                                            <div class="title">TYIOF-03</div>
                                         </label>
                                         <div class="mobile-block button-block">
                                             <button class="btn btn-transparent">Reset</button>
@@ -789,6 +779,7 @@
             <div class="search-input form-control input-control">
                 <input type="text" class="custom-input" placeholder="Email, name, number">
             </div>
+            <div class="total-count">Total Count: <span id="total-count-users"></span></div>
             <table class="responsive-table users">
                 <thead class="responsive-table__head">
                     <tr class="responsive-table__row">
@@ -821,174 +812,7 @@
                     </tr>
                 </thead>
                 <tbody class="responsive-table__body">
-                    <tr class="responsive-table__row">
-                        <td class="responsive-table__body__text main-item responsive-table__body__text--name">
-                            <label class="custom-checkbox">
-                                <input type="checkbox"  class="selectRow">
-                                <span class="checkmark"></span>
-                            </label>
-                            <div class="main-item-holder">
-                                <div class="content">
-                                    <span class="name pr">Jessica Hanson</span>
-                                </div>
-                                <div class="content autor">
-                                    <div class="d-flex flex-wrap icon-row">
-                                        <span class="icon">18+</span>
-                                        <i class="icon icomoon-briefcase"></i>
-                                        <i class="icon icomoon-flag red"></i>
-                                        <i class="icon icomoon-man"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--status">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">
-                                    Contact info
-                                </div>
-                                <div class="email"> jessica.hanson@example.com</div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--update tablet-hide">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">
-                                    Instructor
-                                </div>
-                                <div class="d-flex flex-wrap icon-row">
-                                    <span class="icon">18+</span>
-                                    <i class="icon icomoon-briefcase"></i>
-                                    <i class="icon icomoon-flag red"></i>
-                                    <i class="icon icomoon-man"></i>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--country">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Creation Date/ Last Login </div>
-                                <div class="d-flex flex-wrap"><span class="pr">2020-05-03 </span><span class="secondary-text">30 days ago</span></div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--types">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Courses</div>
-                                <div class="d-flex flex-wrap">
-                                    <span class="main-title">ENG4U-03, </span> <span class="main-title">ENG4U-03, </span> <span class="main-title">ENG4U-03, </span> <span class="main-title">ENG4U-03</span>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="responsive-table__row">
-                        <td class="responsive-table__body__text main-item responsive-table__body__text--name">
-                            <label class="custom-checkbox">
-                                <input type="checkbox"  class="selectRow">
-                                <span class="checkmark"></span>
-                            </label>
-                            <div class="main-item-holder">
-                                <div class="content">
-                                    <span class="name pr">Jessica Hanson</span>
-                                </div>
-                                <div class="content autor">
-                                    <div class="d-flex flex-wrap icon-row">
-                                        <span class="icon">18+</span>
-                                        <i class="icon icomoon-briefcase"></i>
-                                        <i class="icon icomoon-flag green"></i>
-                                        <i class="icon icomoon-man"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--status">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">
-                                    Contact info
-                                </div>
-                                <div class="email"> jessica.hanson@example.com</div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--update tablet-hide">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">
-                                    Instructor
-                                </div>
-                                <div class="d-flex flex-wrap icon-row">
-                                    <span class="icon">18+</span>
-                                    <i class="icon icomoon-briefcase"></i>
-                                    <i class="icon icomoon-flag green"></i>
-                                    <i class="icon icomoon-man"></i>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--country">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Creation Date/ Last Login </div>
-                                <div class="d-flex flex-wrap"><span class="pr">2020-05-03 </span><span class="secondary-text">30 days ago</span></div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--types">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Courses</div>
-                                <div class="d-flex flex-wrap">
-                                    <span class="main-title">ENG4U-03, </span> <span class="main-title">ENG4U-03, </span> <span class="main-title">ENG4U-03, </span> <span class="main-title">ENG4U-03</span>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="responsive-table__row">
-                        <td class="responsive-table__body__text main-item responsive-table__body__text--name">
-                            <label class="custom-checkbox">
-                                <input type="checkbox"  class="selectRow">
-                                <span class="checkmark"></span>
-                            </label>
-                            <div class="main-item-holder">
-                                <div class="content">
-                                    <span class="name pr">Jessica Hanson</span>
-                                </div>
-                                <div class="content autor">
-                                    <div class="d-flex flex-wrap icon-row">
-                                        <span class="icon">18+</span>
-                                        <i class="icon icomoon-briefcase"></i>
-                                        <i class="icon icomoon-flag blue"></i>
-                                        <i class="icon icomoon-man"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--status">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">
-                                    Contact info
-                                </div>
-                                <div class="email"> jessica.hanson@example.com</div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--update tablet-hide">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">
-                                    Instructor
-                                </div>
-                                <div class="d-flex flex-wrap icon-row">
-                                    <span class="icon">18+</span>
-                                    <i class="icon icomoon-briefcase"></i>
-                                    <i class="icon icomoon-flag blue"></i>
-                                    <i class="icon icomoon-man"></i>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--country">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Creation Date/ Last Login </div>
-                                <div class="d-flex flex-wrap"><span class="pr">2020-05-03 </span><span class="secondary-text">30 days ago</span></div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--types">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Courses</div>
-                                <div class="d-flex flex-wrap">
-                                    <span class="main-title">ENG4U-03, </span> <span class="main-title">ENG4U-03, </span> <span class="main-title">ENG4U-03, </span> <span class="main-title">ENG4U-03</span>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+
                 </tbody>
             </table>
             <div class="button-edit-row">
@@ -1010,7 +834,22 @@
                     </div>
                 </div>
             </div>
-
+            <div class="control-page">
+                <div class="item-per-page">
+                    <select name="" id="">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+                <div class="pagination-container">
+                    <div class="pagination-controls">
+                        <button class="page-btn disabled" id="prev-page"><i class="icomoon-caret-left"></i></button>
+                        <input type="number" class="page-input" id="current-page" value="1" />
+                        <button class="page-btn" id="next-page"><i class="icomoon-caret-right"></i></button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="container-fluid" id="formContent">
             <a href="/" class="back-button"> <i class="icon icomoon-keyboard_arrow_left"></i> <span>Back</span></a>

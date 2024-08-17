@@ -30587,7 +30587,7 @@ main {
   display: block !important;
 }
 .users-main .main-item-holder .name {
-  padding-bottom: 10px;
+  padding-bottom: 4px;
 }
 .users-main .responsive-table__body__text.main-item::after {
   right: 10px;
@@ -31156,6 +31156,104 @@ h3 {
 }
 .icon-row .icon.blue {
   color: #206BFF;
+}
+
+.total-count {
+  font-size: 14px;
+  color: #8e8e93;
+  padding-top: 10px;
+  margin-bottom: -20px;
+}
+
+.pagination-container {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  color: #666;
+}
+.pagination-container .pagination-info {
+  margin-right: 15px;
+  font-size: 14px;
+}
+.pagination-container .pagination-controls {
+  display: flex;
+  align-items: center;
+}
+.pagination-container .pagination-controls .page-btn {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 14px;
+  margin: 0 5px;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.3s ease;
+}
+.pagination-container .pagination-controls .page-btn:hover {
+  color: #333;
+}
+.pagination-container .pagination-controls .page-btn.disabled {
+  color: #aaa;
+  cursor: not-allowed;
+}
+.pagination-container .pagination-controls .page-input {
+  width: 30px;
+  text-align: center;
+  font-size: 14px;
+  border: none;
+  border-radius: 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #333;
+  color: #333;
+  margin: 0 5px;
+  padding: 0;
+  background: none;
+  outline: none;
+}
+.pagination-container .pagination-controls .page-input:focus {
+  border-color: #007bff;
+  outline: none !important;
+}
+
+.pagination-control .page-btn {
+  position: relative;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.animate-pulse {
+  -webkit-animation: pulse 1.5s infinite ease-in-out;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-item {
+  background-color: #8e8e93;
+  opacity: 0.1;
+  margin: 12px 0;
 }
 
 .btn {
