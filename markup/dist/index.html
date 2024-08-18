@@ -711,30 +711,34 @@
                         </div>
                     </div>
                     <div class="custom-grid-item dropdown-container col-md-6 col-xl-4">
-                        <div class="dropdown" data-control="checkbox-dropdown">
-                            <label class="dropdown-label">Select</label>
+                        <div class="dropdown searchEnable" data-control="checkbox-dropdown">
+                            <label class="dropdown-label">Select Preset </label>
                             <div class="dropdown-list">
-                                <a href="#" data-toggle="check-all" class="dropdown-option select-all">Check All</a>
+                                <div class="mobile-block">
+                                    <div class="title">Type</div>
+                                    <button class="closeDropdown"><i class="icomoon-x"></i></button>
+                                </div>
+                                <div class="search-input form-control">
+                                    <input type="text" id="search-input" placeholder="Search">
+                                </div>
+                                <div id="no-results" style="display: none; padding: 8px; text-align: center; color: #888;">
+                                    No results found
+                                </div>
+                                <a href="#" data-toggle="check-all" class="select-all">Check All</a>
                                 <label class="custom-checkbox dropdown-option">
                                     <input type="checkbox" name="dropdown-group" value="Preset 1">
                                     <span class="checkmark"></span>
-                                    <div class="title">Preset 1</div>
+                                    <div class="title">Preset 1 </div>
                                 </label>
                                 <label class="custom-checkbox dropdown-option">
                                     <input type="checkbox" name="dropdown-group" value="Preset 2">
                                     <span class="checkmark"></span>
                                     <div class="title">Preset 2</div>
                                 </label>
-                                <label class="custom-checkbox dropdown-option">
-                                    <input type="checkbox" name="dropdown-group" value="Preset 3">
-                                    <span class="checkmark"></span>
-                                    <div class="title">Preset 3</div>
-                                </label>
-                                <label class="custom-checkbox dropdown-option">
-                                    <input type="checkbox" name="dropdown-group" value="Preset 4">
-                                    <span class="checkmark"></span>
-                                    <div class="title">Preset 4</div>
-                                </label>
+                                <div class="mobile-block button-block">
+                                    <button class="btn btn-transparent">Reset</button>
+                                    <button class="btn btn-transparent">Confirm</button>
+                                </div>
                             </div>
                         </div>
                         <div class="mobile-buttons-holder">
@@ -778,7 +782,7 @@
                     </div>
                 </div>
             </div>
-            <table class="responsive-table">
+            <table class="responsive-table courses">
                 <thead class="responsive-table__head">
                     <tr class="responsive-table__row">
                         <th class="responsive-table__head__title responsive-table__head__title--name">
@@ -1080,6 +1084,23 @@
                     </div>
                     <div class="col-custom delete">
                         <button class="btn btn-primary"><div class="holder"><i class="icon icomoon-trashcan"></i><span> Delete</span></div></button>
+                    </div>
+                </div>
+            </div>
+            <div class="control-page">
+                <div class="item-per-page">
+                    <div class="title">Item Per Page:</div>
+                    <select name="" id="">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+                <div class="pagination-container">
+                    <div class="pagination-controls">
+                        <button class="page-btn disabled" id="prev-page"><i class="icomoon-caret-left"></i></button>
+                        <input type="number" class="page-input" id="current-page" value="1" />
+                        <button class="page-btn" id="next-page"><i class="icomoon-caret-right"></i></button>
                     </div>
                 </div>
             </div>

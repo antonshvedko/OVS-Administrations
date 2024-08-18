@@ -1000,3 +1000,18 @@
     .control-page {
         display: flex;
     }
+    
+    .nonsearchresults {
+        &.responsive-table {
+            display: none;
+        }
+        &.total-count {
+            display: none;
+        }
+        &.control-page {
+            display: none;
+        }
+        &.button-edit-row {
+            display: none;
+        }
+    }

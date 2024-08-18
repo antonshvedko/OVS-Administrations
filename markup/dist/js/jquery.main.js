@@ -215,8 +215,44 @@ function toggleFullScreen(elem) {
         document.body.classList.remove("fullscreen");
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Select all dropdowns with the data-control attribute
+    var dropdowns = document.querySelectorAll('[data-control="checkbox-dropdown"]');
+
+    dropdowns.forEach(function(dropdown) {
+        var label = dropdown.querySelector('.dropdown-label');
+        var closeBtn = dropdown.querySelector('.closeDropdown');
+
+        if (label) {
+            // Toggle the 'on' class when the label is clicked
+            label.addEventListener('click', function(e) {
+                e.preventDefault();
+                dropdown.classList.toggle('on');
+            });
+        }
+
+        if (closeBtn) {
+            // Remove the 'on' class when the close button is clicked
+            closeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                dropdown.classList.remove('on');
+            });
+        }
+
+        // Close the dropdown when clicking outside of it
+        document.addEventListener('click', function(e) {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('on');
+            }
+        });
+    });
+});
+
+
 (function() {
     var CheckboxDropdown = function(el) {
+        if (!el) return; // Check if the element exists
         var _this = this;
         this.isOpen = false;
         this.areAllChecked = false;
@@ -224,6 +260,8 @@ function toggleFullScreen(elem) {
         this.label = this.el.querySelector('.dropdown-label');
         this.closeBtn = this.el.querySelector('.closeDropdown');
         this.inputs = this.el.querySelectorAll('[type="checkbox"]');
+
+        if (!this.label || !this.inputs.length) return; // Check if essential elements exist
 
         this.onCheckBox();
 
@@ -252,7 +290,6 @@ function toggleFullScreen(elem) {
 
     CheckboxDropdown.prototype.updateStatus = function() {
         var checked = this.el.querySelectorAll(':checked');
-
         this.areAllChecked = false;
 
         if (checked.length <= 0) {
@@ -272,11 +309,17 @@ function toggleFullScreen(elem) {
         var _this = this;
 
         if (!this.isOpen || forceOpen) {
-            var otherDropdowns = this.el.closest('.filter-container').querySelectorAll('[data-control="checkbox-dropdown"].on');
+            var filterContainer = this.el.closest('.filter-container');
+            if (!filterContainer) return; // Check if the filter container exists
+
+            var otherDropdowns = filterContainer.querySelectorAll('[data-control="checkbox-dropdown"].on');
             otherDropdowns.forEach(function(dropdown) {
                 if (dropdown !== _this.el) {
                     dropdown.classList.remove('on');
-                    dropdown.querySelector('.dropdown-label').dataset.instance.isOpen = false;
+                    var instance = dropdown.querySelector('.dropdown-label').dataset.instance;
+                    if (instance) {
+                        instance.isOpen = false;
+                    }
                 }
             });
 
@@ -297,12 +340,17 @@ function toggleFullScreen(elem) {
 
     document.addEventListener('DOMContentLoaded', function() {
         var checkboxesDropdowns = document.querySelectorAll('[data-control="checkbox-dropdown"]');
+        if (!checkboxesDropdowns.length) return; // Check if there are any dropdowns on the page
+
         checkboxesDropdowns.forEach(function(dropdown) {
             var instance = new CheckboxDropdown(dropdown);
-            dropdown.querySelector('.dropdown-label').dataset.instance = instance;
+            if (dropdown.querySelector('.dropdown-label')) {
+                dropdown.querySelector('.dropdown-label').dataset.instance = instance;
+            }
         });
     });
 })();
+
 
 
 
@@ -483,6 +531,7 @@ window.onload = function() {
                 "Id": 1,
                 "Name": "Jessica Hanson",
                 "Email": "jessica.hanson@example.com",
+                "Enabled": "false",
                 "Status": [
                     { "icon": "text", "name": "18+" },
                     { "icon": "icomoon-briefcase", "name": "Business" },
@@ -498,6 +547,7 @@ window.onload = function() {
                 "Id": 2,
                 "Name": "Jessica Hanson",
                 "Email": "jessica.hanson@example.com",
+                "Enabled": "false",
                 "Status": [
                     { "icon": "text", "name": "18+" },
                     { "icon": "icomoon-briefcase", "name": "Business" },
@@ -513,6 +563,7 @@ window.onload = function() {
                 "Id": 3,
                 "Name": "Jessica Hanson",
                 "Email": "jessica.hanson@example.com",
+                "Enabled": "true",
                 "Status": [
                     { "icon": "text", "name": "18+" },
                     { "icon": "icomoon-briefcase", "name": "Business" },
@@ -528,6 +579,7 @@ window.onload = function() {
                 "Id": 4,
                 "Name": "Jessica Hanson",
                 "Email": "jessica.hanson@example.com",
+                "Enabled": "false",
                 "Status": [
                     { "icon": "text", "name": "18+" },
                     { "icon": "icomoon-briefcase", "name": "Business" },
@@ -538,12 +590,13 @@ window.onload = function() {
                 "CreationDate": "2020-05-03",
                 "LastLogin": "23 days ago",
                 "Courses": ["TYIOF-03", "ENG4U-03", "ENG4U-03", "ENG4U-03"]
-            },
+            }
         ];
 
         const usersPerPage = 2; // Number of users per page
         let currentPage = 1;
         let filteredUsers = [...users]; // Filtered list of users, initially contains all users
+        let usersToDisplay = 10;
 
         // Function to display users with pagination
         function displayUsers(usersToDisplay, page, perPage) {
@@ -553,6 +606,10 @@ window.onload = function() {
             // Simulate a short delay before displaying the paginated users
             setTimeout(() => {
                 const userTableBody = document.querySelector('.responsive-table.users .responsive-table__body');
+                if (!userTableBody) {
+                    console.error("Element .responsive-table.users .responsive-table__body not found.");
+                    return;
+                }
                 userTableBody.innerHTML = ''; // Clear the table before adding new data
 
                 const start = (page - 1) * perPage;
@@ -560,12 +617,44 @@ window.onload = function() {
                 const paginatedUsers = usersToDisplay.slice(start, end);
 
                 paginatedUsers.forEach(user => addUserRow(user));
-                document.getElementById('total-count-users').textContent = usersToDisplay.length;
+                const totalCountElement = document.getElementById('total-count-users');
+                if (!totalCountElement) {
+                    console.error("Element #total-count-users not found.");
+                    return;
+                }
+                totalCountElement.textContent = usersToDisplay.length;
+
+                // Add or remove the 'nonsearchresults' class based on the filtered count
+                const tableElement = document.querySelector('.responsive-table.users');
+                const countElement = document.querySelector('.total-count');
+                const controlPageElement = document.querySelector('.control-page');
+                const buttoEditRow = document.querySelector('.button-edit-row');
+                if (!tableElement || !countElement || !controlPageElement) {
+                    console.error("Required element(s) for displaying results not found.");
+                    return;
+                }
+
+                if (usersToDisplay.length === 0) {
+                    tableElement.classList.add('nonsearchresults');
+                    countElement.classList.add('nonsearchresults');
+                    controlPageElement.classList.add('nonsearchresults');
+                    buttoEditRow.classList.add('nonsearchresults');
+                } else {
+                    tableElement.classList.remove('nonsearchresults');
+                    countElement.classList.remove('nonsearchresults');
+                    controlPageElement.classList.remove('nonsearchresults');
+                    buttoEditRow.classList.remove('nonsearchresults');
+                }
 
                 // Update pagination controls
-                document.getElementById('prev-page').classList.toggle('disabled', page === 1);
-                document.getElementById('next-page').classList.toggle('disabled', end >= usersToDisplay.length);
-                document.getElementById('current-page').value = page;
+                const prevPageButton = document.getElementById('prev-page');
+                const nextPageButton = document.getElementById('next-page');
+                const currentPageInput = document.getElementById('current-page');
+                if (prevPageButton && nextPageButton && currentPageInput) {
+                    prevPageButton.classList.toggle('disabled', page === 1);
+                    nextPageButton.classList.toggle('disabled', end >= usersToDisplay.length);
+                    currentPageInput.value = page;
+                }
 
                 // Re-initialize the "Select all" functionality after rendering rows
                 initSelectAll();
@@ -577,19 +666,23 @@ window.onload = function() {
 
         // Function to filter users
         function filterUsers() {
-            // Combine input from both search fields
-            const query1 = document.getElementById('users-search').value.toLowerCase();
-            const query2 = document.getElementById('users-search-1').value.toLowerCase();
-            const combinedQuery = `${query1} ${query2}`.trim(); // Combine and trim the queries
+            const search1Element = document.getElementById('users-search');
+            const search2Element = document.getElementById('users-search-1');
+            if (!search1Element || !search2Element) return;
+
+            const query1 = search1Element.value.toLowerCase();
+            const query2 = search2Element.value.toLowerCase();
+            const combinedQuery = `${query1} ${query2}`.trim();
 
             const selectedStatuses = Array.from(document.querySelectorAll('#user-status .dropdown-option input[type="checkbox"]:checked')).map(cb => cb.value.toLowerCase());
             const selectedCourses = Array.from(document.querySelectorAll('#user-courses .dropdown-option input[type="checkbox"]:checked')).map(cb => cb.value.toLowerCase());
 
-            // Determine the number of users that would match the filter
             const filteredUsersCount = users.filter(user => {
                 const matchesSearch = user.Name.toLowerCase().includes(combinedQuery) ||
                     user.Email.toLowerCase().includes(combinedQuery) ||
-                    user.Courses.join(',').toLowerCase().includes(combinedQuery);
+                    user.Courses.join(',').toLowerCase().includes(combinedQuery) ||
+                    (combinedQuery === "true" && user.Enabled.toLowerCase() === "true") ||
+                    (combinedQuery === "false" && user.Enabled.toLowerCase() === "false");
 
                 const matchesStatus = selectedStatuses.length === 0 || selectedStatuses.every(status =>
                     user.Status.some(userStatus => userStatus.name.toLowerCase() === status)
@@ -602,15 +695,15 @@ window.onload = function() {
                 return matchesSearch && matchesStatus && matchesCourses;
             }).length;
 
-            // Display the skeleton while filtering, with a number of skeleton rows equal to filteredUsersCount
             displaySkeleton(Math.min(filteredUsersCount, usersPerPage));
 
-            // Simulate a short delay before displaying the filtered users
             setTimeout(() => {
                 filteredUsers = users.filter(user => {
                     const matchesSearch = user.Name.toLowerCase().includes(combinedQuery) ||
                         user.Email.toLowerCase().includes(combinedQuery) ||
-                        user.Courses.join(',').toLowerCase().includes(combinedQuery);
+                        user.Courses.join(',').toLowerCase().includes(combinedQuery) ||
+                        (combinedQuery === "true" && user.Enabled.toLowerCase() === "true") ||
+                        (combinedQuery === "false" && user.Enabled.toLowerCase() === "false");
 
                     const matchesStatus = selectedStatuses.length === 0 || selectedStatuses.every(status =>
                         user.Status.some(userStatus => userStatus.name.toLowerCase() === status)
@@ -623,64 +716,117 @@ window.onload = function() {
                     return matchesSearch && matchesStatus && matchesCourses;
                 });
 
-                // Reset current page to the first one after filtering
                 currentPage = 1;
                 displayUsers(filteredUsers, currentPage, usersPerPage);
             }, 500); // Adjust the delay (500ms) as needed for the skeleton visibility
         }
 
+        // Function to search within dropdown options
+        function setupDropdownSearch() {
+            const searchInput = document.getElementById('search-input');
+            const dropdownOptions = document.querySelectorAll('.dropdown-option');
+            const noResultsElement = document.getElementById('no-results');
+
+            if (!searchInput || !dropdownOptions || !noResultsElement) return;
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = searchInput.value.toLowerCase();
+                let hasResults = false;
+
+                dropdownOptions.forEach(option => {
+                    const optionText = option.querySelector('.title').textContent.toLowerCase();
+                    if (optionText.includes(searchTerm)) {
+                        option.style.display = '';
+                        hasResults = true;
+                    } else {
+                        option.style.display = 'none';
+                    }
+                });
+
+                noResultsElement.style.display = hasResults ? 'none' : 'block';
+            });
+        }
+
         // Attach event listeners
-        document.getElementById('prev-page').addEventListener('click', function() {
-            if (currentPage > 1) {
-                currentPage--;
-                displayUsers(filteredUsers, currentPage, usersPerPage);
-            }
-        });
+        const prevPageButton = document.getElementById('prev-page');
+        const nextPageButton = document.getElementById('next-page');
+        const currentPageInput = document.getElementById('current-page');
 
-        document.getElementById('next-page').addEventListener('click', function() {
-            if (currentPage * usersPerPage < filteredUsers.length) {
-                currentPage++;
-                displayUsers(filteredUsers, currentPage, usersPerPage);
-            }
-        });
+        if (prevPageButton) {
+            prevPageButton.addEventListener('click', function() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayUsers(filteredUsers, currentPage, usersPerPage);
+                }
+            });
+        }
 
-        document.getElementById('current-page').addEventListener('input', function() {
-            let pageNumber = parseInt(this.value);
-            if (pageNumber > 0 && pageNumber <= Math.ceil(filteredUsers.length / usersPerPage)) {
-                currentPage = pageNumber;
-                displayUsers(filteredUsers, currentPage, usersPerPage);
-            }
-        });
+        if (nextPageButton) {
+            nextPageButton.addEventListener('click', function() {
+                if (currentPage * usersPerPage < filteredUsers.length) {
+                    currentPage++;
+                    displayUsers(filteredUsers, currentPage, usersPerPage);
+                }
+            });
+        }
 
-        document.getElementById('users-search').addEventListener('input', function() {
-            filterUsers();
-        });
+        if (currentPageInput) {
+            currentPageInput.addEventListener('input', function() {
+                let pageNumber = parseInt(this.value);
+                if (pageNumber > 0 && pageNumber <= Math.ceil(filteredUsers.length / usersPerPage)) {
+                    currentPage = pageNumber;
+                    displayUsers(filteredUsers, currentPage, usersPerPage);
+                }
+            });
+        }
 
-        document.getElementById('users-search-1').addEventListener('input', function() {
-            filterUsers();
-        });
+        const usersSearch1Element = document.getElementById('users-search');
+        const usersSearch2Element = document.getElementById('users-search-1');
+
+        if (usersSearch1Element) {
+            usersSearch1Element.addEventListener('input', function() {
+                filterUsers();
+            });
+        }
+
+        if (usersSearch2Element) {
+            usersSearch2Element.addEventListener('input', function() {
+                filterUsers();
+            });
+        }
 
         const statusCheckboxes = document.querySelectorAll('#user-status .dropdown-option input[type="checkbox"]');
-        statusCheckboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
-                filterUsers();
+        if (statusCheckboxes.length) {
+            statusCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    filterUsers();
+                });
             });
-        });
+        }
 
         const courseCheckboxes = document.querySelectorAll('#user-courses .dropdown-option input[type="checkbox"]');
-        courseCheckboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
-                filterUsers();
+        if (courseCheckboxes.length) {
+            courseCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    filterUsers();
+                });
             });
-        });
+        }
 
         // Simulate a long load time
-        setTimeout(() => {
-            displayUsers(filteredUsers, currentPage, usersPerPage);
-        }, 1000);
+        if (document.querySelector('.responsive-table.users')) {
+            setTimeout(() => {
+                displayUsers(filteredUsers, currentPage, usersPerPage);
+            }, 1000);
+        }
 
         // Display skeleton during data loading with 10 skeleton rows initially
-        displaySkeleton(10);
+        if (document.querySelector('.responsive-table.users')) {
+            displaySkeleton(10);
+        }
+
+        // Initialize dropdown search functionality
+        setupDropdownSearch();
 
         // Function to initialize the "Select all" functionality
         function initSelectAll() {
@@ -707,26 +853,30 @@ window.onload = function() {
 
         // Function to initialize row interactions (selection and expand/collapse)
         function initRowInteractions() {
-            // Handle individual row selection
-            document.querySelectorAll('.selectRow').forEach(function(checkbox) {
-                checkbox.addEventListener('change', function() {
-                    var row = this.closest('.responsive-table__row');
-                    if (this.checked) {
-                        row.classList.add('selected-row');
-                    } else {
-                        row.classList.remove('selected-row');
-                    }
-                    updateBodyClass();
+            const rowCheckboxes = document.querySelectorAll('.selectRow');
+            if (rowCheckboxes.length) {
+                rowCheckboxes.forEach(function(checkbox) {
+                    checkbox.addEventListener('change', function() {
+                        var row = this.closest('.responsive-table__row');
+                        if (this.checked) {
+                            row.classList.add('selected-row');
+                        } else {
+                            row.classList.remove('selected-row');
+                        }
+                        updateBodyClass();
+                    });
                 });
-            });
+            }
 
-            // Expand/collapse row functionality
-            document.querySelectorAll('.responsive-table__row').forEach(function(row) {
-                row.addEventListener('click', function() {
-                    this.classList.toggle('expanded');
-                    updateBodyClass();
+            const rows = document.querySelectorAll('.responsive-table__row');
+            if (rows.length) {
+                rows.forEach(function(row) {
+                    row.addEventListener('click', function() {
+                        this.classList.toggle('expanded');
+                        updateBodyClass();
+                    });
                 });
-            });
+            }
         }
 
         // Function to update body class based on row selection
@@ -749,6 +899,7 @@ window.onload = function() {
         // Adding a user row to the table
         function addUserRow(userData) {
             const userTableBody = document.querySelector('.responsive-table.users .responsive-table__body');
+            if (!userTableBody) return;
 
             const newRow = document.createElement('tr');
             newRow.classList.add('responsive-table__row');
@@ -827,9 +978,10 @@ window.onload = function() {
     // Display skeleton during data loading, based on the number of expected rows
     function displaySkeleton(numRows) {
         const userTableBody = document.querySelector('.responsive-table.users .responsive-table__body');
+        if (!userTableBody) return;
+
         userTableBody.innerHTML = ''; // Clear the table before adding the skeleton
 
-        // Create skeleton rows based on the number of expected rows
         for (let i = 0; i < numRows; i++) {
             const skeletonRow = document.createElement('tr');
             skeletonRow.classList.add('responsive-table__row');
@@ -838,18 +990,18 @@ window.onload = function() {
             <td>
                 <div class="d-flex align-items-center gap-2">
                     <div class="w-100">
-                        <div class="skeleton-item animate-pulse  rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
+                        <div class="skeleton-item animate-pulse rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
                     </div>
                 </div>
             </td>
             <td>
-                <div class="skeleton-item  animate-pulse  rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
+                <div class="skeleton-item animate-pulse rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
             </td>
             <td>
-                <div class="skeleton-item animate-pulse  rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
+                <div class="skeleton-item animate-pulse rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
             </td>
             <td>
-                <div class="skeleton-item animate-pulse  rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
+                <div class="skeleton-item animate-pulse rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
             </td>
             <td>
                 <div class="skeleton-item animate-pulse rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
@@ -857,6 +1009,275 @@ window.onload = function() {
             `;
 
             userTableBody.appendChild(skeletonRow);
+        }
+    }
+};
+
+window.onload = function() {
+    const courses = [{
+            "Id": 1,
+            "Title": "Introduction to Biology",
+            "Department": "Biology",
+            "Instructor": "Dr. Smith",
+            "OfficeHours": "Mon - Tue 2pm-3pm",
+            "Average": "4.7",
+            "Enrolled": 35
+        },
+        {
+            "Id": 2,
+            "Title": "Advanced Physics",
+            "Department": "Physics",
+            "Instructor": "Dr. Jones",
+            "OfficeHours": "Wed - Thu 10am-11am",
+            "Average": "4.8",
+            "Enrolled": 20
+        },
+        {
+            "Id": 3,
+            "Title": "Chemistry 101",
+            "Department": "Chemistry",
+            "Instructor": "Dr. Brown",
+            "OfficeHours": "Fri 1pm-2pm",
+            "Average": "4.6",
+            "Enrolled": 40
+        },
+        {
+            "Id": 4,
+            "Title": "Calculus I",
+            "Department": "Mathematics",
+            "Instructor": "Prof. Green",
+            "OfficeHours": "Tue - Thu 3pm-4pm",
+            "Average": "4.9",
+            "Enrolled": 50
+        },
+    ];
+
+    const coursesPerPage = 2; // Number of courses per page
+    let currentPage = 1;
+    let filteredCourses = [...courses]; // Filtered list of courses, initially contains all courses
+
+    // Function to display courses with pagination
+    function displayCourses(coursesToDisplay, page, perPage) {
+        const tableBody = document.querySelector('.responsive-table.courses .responsive-table__body');
+        tableBody.innerHTML = ''; // Clear the table before adding new data
+
+        const start = (page - 1) * perPage;
+        const end = start + perPage;
+        const paginatedCourses = coursesToDisplay.slice(start, end);
+
+        paginatedCourses.forEach(course => addCourseRow(course));
+        document.getElementById('total-count-courses').textContent = coursesToDisplay.length;
+
+        // Update pagination controls
+        document.getElementById('prev-page').classList.toggle('disabled', page === 1);
+        document.getElementById('next-page').classList.toggle('disabled', end >= coursesToDisplay.length);
+        document.getElementById('current-page').value = page;
+
+        // Re-initialize the "Select all" functionality after rendering rows
+        initSelectAll();
+    }
+
+    // Function to filter courses
+    function filterCourses() {
+        const query = document.querySelector('.custom-input').value.toLowerCase();
+        filteredCourses = courses.filter(course => {
+            const matchesSearch = course.Title.toLowerCase().includes(query) ||
+                course.Department.toLowerCase().includes(query) ||
+                course.Instructor.toLowerCase().includes(query);
+
+            return matchesSearch;
+        });
+
+        // Reset current page to the first one after filtering
+        currentPage = 1;
+        displayCourses(filteredCourses, currentPage, coursesPerPage);
+    }
+
+    // Attach event listeners
+    document.getElementById('prev-page').addEventListener('click', function() {
+        if (currentPage > 1) {
+            currentPage--;
+            displayCourses(filteredCourses, currentPage, coursesPerPage);
+        }
+    });
+
+    document.getElementById('next-page').addEventListener('click', function() {
+        if (currentPage * coursesPerPage < filteredCourses.length) {
+            currentPage++;
+            displayCourses(filteredCourses, currentPage, coursesPerPage);
+        }
+    });
+
+    document.getElementById('current-page').addEventListener('input', function() {
+        let pageNumber = parseInt(this.value);
+        if (pageNumber > 0 && pageNumber <= Math.ceil(filteredCourses.length / coursesPerPage)) {
+            currentPage = pageNumber;
+            displayCourses(filteredCourses, currentPage, coursesPerPage);
+        }
+    });
+
+    document.querySelector('.custom-input').addEventListener('input', function() {
+        filterCourses();
+    });
+
+    // Simulate a long load time
+    setTimeout(() => {
+        displayCourses(filteredCourses, currentPage, coursesPerPage);
+    }, 1000);
+
+    // Display skeleton during data loading
+    displaySkeleton(coursesPerPage);
+
+    // Function to initialize the "Select all" functionality
+    function initSelectAll() {
+        const selectAllCheckbox = document.getElementById('select-all');
+        if (selectAllCheckbox) {
+            selectAllCheckbox.addEventListener('change', function() {
+                const isChecked = this.checked;
+                const rows = document.querySelectorAll('.responsive-table__row');
+                rows.forEach(function(row) {
+                    const checkbox = row.querySelector('.selectRow');
+                    if (checkbox) {
+                        checkbox.checked = isChecked;
+                        if (isChecked) {
+                            row.classList.add('selected-row');
+                        } else {
+                            row.classList.remove('selected-row');
+                        }
+                    }
+                });
+                updateBodyClass(); // Update the body class after the selection
+            });
+        }
+    }
+
+    // Function to update body class based on row selection
+    function updateBodyClass() {
+        const body = document.body;
+        const selectedRows = document.querySelectorAll('.responsive-table__row .selectRow:checked');
+        if (selectedRows.length > 0) {
+            body.classList.add('has-selected-rows');
+        } else {
+            body.classList.remove('has-selected-rows');
+        }
+    }
+
+    // Adding a course row to the table
+    function addCourseRow(courseData) {
+        const tableBody = document.querySelector('.responsive-table.courses .responsive-table__body');
+
+        const newRow = document.createElement('tr');
+        newRow.classList.add('responsive-table__row');
+
+        const titleCell = document.createElement('td');
+        titleCell.classList.add('responsive-table__body__text', 'main-item', 'responsive-table__body__text--name');
+        titleCell.innerHTML = `
+            <label class="custom-checkbox">
+                <input type="checkbox" class="selectRow">
+                <span class="checkmark"></span>
+            </label>
+            <div class="main-item-holder">
+                <div class="content">
+                    <span class="name pr">${courseData.Title}</span>
+                </div>
+                <div class="content autor">
+                    <div class="d-flex flex-wrap icon-row">
+                        <span class="instructor pr">${courseData.Instructor}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        const departmentCell = document.createElement('td');
+        departmentCell.classList.add('responsive-table__body__text', 'responsive-table__body__text--status');
+        departmentCell.innerHTML = `
+            <div class="mobile-holder">
+                <div class="lebel-mobile">Department</div>
+                <div class="">${courseData.Department}</div>
+            </div>
+        `;
+
+        const instructorCell = document.createElement('td');
+        instructorCell.classList.add('responsive-table__body__text', 'responsive-table__body__text--update', 'tablet-hide');
+        instructorCell.innerHTML = `
+            <div class="mobile-holder">
+                <div class="lebel-mobile">Instructor</div>
+                <div class="d-flex flex-wrap"><span class="instructor pr">${courseData.Instructor}</span></div>
+            </div>
+        `;
+
+        const officeHoursCell = document.createElement('td');
+        officeHoursCell.classList.add('responsive-table__body__text', 'responsive-table__body__text--country');
+        officeHoursCell.innerHTML = `
+            <div class="mobile-holder">
+                <div class="lebel-mobile">Office Hours</div>
+                <div class="d-flex flex-wrap"><span class="pr">${courseData.OfficeHours}</span></div>
+            </div>
+        `;
+
+        const averageCell = document.createElement('td');
+        averageCell.classList.add('responsive-table__body__text', 'responsive-table__body__text--types');
+        averageCell.innerHTML = `
+            <div class="mobile-holder">
+                <div class="lebel-mobile">Average</div>
+                <div class="d-flex flex-wrap"><span class="main-title">${courseData.Average}</span></div>
+            </div>
+        `;
+
+        const enrolledCell = document.createElement('td');
+        enrolledCell.classList.add('responsive-table__body__text', 'responsive-table__body__text--types');
+        enrolledCell.innerHTML = `
+            <div class="mobile-holder">
+                <div class="lebel-mobile">Enrolled</div>
+                <div class="d-flex flex-wrap"><span class="main-title">${courseData.Enrolled}</span></div>
+            </div>
+        `;
+
+        newRow.appendChild(titleCell);
+        newRow.appendChild(departmentCell);
+        newRow.appendChild(instructorCell);
+        newRow.appendChild(officeHoursCell);
+        newRow.appendChild(averageCell);
+        newRow.appendChild(enrolledCell);
+
+        tableBody.appendChild(newRow);
+    }
+
+    // Display skeleton during data loading
+    function displaySkeleton(numRows) {
+        const tableBody = document.querySelector('.responsive-table.courses .responsive-table__body');
+        tableBody.innerHTML = ''; // Clear the table before adding the skeleton
+
+        for (let i = 0; i < numRows; i++) {
+            const skeletonRow = document.createElement('tr');
+            skeletonRow.classList.add('responsive-table__row');
+
+            skeletonRow.innerHTML = `
+            <td>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="w-100">
+                        <div class="skeleton-item animate-pulse rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="skeleton-item animate-pulse rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
+            </td>
+            <td>
+                <div class="skeleton-item animate-pulse rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
+            </td>
+            <td>
+                <div class="skeleton-item animate-pulse rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
+            </td>
+            <td>
+                <div class="skeleton-item animate-pulse rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
+            </td>
+            <td>
+                <div class="skeleton-item animate-pulse rounded-2 mb-6 mt-6" style="height: 16px; width: 100%;"></div>
+            </td>
+            `;
+
+            tableBody.appendChild(skeletonRow);
         }
     }
 };

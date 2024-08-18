@@ -31278,6 +31278,19 @@ h3 {
   display: flex;
 }
 
+.nonsearchresults.responsive-table {
+  display: none;
+}
+.nonsearchresults.total-count {
+  display: none;
+}
+.nonsearchresults.control-page {
+  display: none;
+}
+.nonsearchresults.button-edit-row {
+  display: none;
+}
+
 .btn {
   display: inline-block;
   vertical-align: top;
