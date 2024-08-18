@@ -1016,12 +1016,18 @@ window.onload = function() {
 window.onload = function() {
     const courses = [{
             "Id": 1,
-            "Title": "Introduction to Biology",
-            "Department": "Biology",
-            "Instructor": "Dr. Smith",
-            "OfficeHours": "Mon - Tue 2pm-3pm",
-            "Average": "4.7",
-            "Enrolled": 35
+            "Title": "1CLONE(410)",
+            "Department": "English",
+            "Instructor": "Jane Cooper",
+            "OfficeHours": "Mon - Tue 5pm-6pm",
+            "Average": "8.53 h",
+            "MarkingTime": "90$",
+            "Median": "90%",
+            "Enrolled": 12,
+            "Processed": "8.53 h",
+            "Ghost": "90.9% | 93%",
+            "Suspend": "90.9% | 93%",
+            "Rating": 4.5
         },
         {
             "Id": 2,
@@ -1029,27 +1035,16 @@ window.onload = function() {
             "Department": "Physics",
             "Instructor": "Dr. Jones",
             "OfficeHours": "Wed - Thu 10am-11am",
-            "Average": "4.8",
-            "Enrolled": 20
-        },
-        {
-            "Id": 3,
-            "Title": "Chemistry 101",
-            "Department": "Chemistry",
-            "Instructor": "Dr. Brown",
-            "OfficeHours": "Fri 1pm-2pm",
-            "Average": "4.6",
-            "Enrolled": 40
-        },
-        {
-            "Id": 4,
-            "Title": "Calculus I",
-            "Department": "Mathematics",
-            "Instructor": "Prof. Green",
-            "OfficeHours": "Tue - Thu 3pm-4pm",
-            "Average": "4.9",
-            "Enrolled": 50
-        },
+            "Average": "7.4 h",
+            "MarkingTime": "85$",
+            "Median": "85%",
+            "Enrolled": 20,
+            "Processed": "7.4 h",
+            "Ghost": "89% | 90%",
+            "Suspend": "88% | 91%",
+            "Rating": 4.2
+        }
+        // Add more course objects as needed
     ];
 
     const coursesPerPage = 2; // Number of courses per page
@@ -1059,6 +1054,8 @@ window.onload = function() {
     // Function to display courses with pagination
     function displayCourses(coursesToDisplay, page, perPage) {
         const tableBody = document.querySelector('.responsive-table.courses .responsive-table__body');
+        if (!tableBody) return; // Check if tableBody exists
+
         tableBody.innerHTML = ''; // Clear the table before adding new data
 
         const start = (page - 1) * perPage;
@@ -1066,59 +1063,118 @@ window.onload = function() {
         const paginatedCourses = coursesToDisplay.slice(start, end);
 
         paginatedCourses.forEach(course => addCourseRow(course));
-        document.getElementById('total-count-courses').textContent = coursesToDisplay.length;
+
+        const totalCountElement = document.getElementById('total-count-users');
+        if (totalCountElement) {
+            totalCountElement.textContent = coursesToDisplay.length;
+        }
+
+        // Add or remove the 'nonsearchresults' class based on the filtered count
+        const tableElement = document.querySelector('.responsive-table.courses');
+        const countElement = document.querySelector('.total-count');
+        const controlPageElement = document.querySelector('.control-page');
+        const buttonEditRow = document.querySelector('.button-edit-row');
+        const errorElement = document.querySelector('.error');
+
+        if (!tableElement || !countElement || !controlPageElement) {
+            console.error("Required element(s) for displaying results not found.");
+            return;
+        }
+
+        if (coursesToDisplay.length === 0) {
+            tableElement.classList.add('nonsearchresults');
+            countElement.classList.add('nonsearchresults');
+            controlPageElement.classList.add('nonsearchresults');
+            buttonEditRow.classList.add('nonsearchresults');
+            if (errorElement) errorElement.classList.add('active');
+        } else {
+            tableElement.classList.remove('nonsearchresults');
+            countElement.classList.remove('nonsearchresults');
+            controlPageElement.classList.remove('nonsearchresults');
+            buttonEditRow.classList.remove('nonsearchresults');
+            if (errorElement) errorElement.classList.remove('active');
+        }
 
         // Update pagination controls
-        document.getElementById('prev-page').classList.toggle('disabled', page === 1);
-        document.getElementById('next-page').classList.toggle('disabled', end >= coursesToDisplay.length);
-        document.getElementById('current-page').value = page;
+        const prevPageButton = document.getElementById('prev-page');
+        const nextPageButton = document.getElementById('next-page');
+        const currentPageInput = document.getElementById('current-page');
+        if (prevPageButton && nextPageButton && currentPageInput) {
+            prevPageButton.classList.toggle('disabled', page === 1);
+            nextPageButton.classList.toggle('disabled', end >= coursesToDisplay.length);
+            currentPageInput.value = page;
+        }
 
-        // Re-initialize the "Select all" functionality after rendering rows
+        // Re-initialize functionalities after rendering rows
         initSelectAll();
+        initRowInteractions();
+        initRowClickEvent();
     }
 
     // Function to filter courses
     function filterCourses() {
-        const query = document.querySelector('.custom-input').value.toLowerCase();
-        filteredCourses = courses.filter(course => {
-            const matchesSearch = course.Title.toLowerCase().includes(query) ||
-                course.Department.toLowerCase().includes(query) ||
-                course.Instructor.toLowerCase().includes(query);
+        const queryElement = document.getElementById('search-input');
+        if (!queryElement) return; // Check if search input exists
 
-            return matchesSearch;
-        });
+        const query = queryElement.value.toLowerCase();
 
-        // Reset current page to the first one after filtering
-        currentPage = 1;
-        displayCourses(filteredCourses, currentPage, coursesPerPage);
+        // Display the skeleton while filtering
+        displaySkeleton(coursesPerPage);
+
+        setTimeout(() => {
+            filteredCourses = courses.filter(course => {
+                const matchesSearch = course.Title.toLowerCase().includes(query) ||
+                    course.Department.toLowerCase().includes(query) ||
+                    course.Instructor.toLowerCase().includes(query);
+
+                return matchesSearch;
+            });
+
+            // Reset current page to the first one after filtering
+            currentPage = 1;
+            displayCourses(filteredCourses, currentPage, coursesPerPage);
+        }, 1000); // Simulate a delay for the skeleton loader
     }
 
     // Attach event listeners
-    document.getElementById('prev-page').addEventListener('click', function() {
-        if (currentPage > 1) {
-            currentPage--;
-            displayCourses(filteredCourses, currentPage, coursesPerPage);
-        }
-    });
+    const prevPageButton = document.getElementById('prev-page');
+    const nextPageButton = document.getElementById('next-page');
+    const currentPageInput = document.getElementById('current-page');
 
-    document.getElementById('next-page').addEventListener('click', function() {
-        if (currentPage * coursesPerPage < filteredCourses.length) {
-            currentPage++;
-            displayCourses(filteredCourses, currentPage, coursesPerPage);
-        }
-    });
+    if (prevPageButton) {
+        prevPageButton.addEventListener('click', function() {
+            if (currentPage > 1) {
+                currentPage--;
+                displayCourses(filteredCourses, currentPage, coursesPerPage);
+            }
+        });
+    }
 
-    document.getElementById('current-page').addEventListener('input', function() {
-        let pageNumber = parseInt(this.value);
-        if (pageNumber > 0 && pageNumber <= Math.ceil(filteredCourses.length / coursesPerPage)) {
-            currentPage = pageNumber;
-            displayCourses(filteredCourses, currentPage, coursesPerPage);
-        }
-    });
+    if (nextPageButton) {
+        nextPageButton.addEventListener('click', function() {
+            if (currentPage * coursesPerPage < filteredCourses.length) {
+                currentPage++;
+                displayCourses(filteredCourses, currentPage, coursesPerPage);
+            }
+        });
+    }
 
-    document.querySelector('.custom-input').addEventListener('input', function() {
-        filterCourses();
-    });
+    if (currentPageInput) {
+        currentPageInput.addEventListener('input', function() {
+            let pageNumber = parseInt(this.value);
+            if (pageNumber > 0 && pageNumber <= Math.ceil(filteredCourses.length / coursesPerPage)) {
+                currentPage = pageNumber;
+                displayCourses(filteredCourses, currentPage, coursesPerPage);
+            }
+        });
+    }
+
+    const searchInputElement = document.getElementById('search-input');
+    if (searchInputElement) {
+        searchInputElement.addEventListener('input', function() {
+            filterCourses();
+        });
+    }
 
     // Simulate a long load time
     setTimeout(() => {
@@ -1151,94 +1207,136 @@ window.onload = function() {
         }
     }
 
+    // Function to initialize row click functionality
+    function initRowClickEvent() {
+        const rows = document.querySelectorAll('.responsive-table__row');
+        if (rows.length > 0) {
+            rows.forEach(function(row) {
+                row.addEventListener('click', function() {
+                    console.log("Row clicked:", this);
+                    this.classList.toggle('clicked-row');
+                });
+            });
+        } else {
+            console.log("No rows found with class 'responsive-table__row'");
+        }
+    }
+
+    // Function to initialize row interactions (expand/collapse and selection)
+    function initRowInteractions() {
+        document.querySelectorAll('.responsive-table__row').forEach(function(row) {
+            row.addEventListener('click', function() {
+                this.classList.toggle('expanded');
+                updateBodyClass();
+            });
+        });
+    }
+
     // Function to update body class based on row selection
     function updateBodyClass() {
-        const body = document.body;
-        const selectedRows = document.querySelectorAll('.responsive-table__row .selectRow:checked');
-        if (selectedRows.length > 0) {
-            body.classList.add('has-selected-rows');
-        } else {
-            body.classList.remove('has-selected-rows');
+        var checkedItems = document.querySelectorAll('.selectRow:checked').length;
+
+        if (checkedItems === 0) {
+            console.log('Выбрано 0 элементов');
+            document.body.classList.remove('has-selected-rows', 'item-rows-1', 'item-rows-2');
+        } else if (checkedItems === 1) {
+            console.log('Выбран 1 элемент');
+            document.body.classList.add('has-selected-rows', 'item-rows-1');
+            document.body.classList.remove('item-rows-2');
+        } else if (checkedItems >= 2) {
+            document.body.classList.add('has-selected-rows', 'item-rows-2');
+            document.body.classList.remove('item-rows-1');
         }
     }
 
     // Adding a course row to the table
     function addCourseRow(courseData) {
         const tableBody = document.querySelector('.responsive-table.courses .responsive-table__body');
+        if (!tableBody) return; // Check if tableBody exists
 
         const newRow = document.createElement('tr');
         newRow.classList.add('responsive-table__row');
 
-        const titleCell = document.createElement('td');
-        titleCell.classList.add('responsive-table__body__text', 'main-item', 'responsive-table__body__text--name');
-        titleCell.innerHTML = `
-            <label class="custom-checkbox">
-                <input type="checkbox" class="selectRow">
-                <span class="checkmark"></span>
-            </label>
-            <div class="main-item-holder">
-                <div class="content">
-                    <span class="name pr">${courseData.Title}</span>
-                </div>
-                <div class="content autor">
-                    <div class="d-flex flex-wrap icon-row">
-                        <span class="instructor pr">${courseData.Instructor}</span>
+        newRow.innerHTML = `
+            <td class="responsive-table__body__text main-item responsive-table__body__text--name">
+                <label class="custom-checkbox">
+                    <input type="checkbox" class="selectRow">
+                    <span class="checkmark"></span>
+                </label>
+                <div class="main-item-holder">
+                    <div class="content">
+                        <span class="name pr">${courseData.Title}</span>
+                        <span class="stars"><i class="icon icomoon-star-full-1"></i> ${courseData.Rating}</span>
+                    </div>
+                    <div class="content autor">
+                        <div class="">
+                            <span class="instructor pr">${courseData.Instructor}</span>
+                            <span class="stars"><i class="icon icomoon-star-full-1"></i> ${courseData.Rating}</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </td>
+            <td class="responsive-table__body__text responsive-table__body__text--status">
+                <div class="mobile-holder">
+                    <div class="lebel-mobile">Department</div>
+                    <div class="">${courseData.Department}</div>
+                </div>
+            </td>
+            <td class="responsive-table__body__text responsive-table__body__text--update tablet-hide">
+                <div class="mobile-holder">
+                    <div class="lebel-mobile">Instructor</div>
+                    <div class="d-flex flex-wrap">
+                        <span class="instructor pr">${courseData.Instructor}</span>
+                        <span class="stars"><i class="icon icomoon-star-full-1"></i> ${courseData.Rating}</span>
+                    </div>
+                </div>
+            </td>
+            <td class="responsive-table__body__text responsive-table__body__text--country">
+                <div class="mobile-holder">
+                    <div class="lebel-mobile">Office Hours</div>
+                    <div class="d-flex flex-wrap">
+                        <span class="pr">${courseData.OfficeHours}</span>
+                        <span class="secondary-text"></span>
+                    </div>
+                </div>
+            </td>
+            <td class="responsive-table__body__text responsive-table__body__text--types">
+                <div class="mobile-holder">
+                    <div class="lebel-mobile">Average</div>
+                    <div class="d-flex flex-wrap">
+                        <span class="main-title">Marking Time</span> <span class="hours">${courseData.Average}</span>
+                        <ul class="detail-list clearfix">
+                            <li><span class="title">Avg</span> <span class="value">${courseData.MarkingTime}</span></li>
+                            <li><span class="title">Med</span><span class="value">${courseData.Median}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+            <td class="responsive-table__body__text responsive-table__body__text--country hover-table">
+                <div class="mobile-holder">
+                    <div class="lebel-mobile">Enrolled</div>
+                    <div class="mobile-show">
+                        <div>
+                            <b>Processed</b> <span>${courseData.Processed}</span>
+                        </div>
+                        <div>
+                            <b>Ghost</b> <span>${courseData.Ghost}</span>
+                        </div>
+                        <div>
+                            <b>Suspend</b> <span>${courseData.Suspend}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap hover-trigger">
+                    <span class="pr">${courseData.Enrolled}</span><i class="icomoon-info-1"></i>
+                    <div class="hover-popup">
+                        <div><p>Processed</p> <span>${courseData.Processed}</span></div>
+                        <div><p>Ghost</p> <span>${courseData.Ghost}</span></div>
+                        <div><p>Suspend</p> <span>${courseData.Suspend}</span></div>
+                    </div>
+                </div>
+            </td>
         `;
-
-        const departmentCell = document.createElement('td');
-        departmentCell.classList.add('responsive-table__body__text', 'responsive-table__body__text--status');
-        departmentCell.innerHTML = `
-            <div class="mobile-holder">
-                <div class="lebel-mobile">Department</div>
-                <div class="">${courseData.Department}</div>
-            </div>
-        `;
-
-        const instructorCell = document.createElement('td');
-        instructorCell.classList.add('responsive-table__body__text', 'responsive-table__body__text--update', 'tablet-hide');
-        instructorCell.innerHTML = `
-            <div class="mobile-holder">
-                <div class="lebel-mobile">Instructor</div>
-                <div class="d-flex flex-wrap"><span class="instructor pr">${courseData.Instructor}</span></div>
-            </div>
-        `;
-
-        const officeHoursCell = document.createElement('td');
-        officeHoursCell.classList.add('responsive-table__body__text', 'responsive-table__body__text--country');
-        officeHoursCell.innerHTML = `
-            <div class="mobile-holder">
-                <div class="lebel-mobile">Office Hours</div>
-                <div class="d-flex flex-wrap"><span class="pr">${courseData.OfficeHours}</span></div>
-            </div>
-        `;
-
-        const averageCell = document.createElement('td');
-        averageCell.classList.add('responsive-table__body__text', 'responsive-table__body__text--types');
-        averageCell.innerHTML = `
-            <div class="mobile-holder">
-                <div class="lebel-mobile">Average</div>
-                <div class="d-flex flex-wrap"><span class="main-title">${courseData.Average}</span></div>
-            </div>
-        `;
-
-        const enrolledCell = document.createElement('td');
-        enrolledCell.classList.add('responsive-table__body__text', 'responsive-table__body__text--types');
-        enrolledCell.innerHTML = `
-            <div class="mobile-holder">
-                <div class="lebel-mobile">Enrolled</div>
-                <div class="d-flex flex-wrap"><span class="main-title">${courseData.Enrolled}</span></div>
-            </div>
-        `;
-
-        newRow.appendChild(titleCell);
-        newRow.appendChild(departmentCell);
-        newRow.appendChild(instructorCell);
-        newRow.appendChild(officeHoursCell);
-        newRow.appendChild(averageCell);
-        newRow.appendChild(enrolledCell);
 
         tableBody.appendChild(newRow);
     }
@@ -1246,6 +1344,8 @@ window.onload = function() {
     // Display skeleton during data loading
     function displaySkeleton(numRows) {
         const tableBody = document.querySelector('.responsive-table.courses .responsive-table__body');
+        if (!tableBody) return; // Check if tableBody exists
+
         tableBody.innerHTML = ''; // Clear the table before adding the skeleton
 
         for (let i = 0; i < numRows; i++) {

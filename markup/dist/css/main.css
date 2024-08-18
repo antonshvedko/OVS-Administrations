@@ -31291,6 +31291,29 @@ h3 {
   display: none;
 }
 
+.courses-main .dropdown .dropdown-list {
+  left: -8px !important;
+}
+
+.error {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  justify-content: center;
+  border-radius: 16px;
+  padding: 40px;
+}
+.error.active {
+  display: flex;
+}
+.error img {
+  max-width: 40px;
+}
+.error .btn {
+  max-width: 130px;
+}
+
 .btn {
   display: inline-block;
   vertical-align: top;

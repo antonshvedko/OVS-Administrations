@@ -686,7 +686,7 @@
                 </div>
             </div>
         </aside>
-        <div class="container-fluid" id="mainContent">
+        <div class="container-fluid courses-main" id="mainContent">
             <div class=" ">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group-toggle custom-radio-group" data-toggle="buttons">
@@ -707,7 +707,7 @@
                 <div class="custom-grid row" style="margin-top: 10px;">
                     <div class="custom-grid-item col-md-6 col-xl-5">
                         <div class="search-input form-control">
-                            <input type="text" class="custom-input" placeholder="Course, department, instructor">
+                            <input type="text" class="custom-input" id="search-input" placeholder="Course, department, instructor">
                         </div>
                     </div>
                     <div class="custom-grid-item dropdown-container col-md-6 col-xl-4">
@@ -782,6 +782,7 @@
                     </div>
                 </div>
             </div>
+            <div class="total-count">Total Count: <span id="total-count-users"></span></div>
             <table class="responsive-table courses">
                 <thead class="responsive-table__head">
                     <tr class="responsive-table__row">
@@ -1063,6 +1064,17 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="error">
+                <img src="images/sad.jpg" alt="icon">
+                <h3>Sorry! We didn't find anything</h3>
+                <p>Please clear your previous search query and try again</p>
+                <button class="btn btn-secondary" onclick="toggleFullScreen(document.body)">
+                    <div class="holder">
+                        <i class="icon icomoon-spinner11"></i>
+                        <span>Refresh</span>
+                    </div>
+                </button>
+            </div>
             <div class="button-edit-row">
                 <div class="row-holder-button">
                     <div class="col-custom">
