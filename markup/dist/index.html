@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/main.min.css">
     
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+    <script src="js/libs.js"></script>
+    <script src="js/main.js?v=1.0" defer></script>
     
-    <script src="js/jquery.main.js?v=1.0" defer></script>
-    <!-- <script src="js/libs.js"></script> -->
     
     <title>Title</title>
+    <script src="js/courses.js"></script>
 </head>
 
 <body class="side-menu-closed">
@@ -700,17 +700,26 @@
                             <input type="radio" name="options" id="option3" autocomplete="off"> Hidden
                         </label>
                     </div>
-                    <!-- <button class="btn btn-primary new">
-                        <div class="holder"> <i class="icon icomoon-circle-with-plus-1"></i> <div> New course</div>
-                        </div></button> -->
+                    <div class="custom-grid-item col-md-12 col-xl-3">
+                        <div class="btn-row">
+                            <div class="col  custom-grid-item  fullscreen-col ">
+                                <button class="btn btn-secondary" id="full-screen">
+                                    <div class="holder">
+                                        <i class="icon icomoon-fullscreen"></i>
+                                        <span>Full Screen</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="custom-grid row" style="margin-top: 10px;">
-                    <div class="custom-grid-item col-md-6 col-xl-5">
+                    <div class="custom-grid-item col-md-6 col-xl-6">
                         <div class="search-input form-control">
                             <input type="text" class="custom-input" id="search-input" placeholder="Course, department, instructor">
                         </div>
                     </div>
-                    <div class="custom-grid-item dropdown-container col-md-6 col-xl-4">
+                    <div class="custom-grid-item dropdown-container col-md-6 col-xl-6">
                         <div class="dropdown searchEnable" data-control="checkbox-dropdown">
                             <label class="dropdown-label">Select Preset </label>
                             <div class="dropdown-list">
@@ -757,26 +766,6 @@
                                         </div>
                                     </button>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="custom-grid-item col-md-12 col-xl-3">
-                        <div class="btn-row">
-                            <div class="col">
-                                <button class="btn btn-transparent" type="button" data-toggle="modal" data-target="#newCourse">
-                                    <div class="holder">
-                                        <i class="icon icomoon-circle-with-plus-1"></i>
-                                        <span>New preset</span>
-                                    </div>
-                                </button>
-                            </div>
-                            <div class="col">
-                                <button class="btn btn-secondary" onclick="toggleFullScreen(document.body)">
-                                    <div class="holder">
-                                        <i class="icon icomoon-fullscreen"></i>
-                                        <span>Full Screen</span>
-                                    </div>
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -1012,8 +1001,7 @@
                                 <div class="lebel-mobile">
                                     Instructor
                                 </div>
-                                <div class="d-flex flex-wrap"><span class="instructor pr">
-                                Jane Cooper</span> <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
+                                <div class="d-flex flex-wrap"><span class="instructor pr">Jane Cooper</span> <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
                                 </div>
                             </div>
                         </td>
@@ -1068,7 +1056,7 @@
                 <img src="images/sad.jpg" alt="icon">
                 <h3>Sorry! We didn't find anything</h3>
                 <p>Please clear your previous search query and try again</p>
-                <button class="btn btn-secondary" onclick="toggleFullScreen(document.body)">
+                <button class="btn btn-secondary">
                     <div class="holder">
                         <i class="icon icomoon-spinner11"></i>
                         <span>Refresh</span>
@@ -1089,10 +1077,13 @@
                     <div class="col-custom desktop-only edit">
                         <button class="btn btn-transparent"><div class="holder"><i class="icon icomoon-pencil"></i><span> Backup</span></div></button>
                     </div>
-                    <div class="col-custom desktop-only add">
+                    <div class="col-custom new-preset">
                         <button class="btn btn-transparent" type="button" data-toggle="modal" data-target="#newCourse">
-                        <div class="holder"><i class="icon icomoon-circle-with-plus-1"></i><span> Backup</span></div>
-                        </button>
+                                    <div class="holder">
+                                        <i class="icon icomoon-circle-with-plus-1"></i>
+                                        <span>New preset</span>
+                                    </div>
+                            </button>
                     </div>
                     <div class="col-custom delete">
                         <button class="btn btn-primary"><div class="holder"><i class="icon icomoon-trashcan"></i><span> Delete</span></div></button>
@@ -1117,218 +1108,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid" id="formContent">
-            <a href="/" class="back-button"> <i class="icon icomoon-keyboard_arrow_left"></i> <span>Back</span></a>
-            <h2 class="form-h">New Course</h2>
-            <form action="#" method="POST" class="form-new-item">
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" id="title" name="title" class="custom-input" placeholder="Write a title" required>
-                </div>
-                <div class="form-group">
-                    <label for="instructor">Instructor</label>
-                    <div class="dropdown" data-control="checkbox-dropdown">
-                        <div class="dropdown" data-control="checkbox-dropdown">
-                            <select name="" id="" class="custum-select dropdown-label">
-                                <option value="">Select an instructor</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="category">Category</label>
-                    <div class="dropdown" data-control="checkbox-dropdown">
-                        <div class="dropdown" data-control="checkbox-dropdown">
-                            <select name="" id="" class="custum-select dropdown-label">
-                                <option value="">Select a category</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="icon">Icon</label>
-                    <div class="dropdown" data-control="checkbox-dropdown">
-                        <div class="dropdown" data-control="checkbox-dropdown">
-                            <select name="" id="" class="custum-select dropdown-label">
-                                <option value="">Select an icon</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="language">Original Language</label>
-                    <div class="dropdown" data-control="checkbox-dropdown">
-                        <div class="dropdown" data-control="checkbox-dropdown">
-                            <select name="" id="" class="custum-select dropdown-label">
-                                <option value="">Select a language</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="custom-checkbox dropdown-option">
-                        <input type="checkbox" name="instructor" value="Instructor 1">
-                        <span class="checkmark"></span>
-                        <div class="title">Ignore Prerequisite Information</div>
-                    </label>
-                </div>
-                <div class="form-group checkbox">
-                    <label class="custom-checkbox dropdown-option">
-                        <input type="checkbox" name="instructor" value="Instructor 1">
-                        <span class="checkmark"></span>
-                        <div class="title">Non-OVS Course</div>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea id="description" name="description" class="custom-input" placeholder="Write a description for the course"></textarea>
-                </div>
-                <div class="form-group">
-                    <h3>Export Content</h3>
-                    <input type="radio" id="notAvailable" name="exportContent" value="notAvailable" checked>
-                    <label class="custom-radio" for="notAvailable"><span></span>Not available on any of the pages</label>
-                </div>
-                <div class="form-group">
-                    <input type="radio" id="topLevelPages" name="exportContent" value="topLevelPages">
-                    <label class="custom-radio" for="topLevelPages"><span></span>Available only for top level pages</label>
-                </div>
-                <div class="form-group">
-                    <input type="radio" id="everyPage" name="exportContent" value="everyPage">
-                    <label class="custom-radio" for="everyPage"><span></span>Available on every page</label>
-                </div>
-                <div class="form-group">
-                    <h3>Syndicate Announcements</h3>
-                    <input type="radio" id="enableRss" name="syndicateAnnouncements" value="enableRss" checked>
-                    <label class="custom-radio" for="enableRss"><span></span>Enable Announcements syndication via <a href="#">RSS</a></label>
-                </div>
-                <div class="form-group">
-                    <input type="radio" id="disableRss" name="syndicateAnnouncements" value="disableRss">
-                    <label class="custom-radio" for="disableRss"><span></span>Disable Announcements syndication</label>
-                </div>
-                <div class="form-group">
-                    <h3>Access</h3>
-                    <input type="radio" id="public" name="access" value="public" checked>
-                    <label class="custom-radio" for="public"><span></span>Public</label>
-                </div>
-                <div class="form-group">
-                    <input type="radio" id="protected" name="access" value="protected">
-                    <label class="custom-radio" for="protected"><span></span>Protected</label>
-                </div>
-                <div class="form-group">
-                    <input type="radio" id="private" name="access" value="private">
-                    <label class="custom-radio" for="private"><span></span>Private</label>
-                </div>
-                <div class="form-group">
-                    <label class="custom-checkbox dropdown-option">
-                        <input type="checkbox" name="instructor" value="Instructor 1">
-                        <span class="checkmark"></span>
-                        <div class="title">Email me when new enrollments require approval</div>
-                        </label>
-                </div>
-                <div class="form-group">
-                    <label class="custom-checkbox dropdown-option">
-                        <input type="checkbox" name="instructor" value="Instructor 1">
-                        <span class="checkmark"></span>
-                        <div class="title">Hide this course from the Browse Courses list</div>
-                        </label>
-                </div>
-                <div class="form-group">
-                    <h3>Course Quota</h3>
-                    <input type="radio" id="defaultQuota" name="courseQuota" value="default" checked>
-                    <label class="custom-radio" for="defaultQuota"><span></span>Default (1853/467 MB)</label>
-                </div>
-                <div class="form-group">
-                    <input type="radio" id="unlimitedQuota" name="courseQuota" value="unlimited">
-                    <label class="custom-radio" for="unlimitedQuota"><span></span>Unlimited</label>
-                </div>
-
-                <div class="form-group">
-                    <h3>Max File Size</h3>
-                    <label for="maxFileSize">Default (1000 MB)</label>
-                    <input type="text" id="maxFileSize" name="maxFileSize" class="custom-input" placeholder="Maximum system allows 12 MB">
-                </div>
-                <div class="form-group button">
-                    <label for="notice">Notice</label>
-                    <textarea id="notice" name="notice" class="custom-input" placeholder="Write a notice for the course"></textarea>
-                </div>
-                <div class="form-actions">
-                    <a type="reset" class="btn btn-transparent" href="/"> <i class="icomoon-cancel-1"></i> <span>Cancel</span></a>
-                    <button type="submit" class="btn btn-primary"> <i class="icomoon-checkmark-1"></i> <span>Save</span></button>
-                </div>
-            </form>
-        </div>
-        <div class="modal fade" id="newCourse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="body">
-                            <h4>To create a preset, you need to specify its name</h4>
-                            <p>Please write the name of the preset</p>
-                        </div>
-                        <span>Preset name  </span>
-                        <input type="text" placeholder="Write the name of the preset">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Censel</button>
-                        <button type="button" class="btn btn-primary" type="button" data-toggle="modal" data-target="#newPreset">Create</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="newPreset" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="body">
-                            <h4>To create a preset, you need to specify its name 1</h4>
-                            <p>Please write the name of the preset</p>
-                        </div>
-                        <span>Preset name  </span>
-                        <input type="text" placeholder="Write the name of the preset">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Censel</button>
-                        <button type="button" class="btn btn-primary" type="button" data-toggle="modal" data-target="#nextStep">Create</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="nextStep" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="body">
-                            <i class="icomoon-checkmark-1"></i>
-                            <h4>Congratulations! You have created a new preset</h4>
-                            <p>Now it's available to you on the courses page</p>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" id="success" data-dismiss="modal">Continue viewing</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
-
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="js/libs.js"></script>
-    <script src="js/main.js"></script>
-
 </body>
 
 </html>

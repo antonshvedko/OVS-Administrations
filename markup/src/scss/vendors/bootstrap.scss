@@ -23218,29 +23218,6 @@ fieldset:disabled .btn {
     }
 }
 
-@font-face {
-    font-family: "icomoon";
-    src: url("../fonts/icomoon/icomoon.woff2?1uepxe") format("woff2"), url("../fonts/icomoon/icomoon.ttf?1uepxe") format("truetype"), url("../fonts/icomoon/icomoon.woff?1uepxe") format("woff"), url("../fonts/icomoon/icomoon.svg?1uepxe#icomoon") format("svg");
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-}
-
-[class^=icomoon-],
-[class*=" icomoon-"] {
-    /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: "icomoon" !important;
-    speak: never;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
 .icomoon-dice:before {
     content: "\e902";
 }

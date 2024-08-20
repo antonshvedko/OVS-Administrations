@@ -351,30 +351,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 })();
 
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-
-    var successButton = document.getElementById('success');
-    var modals = document.querySelectorAll('.modal');
-    var mainContent = document.getElementById('mainContent');
-    var formContent = document.getElementById('formContent');
-    formContent.style.display = 'none';
-
-    successButton.addEventListener('click', function() {
-
-        modals.forEach(function(modal) {
-            modal.style.display = 'none';
-        });
-
-        if (mainContent) {
-            mainContent.style.display = 'none';
-            formContent.style.display = 'block';
-        }
-    });
-});
-
 document.addEventListener('DOMContentLoaded', function() {
     var dropdownElement = document.querySelector('.dropdown-toggle');
     dropdownElement.addEventListener('click', function() {});
@@ -524,3 +500,43 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const fullScreenButton = document.getElementById('full-screen');
+
+    if (fullScreenButton) {
+        fullScreenButton.addEventListener('click', function() {
+            toggleFullScreen();
+        });
+    }
+});
+
+function toggleFullScreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+            console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        });
+    } else {
+        document.exitFullscreen();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const userView = document.getElementById('user-view');
+
+    if (userView) {
+        const radios = userView.querySelectorAll('input[type="radio"]');
+
+        radios.forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                changeUserView(this.value);
+            });
+        });
+    } else {
+        console.warn('Element with id "user-view" not found on the page.');
+    }
+});
+
+function changeUserView(state) {
+    console.log('TODO: Search for: ' + state);
+}

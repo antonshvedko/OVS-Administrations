@@ -1,1042 +1,1007 @@
-    // Media query for screens wider than 992px
-    @media (min-width: 1100px) {
-        // Side menu closed state
-        .side-menu-closed main {
-            padding-left: 98px !important;
-            transition: padding-left .3s; // Плавный переход
-        }
-        // Default main state
-        main {
-            padding-left: 250px !important;
-            transition: padding-left .3s; // Плавный переход
-        }
-        // Second level menu opened with side menu closed
-        .second-level-menu-opened.side-menu-closed main {
-            padding-left: 360px !important;
-            transition: padding-left .3s; // Плавный переход
-        }
+// General styles
+html {
+    height: 100%;
+    background-color: #f8f9fb;
+}
+
+main {
+    background-color: #f8f9fb;
+    padding-bottom: 190px !important;
+}
+
+// Media query for screens wider than 1100px
+@media (min-width: 1100px) {
+    .side-menu-closed main {
+        padding-left: 98px !important;
     }
-    
-    html {
-        height: 100%;
-        background-color: #f8f9fb;
-    }
-    
     main {
-        background-color: #f8f9fb;
-        padding-bottom: 190px !important;
+        padding-left: 250px !important;
     }
-    
-    .js-collapse-courses.show {
-        display: block;
+    .second-level-menu-opened.side-menu-closed main {
+        padding-left: 360px !important;
     }
-    
-    .btn-row {
-        display: flex;
-        flex-wrap: wrap;
+    // Apply transition for all padding-left changes
+    main,
+    .side-menu-closed main,
+    .second-level-menu-opened.side-menu-closed main {
+        transition: padding-left .3s;
+    }
+}
+
+// Button row styling with media queries
+.btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    @media (min-width: 1324px) {
+        margin: 0 -12px;
+        margin-bottom: 0;
+    }
+    @include media("<tablet") {
+        display: none;
+    }
+    .btn {
+        font-size: 14px;
+    }
+    .btn-transparent {
         @media (min-width: 1324px) {
+            max-width: 160px;
+        }
+    }
+    .col {
+        .btn {
             display: flex;
-            margin: 0 -12px;
+        }
+        padding: 0 10px;
+        margin-bottom: 10px;
+        &:last-child {
             margin-bottom: 0;
         }
-        @include media ("<tablet") {
-            display: none;
-        }
-        .btn {
-            font-size: 14px;
-        }
-        .btn-transparent {
-            @media (min-width: 1324px) {
-                max-width: 160px;
-            }
-        }
-        .col {
-            .btn {
-                display: flex;
-            }
-            padding: 0 10px;
-            margin-bottom: 10px;
-            &:last-child {
-                margin-bottom: 0;
-            }
-            @media (min-width: 1324px) {
-                padding: 0 12px;
-                margin-bottom: 0;
-            }
+        @media (min-width: 1324px) {
+            padding: 0 12px;
+            margin-bottom: 0;
         }
     }
-    
-    .fullscreen-col {
-        @media (max-width: 1200px) {
-            display: none;
-        }
+}
+
+// Fullscreen column hidden on screens smaller than 1200px
+.fullscreen-col {
+    @media (max-width: 1200px) {
+        display: none;
     }
-    
-    .users-main {
-        @media (max-width: 468px) {
-            .btn-group-toggle {
-                display: flex;
-                justify-content: space-between;
-                flex-wrap: wrap;
-            }
-        }
-        @media (max-width: 468px) {
-            .btn-group-toggle {
-                .btn {
-                    font-size: 12px !important;
-                }
-            }
-        }
+}
+
+// Users main section styling with media queries
+.users-main {
+    @media (max-width: 468px) {
         .btn-group-toggle {
-            position: relative;
-            padding-left: 0;
-            padding-right: 0;
-            @include media("<tablet") {}
-            .btn {
-                @include media("<tablet") {
-                    padding-left: 10px;
-                    padding-right: 10px;
-                    font-size: 14px;
-                    margin: 2px !important;
-                    &::after {
-                        display: none;
-                    }
-                }
-            }
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
     }
-    
+    @media (max-width: 468px) {
+        .btn-group-toggle .btn {
+            font-size: 12px !important;
+        }
+    }
     .btn-group-toggle {
         position: relative;
+        padding-left: 0;
+        padding-right: 0;
         @include media("<tablet") {}
-        .btn &::before {
-            position: absolute;
-            content: "";
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            height: 110%;
-            width: 102%;
-            background-color: #fff;
-            z-index: 0;
-            border-radius: 8px;
-        }
         .btn {
-            position: relative;
-            &::after {
-                position: relative;
-                content: "";
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                right: -3px;
-                height: 10px;
-                width: 1px;
-                background-color: #e6e6e8;
-            }
-            &:last-child {
+            @include media("<tablet") {
+                padding-left: 10px;
+                padding-right: 10px;
+                font-size: 14px;
+                margin: 2px !important;
                 &::after {
                     display: none;
                 }
             }
         }
     }
-    
-    .hover-table {
-        position: relative;
-        cursor: pointer;
-        &:hover .hover-popup {
-            display: block;
-        }
-    }
-    
-    .hover-trigger {
-        display: none !important;
-        @include media(">tablet") {
-            display: block !important;
-        }
-    }
-    
-    .hover-popup {
-        display: none;
+}
+
+// Button group toggle styling
+.btn-group-toggle {
+    position: relative;
+    @include media("<tablet") {}
+    .btn &::before {
         position: absolute;
-        bottom: 50px;
-        left: -120px;
-        padding: 10px;
+        content: "";
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 110%;
+        width: 102%;
         background-color: #fff;
+        z-index: 0;
         border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        white-space: nowrap;
-        z-index: 123;
-        &::before {
+    }
+    .btn {
+        position: relative;
+        &::after {
+            position: relative;
             content: "";
             position: absolute;
-            bottom: -10px;
-            right: 16px;
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 10px solid #fff;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -3px;
+            height: 10px;
+            width: 1px;
+            background-color: #e6e6e8;
         }
-        p {
+        &:last-child &::after {
+            display: none;
+        }
+    }
+}
+
+// Hover table styling
+.hover-table {
+    position: relative;
+    cursor: pointer;
+    &:hover .hover-popup {
+        display: block;
+    }
+}
+
+// Hover popup styling
+.hover-popup {
+    display: none;
+    position: absolute;
+    bottom: 50px;
+    left: -120px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    z-index: 123;
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        right: 16px;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #fff;
+    }
+    p {
+        margin-bottom: 0;
+        font-weight: bold;
+        padding-right: 8px;
+    }
+    div {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        &:last-child {
             margin-bottom: 0;
-            font-weight: bold;
-            padding-right: 8px;
-        }
-        div {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-            &:last-child {
-                margin-bottom: 0;
-            }
         }
     }
-    
-    .fullscreen main {
-        background: #fff;
-        height: 100%;
+}
+
+// Fullscreen main section styling
+.fullscreen main {
+    background: #fff;
+    height: 100%;
+}
+
+// Button edit row styling
+.button-edit-row {
+    display: none;
+    .desktop-only {
+        display: none !important;
     }
-    
+}
+
+// Has selected rows section with media queries
+.has-selected-rows {
     .button-edit-row {
-        display: none;
-        .desktop-only {
-            display: none !important;
+        display: block;
+        border-radius: 0 0 10px 10px;
+        background-color: #fff;
+        padding: 10px;
+        @include media(">desktop") {
+            padding: 24px 40px;
         }
-    }
-    
-    .has-selected-rows.item-rows-1 .button-edit-row {
-        .edit {
-            @include media("<desktop") {
-                display: block !important;
+        .btn {
+            background-color: #FAFAFA;
+            max-width: 206px;
+            &:hover,
+            &:focus {
+                background-color: #007bff;
+                color: #fff;
             }
-        }
-        .add {
-            @include media("<desktop") {
-                display: none !important;
-            }
-        }
-    }
-    
-    .has-selected-rows.item-rows-2 .button-edit-row {
-        .edit {
-            @include media("<desktop") {
-                display: none !important;
-            }
-        }
-        .add {
-            @include media("<desktop") {
-                display: block !important;
-            }
-        }
-    }
-    
-    .has-selected-rows {
-        .button-edit-row {
-            display: block;
-            border-radius: 0 0 10px 10px;
-            background-color: #fff;
-            padding: 10px;
-            @include media(">desktop") {
-                padding: 24px 40px;
-            }
-            .btn {
-                background-color: #FAFAFA;
-                max-width: 206px;
-                &:hover,
-                &:focus {
-                    background-color: #007bff;
+            &:hover .icon,
+            &:focus .icon {
+                @include media("<desktop") {
                     color: #fff;
                 }
-                &:hover .icon,
-                &:focus .icon {
-                    @include media("<desktop") {
-                        color: #fff;
-                    }
-                }
             }
-            .icon {
+        }
+        .icon {
+            @include media("<desktop") {
+                color: #007bff;
+            }
+            &.icomoon-trashcan {
                 @include media("<desktop") {
-                    color: #007bff;
+                    color: #fff;
                 }
-                &.icomoon-trashcan {
-                    @include media("<desktop") {
-                        color: #fff;
-                    }
-                }
-            }
-        }
-        .row-holder-button {
-            display: flex;
-            margin: 0 -12px;
-            .col-custom {
-                padding: 0 12px;
-            }
-            .checkboxControl {
-                display: flex;
-                align-items: center;
-                .title {
-                    padding-right: 10px;
-                    color: #8E8E93;
-                }
-                .check-box {
-                    margin-top: 6px;
-                }
-            }
-        }
-        .delete {
-            margin-left: auto;
-            .btn-primary {
-                background-color: #007bff;
             }
         }
     }
-    
-    .users-main {
-        .delete {
-            margin-left: 0;
+    .row-holder-button {
+        display: flex;
+        margin: 0 -12px;
+        .col-custom {
+            padding: 0 12px;
         }
         .checkboxControl {
-            margin-right: auto;
-        }
-        .row-holder-button {
-            flex-wrap: wrap;
-        }
-        .main-item-holder {
-            display: block !important;
-            .name {
-                padding-bottom: 4px;
+            display: flex;
+            align-items: center;
+            .title {
+                padding-right: 10px;
+                color: #8E8E93;
             }
-        }
-        .responsive-table__body__text.main-item::after {
-            right: 10px;
-        }
-        .input-control {
-            @include media(">tablet") {
-                display: none;
-            }
-            margin-top: 20px;
-        }
-    }
-    
-    .button-edit-row {
-        .btn {
-            @include media("<desktop") {
-                border-radius: 50% !important;
-                width: 44px;
-                height: 44px;
-                position: relative;
-                .icon {
-                    padding: 0;
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                }
-            }
-            span {
-                @include media("<desktop") {
-                    display: none;
-                }
+            .check-box {
+                margin-top: 6px;
             }
         }
     }
-    
-    .modal {
-        z-index: 1200090;
-    }
-    
-    .side-menu {
-        z-index: 100;
-    }
-    
-    .responsive-table {
-        .tablet-hide {
-            @include media("<tablet") {
-                display: none;
-            }
+    .delete {
+        margin-left: auto;
+        .btn-primary {
+            background-color: #007bff;
         }
     }
-    
-    .responsive-table__row {
-        @include media ("<tablet") {
-            border-bottom: none;
-            cursor: pointer;
-            transition: max-height 0.3s ease;
-            overflow: hidden;
-            max-height: 86px;
+}
+
+// Users main section continued
+.users-main {
+    .delete {
+        margin-left: 0;
+    }
+    .checkboxControl {
+        margin-right: auto;
+    }
+    .row-holder-button {
+        flex-wrap: wrap;
+    }
+    .main-item-holder {
+        display: block !important;
+        .name {
+            padding-bottom: 4px;
         }
     }
-    
-    .responsive-table__row.expanded {
-        max-height: 700px;
+    .responsive-table__body__text.main-item::after {
+        right: 10px;
     }
-    
-    .responsive-table__row .details {
-        display: none;
-    }
-    
-    .responsive-table__row.expanded .details {
-        display: block;
-    }
-    
-    .responsive-table__row {
-        @include media ("<desktop") {
-            padding: 16px;
-        }
-    }
-    
-    .dropdown-container {
-        @include media("<tablet") {
-            padding: 24px 16px !important;
-            background-color: #fff;
-            border-radius: 16px;
-        }
-        .mobile-buttons-holder {
-            padding-top: 32px;
-            display: none;
-            @include media("<tablet") {
-                display: block;
-            }
-            .btn {
-                display: flex;
-                justify-content: center;
-                &.btn-primary {
-                    width: 100%;
-                }
-            }
-        }
-    }
-    
-    .mobile-hide {
-        display: block;
-        @include media("<tablet") {
-            display: none;
-        }
-    }
-    
-    .mobile-show {
-        display: none;
-        @include media("<tablet") {
-            display: block;
-        }
-        &.title-2 {
-            padding-left: 10px;
-        }
-    }
-    
-    .responsive-table__head {
-        .expanded {
-            max-height: 64px;
-        }
-    }
-    
-    .lebel-mobile {
-        color: #C7C7CC;
-        padding-bottom: 14px;
+    .input-control {
         @include media(">tablet") {
             display: none;
         }
+        margin-top: 20px;
     }
-    
-    .mobile-holder {
+}
+
+// Modal styling
+.modal {
+    z-index: 1200090;
+}
+
+// Side menu z-index
+.side-menu {
+    z-index: 100;
+}
+
+// Responsive table styling
+.responsive-table {
+    .tablet-hide {
         @include media("<tablet") {
-            padding: 14px 30px 0;
-            width: 100%;
-            border-top: 1px solid #F2F2F7;
+            display: none;
         }
     }
-    /* Modal Styles */
-    
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 190000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0, 0, 0);
-        background-color: rgba(0, 0, 0, 0.4);
-        padding-top: 60px;
-        @include media("<tablet") {
-            padding: 330px 10px;
-        }
-    }
-    
-    .modal-content {
-        background-color: #fefefe;
-        margin: 10px auto;
-        padding: 14px;
-        border: 1px solid #888;
-        max-width: 470px;
-        border-radius: 16px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-    
-    .modal-header {
-        display: flex;
-        justify-content: flex-end;
-    }
-    
-    .modal-header .close {
-        color: #8E8E93;
-        background-color: transparent;
-        border: none;
-        font-size: 30px;
-        font-weight: bold;
+}
+
+// Responsive table row with media queries
+.responsive-table__row {
+    @include media("<tablet") {
+        border-bottom: none;
         cursor: pointer;
+        transition: max-height 0.3s ease;
+        overflow: hidden;
+        max-height: 86px;
     }
-    
-    .modal-body {
-        padding-bottom: 20px;
-        justify-content: center;
-        .body {
-            text-align: center;
-        }
-        p {
-            color: #8E8E93;
-        }
-        span {
-            text-align: left !important;
-            color: #8E8E93;
-            margin-bottom: 8px;
-            display: block;
-        }
-        .icomoon-checkmark-1 {
-            font-size: 30px;
-            color: #206BFF;
-            display: block;
-            padding-bottom: 30px;
-        }
+    &.expanded {
+        max-height: 700px;
     }
-    
-    #formContent {
+    .details {
         display: none;
+        &.expanded {
+            display: block;
+        }
     }
-    
-    .modal-footer {
-        display: flex;
-        justify-content: center;
-        .btn.btn-secondary {
-            width: auto;
+    @include media("<desktop") {
+        padding: 16px;
+    }
+}
+
+// Dropdown container styling with media queries
+.dropdown-container {
+    @include media("<tablet") {
+        padding: 24px 16px !important;
+        background-color: #fff;
+        border-radius: 16px;
+    }
+    .mobile-buttons-holder {
+        padding-top: 32px;
+        display: none;
+        @include media("<tablet") {
+            display: block;
         }
         .btn {
-            min-width: 166px;
-            @include media("<desktop") {
-                margin: 0 10px;
-                min-width: 120px;
-            }
-            @include media(">desktop") {
-                margin: 0 30px;
-            }
-        }
-    }
-    
-    .back-button {
-        display: block;
-        color: #007bff;
-        text-decoration: none;
-        margin-bottom: 20px;
-    }
-    
-    h1 {
-        margin-bottom: 20px;
-    }
-    
-    .form-group {
-        margin-bottom: 20px;
-    }
-    
-    textarea {
-        resize: vertical;
-    }
-    
-    input[type="checkbox"],
-    input[type="radio"] {
-        margin-right: 10px;
-    }
-    
-    h3 {
-        margin-top: 30px;
-    }
-    
-    .form-actions {
-        display: flex;
-        justify-content: flex-start;
-        gap: 10px;
-    }
-    
-    .cancel-button,
-    .save-button {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        font-size: 14px;
-        cursor: pointer;
-    }
-    
-    .cancel-button {
-        background-color: #f0f0f0;
-        color: #333;
-    }
-    
-    .save-button {
-        background-color: #007bff;
-        color: white;
-    }
-    
-    .back-button {
-        display: flex;
-        align-items: center;
-        .icon {
-            font-size: 30px;
-        }
-    }
-    
-    .form-new-item {
-        padding: 24px;
-        background-color: #fff;
-        border-radius: 16px;
-        label {
-            color: #C7C7CC;
-            font-size: 14px;
-            margin-bottom: 6px;
-        }
-        .custom-radio {
-            color: #000;
-        }
-        .form-group {
-            max-width: 478px;
-            .custom-checkbox {
-                display: flex;
-                align-items: center;
-                .title {
-                    padding-left: 10px;
-                    color: #000;
-                }
-            }
-        }
-        .form-actions {
-            .btn {
-                max-width: 124px;
-            }
-            .btn-transparent {
-                background-color: #EAF5FF;
-            }
-        }
-        h3 {
-            font-size: 14px;
-            color: #C7C7CC;
-        }
-    }
-    
-    .form-h {
-        font-size: 18px;
-    }
-    
-    .responsive-table__body__text.main-item {
-        position: relative;
-        @include media ("<tablet") {
-            &::after {
-                content: "\e901";
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                right: -10px;
-                /* use !important to prevent issues with browser extensions that change fonts */
-                font-family: 'icomoon' !important;
-                speak: never;
-                font-style: normal;
-                font-weight: normal;
-                font-variant: normal;
-                text-transform: none;
-                line-height: 1;
-                /* Better Font Rendering =========== */
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-            }
-        }
-    }
-    
-    .side-menu.offcanvas-lg {
-        z-index: 4244;
-    }
-    
-    .header {
-        .search-input {
-            width: 20%;
-            position: relative;
-            @include media("<tablet") {
-                width: 50%;
-                position: absolute;
-                top: 50%;
-                left: 60px;
-                transform: translateY(-50%);
-                display: none;
-            }
-            &::before {
-                content: "";
-            }
-            button {
-                position: absolute;
-                top: 50%;
-                font-size: 20px;
-                transform: translateY(-50%);
-                left: 16px;
-                background-color: transparent;
-                border: none;
-                color: #8e8e93;
-                transition: color .3s;
-                &:hover {
-                    color: #000;
-                }
-            }
-        }
-    }
-    
-    @media (min-width: 768px) {
-        .users .responsive-table__row {
-            grid-template-columns: 2fr 2fr 1fr 2fr 2fr;
-        }
-    }
-    
-    ////!!!!
-    .users .responsive-table__row {}
-    
-    .item-rows-2 {
-        .users-main {
-            .none-2 {
-                display: none;
-            }
-        }
-    }
-    
-    .users-main {
-        .btn-group-toggle {
-            @include media("<tablet") {
+            display: flex;
+            justify-content: center;
+            &.btn-primary {
                 width: 100%;
-                padding: 4px;
-                .btn {
-                    margin: 4px;
-                }
-            }
-        }
-        .mobile-buttons-holder {
-            .custom-grid .col-md-6 {
-                max-width: 50%;
-            }
-        }
-        .custom-grid {
-            @include media(">desktop") {
-                margin: 0 -5px;
-            }
-        }
-        .button-edit-row {}
-        .custom-grid-item {
-            @include media(">tablet") {
-                padding: 5px !important;
-            }
-            &.pall-0 {
-                padding: 0 !important;
-            }
-        }
-        .btn-row {
-            margin: 0;
-        }
-        .dropdown-container {
-            @include media("<tablet") {
-                padding: 10px !important;
             }
         }
     }
-    
-    .users .email {
-        word-break: break-all;
+}
+
+// Mobile visibility toggles
+.mobile-hide {
+    display: block;
+    @include media("<tablet") {
+        display: none;
     }
-    
-    .custom-grid-item {
-        &.pl-0 {
-            padding-left: 0;
-        }
-        &.pr-0 {
-            padding-right: 0 !important;
-        }
-        &.pb-0 {
-            @include media("<desktop") {
-                padding-bottom: 0 !important;
-            }
-        }
-        .mobile-hide {
-            @include media("<tablet") {
-                display: none;
-            }
-        }
-    }
-    
-    .filterOpen {
-        margin-top: 16px;
-        color: #000;
-        font-size: 18px;
-        padding: 20px 16px;
-        background-color: #fff;
-        border-radius: 16px;
+}
+
+.mobile-show {
+    display: none;
+    @include media("<tablet") {
         display: block;
-        position: relative;
-        &.active {
-            border-radius: 16px 16px 0 0;
+    }
+    &.title-2 {
+        padding-left: 10px;
+    }
+}
+
+// Responsive table head expanded styling
+.responsive-table__head .expanded {
+    max-height: 64px;
+}
+
+// Mobile label styling
+.lebel-mobile {
+    color: #C7C7CC;
+    padding-bottom: 14px;
+    @include media(">tablet") {
+        display: none;
+    }
+}
+
+// Mobile holder padding adjustment
+.mobile-holder {
+    @include media("<tablet") {
+        padding: 14px 30px 0;
+        width: 100%;
+        border-top: 1px solid #F2F2F7;
+    }
+}
+
+// Modal styles
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 190000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+    @include media("<tablet") {
+        padding: 330px 10px;
+    }
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10px auto;
+    padding: 14px;
+    border: 1px solid #888;
+    max-width: 470px;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-header .close {
+    color: #8E8E93;
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding-bottom: 20px;
+    justify-content: center;
+    .body {
+        text-align: center;
+    }
+    p {
+        color: #8E8E93;
+    }
+    span {
+        text-align: left !important;
+        color: #8E8E93;
+        margin-bottom: 8px;
+        display: block;
+    }
+    .icomoon-checkmark-1 {
+        font-size: 30px;
+        color: #206BFF;
+        display: block;
+        padding-bottom: 30px;
+    }
+}
+
+// Form content hidden by default
+#formContent {
+    display: none;
+}
+
+// Modal footer styling
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    .btn.btn-secondary {
+        width: auto;
+    }
+    .btn {
+        min-width: 166px;
+        @include media("<desktop") {
+            margin: 0 10px;
+            min-width: 120px;
         }
-        .icon {
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            &::after {
-                content: "";
-                position: absolute;
-                width: 32px;
-                height: 32px;
-                background-color: #FAFAFA;
-                top: 50%;
-                left: 50%;
-                opacity: 1;
-                border-radius: 50%;
-                z-index: -1;
-                transform: translate(-50%, -50%);
-            }
+        @include media(">desktop") {
+            margin: 0 30px;
         }
     }
-    
-    .filter-container {
-        margin-left: 0;
-        margin-right: 0;
+}
+
+// Back button styling
+.back-button {
+    display: block;
+    color: #007bff;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+// Form group styling
+.form-group {
+    margin-bottom: 20px;
+}
+
+// Textarea resizing enabled
+textarea {
+    resize: vertical;
+}
+
+// Checkbox and radio input margin adjustment
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+// Heading styles
+h1 {
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin-top: 30px;
+}
+
+// Form actions styling
+.form-actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+// Button styling for cancel and save buttons
+.cancel-button,
+.save-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cancel-button {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.save-button {
+    background-color: #007bff;
+    color: white;
+}
+
+// Back button styling with icon
+.back-button {
+    display: flex;
+    align-items: center;
+    .icon {
+        font-size: 30px;
     }
-    
-    .dropdown-container.filter-container {}
-    
-    @media (min-width: 992px) {
-        .filterOpen {
-            display: none;
-        }
-    }
-    
-    @media (max-width: 992px) {
-        .filter-container {
-            display: none;
-        }
-        .filter-container.active {
-            display: block;
-            background: #fff;
-            border-radius: 0 0 16px 16px;
-            padding: 10px;
-        }
-    }
-    
-    .check-box {
-        input[type="checkbox"] {
-            position: relative;
-            appearance: none;
-            width: 50px;
-            height: 30px;
-            background: #ccc;
-            border-radius: 50px;
-            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            transition: 0.4s;
-        }
-        input:checked[type="checkbox"] {
-            background: #34C759;
-        }
-        input[type="checkbox"]::after {
-            position: absolute;
-            content: "";
-            width: 26px;
-            height: 26px;
-            top: 50%;
-            left: 2px;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-            transform: translateY(-50%);
-            transition: 0.4s;
-        }
-        input:checked[type="checkbox"]::after {
-            left: calc(50% - 4px);
-        }
-    }
-    
-    .filter-container {
-        .filter-title {
-            margin-bottom: 30px;
-        }
-    }
-    
-    .icon-row {
-        margin: 0 -4px;
-        .icon {
-            padding: 0 4px 4px;
-            font-size: 18px;
-            color: #C7C7CC;
-            &.red {
-                color: #FF3B30;
-            }
-            &.green {
-                color: #34C759;
-            }
-            &.blue {
-                color: #206BFF;
-            }
-        }
-    }
-    
-    .total-count {
+}
+
+// New item form styling
+.form-new-item {
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 16px;
+    label {
+        color: #C7C7CC;
         font-size: 14px;
-        color: #8e8e93;
-        padding-top: 10px;
-        margin-bottom: -20px;
+        margin-bottom: 6px;
     }
-    
-    .pagination-container {
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        font-family: Arial, sans-serif;
-        color: #666;
-        .pagination-info {
-            margin-right: 15px;
-            font-size: 14px;
-        }
-        .pagination-controls {
+    .custom-radio {
+        color: #000;
+    }
+    .form-group {
+        max-width: 478px;
+        .custom-checkbox {
             display: flex;
             align-items: center;
-            .page-btn {
-                background: none;
-                border: none;
-                color: #666;
-                font-size: 14px;
-                margin: 0 5px;
-                cursor: pointer;
-                padding: 5px;
-                transition: color 0.3s ease;
-                &:hover {
-                    color: #333;
-                }
-                &.disabled {
-                    color: #aaa;
-                    cursor: not-allowed;
-                }
-            }
-            .page-input {
-                width: 30px;
-                text-align: center;
-                font-size: 14px;
-                border: none;
-                border-radius: 0;
-                border-top: none;
-                border-left: none;
-                border-right: none;
-                border-bottom: 1px solid #333;
-                color: #333;
-                margin: 0 5px;
-                padding: 0;
-                background: none;
-                outline: none;
-                &:focus {
-                    border-color: #007bff;
-                    outline: none !important;
-                }
+            .title {
+                padding-left: 10px;
+                color: #000;
             }
         }
     }
-    
-    .pagination-control {
-        .page-btn {
-            position: relative;
+    .form-actions .btn {
+        max-width: 124px;
+    }
+    .btn-transparent {
+        background-color: #EAF5FF;
+    }
+    h3 {
+        font-size: 14px;
+        color: #C7C7CC;
+    }
+}
+
+// Form heading styling
+.form-h {
+    font-size: 18px;
+}
+
+// Responsive table text main item styling with media queries
+.responsive-table__body__text.main-item {
+    position: relative;
+    @include media("<tablet") {
+        &::after {
+            content: "\e901";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -10px;
+            font-family: 'icomoon' !important;
+            speak: never;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
     }
-    
-    @keyframes pulse {
-        0% {
+}
+
+// Side menu offcanvas styling
+.side-menu.offcanvas-lg {
+    z-index: 4244;
+}
+
+// Header search input styling with media queries
+.header .search-input {
+    width: 20%;
+    position: relative;
+    @include media("<tablet") {
+        width: 50%;
+        position: absolute;
+        top: 50%;
+        left: 60px;
+        transform: translateY(-50%);
+        display: none;
+    }
+    &::before {
+        content: "";
+    }
+    button {
+        position: absolute;
+        top: 50%;
+        font-size: 20px;
+        transform: translateY(-50%);
+        left: 16px;
+        background-color: transparent;
+        border: none;
+        color: #8e8e93;
+        transition: color .3s;
+        &:hover {
+            color: #000;
+        }
+    }
+}
+
+// Users table grid adjustment on wider screens
+@media (min-width: 768px) {
+    .users .responsive-table__row {
+        grid-template-columns: 2fr 2fr 1fr 2fr 2fr;
+    }
+}
+
+// Item rows styling
+.item-rows-2 {
+    .users-main .none-2 {
+        display: none;
+    }
+}
+
+// Users main section continued
+.users-main {
+    .btn-group-toggle {
+        @include media("<tablet") {
+            width: 100%;
+            padding: 4px;
+            .btn {
+                margin: 4px;
+            }
+        }
+    }
+    .mobile-buttons-holder .custom-grid .col-md-6 {
+        max-width: 50%;
+    }
+    .custom-grid {
+        @include media(">desktop") {
+            margin: 0 -5px;
+        }
+    }
+    .button-edit-row {}
+    .custom-grid-item {
+        @include media(">tablet") {
+            padding: 5px !important;
+        }
+        &.pall-0 {
+            padding: 0 !important;
+        }
+    }
+    .btn-row {
+        margin: 0;
+    }
+    .dropdown-container {
+        @include media("<tablet") {
+            padding: 10px !important;
+        }
+    }
+}
+
+// Email word-break styling
+.users .email {
+    word-break: break-all;
+}
+
+// Custom grid item padding adjustments
+.custom-grid-item {
+    &.pl-0 {
+        padding-left: 0;
+    }
+    &.pr-0 {
+        padding-right: 0 !important;
+    }
+    &.pb-0 {
+        @include media("<desktop") {
+            padding-bottom: 0 !important;
+        }
+    }
+    .mobile-hide {
+        @include media("<tablet") {
+            display: none;
+        }
+    }
+}
+
+// Filter open styling
+.filterOpen {
+    margin-top: 16px;
+    color: #000;
+    font-size: 18px;
+    padding: 20px 16px;
+    background-color: #fff;
+    border-radius: 16px;
+    display: block;
+    position: relative;
+    &.active {
+        border-radius: 16px 16px 0 0;
+    }
+    .icon {
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        &::after {
+            content: "";
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            background-color: #FAFAFA;
+            top: 50%;
+            left: 50%;
             opacity: 1;
-        }
-        50% {
-            opacity: 0.5;
-        }
-        100% {
-            opacity: 1;
+            border-radius: 50%;
+            z-index: -1;
+            transform: translate(-50%, -50%);
         }
     }
-    
-    .animate-pulse {
-        animation: pulse 1.5s infinite ease-in-out;
+}
+
+// Filter container styling
+.filter-container {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+// Filter container with media queries
+@media (min-width: 992px) {
+    .filterOpen {
+        display: none;
     }
-    
-    .skeleton-item {
-        background-color: #8e8e93;
-        opacity: 0.1;
-        margin: 12px 0;
+}
+
+@media (max-width: 992px) {
+    .filter-container {
+        display: none;
     }
-    
-    .item-per-page {
+    .filter-container.active {
+        display: block;
+        background: #fff;
+        border-radius: 0 0 16px 16px;
+        padding: 10px;
+    }
+}
+
+// Checkbox styling with transitions
+.check-box {
+    input[type="checkbox"] {
+        position: relative;
+        appearance: none;
+        width: 50px;
+        height: 30px;
+        background: #ccc;
+        border-radius: 50px;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: 0.4s;
+    }
+    input:checked[type="checkbox"] {
+        background: #34C759;
+    }
+    input[type="checkbox"]::after {
+        position: absolute;
+        content: "";
+        width: 26px;
+        height: 26px;
+        top: 50%;
+        left: 2px;
+        background: #fff;
+        border-radius: 50%;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        transform: translateY(-50%);
+        transition: 0.4s;
+    }
+    input:checked[type="checkbox"]::after {
+        left: calc(50% - 4px);
+    }
+}
+
+// Filter container title margin adjustment
+.filter-container .filter-title {
+    margin-bottom: 30px;
+}
+
+// Icon row styling
+.icon-row {
+    margin: 0 -4px;
+    .icon {
+        padding: 0 4px 4px;
+        font-size: 18px;
+        color: #C7C7CC;
+        &.red {
+            color: #FF3B30;
+        }
+        &.green {
+            color: #34C759;
+        }
+        &.blue {
+            color: #206BFF;
+        }
+    }
+}
+
+// Total count text styling
+.total-count {
+    font-size: 14px;
+    color: #8e8e93;
+    padding-top: 10px;
+    margin-bottom: -20px;
+}
+
+// Pagination container styling
+.pagination-container {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    color: #666;
+    .pagination-info {
+        margin-right: 15px;
+        font-size: 14px;
+    }
+    .pagination-controls {
         display: flex;
         align-items: center;
-        .title {
-            width: 140px;
-            padding-right: 5px;
+        .page-btn {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 14px;
+            margin: 0 5px;
+            cursor: pointer;
+            padding: 5px;
+            transition: color 0.3s ease;
+            &:hover {
+                color: #333;
+            }
+            &.disabled {
+                color: #aaa;
+                cursor: not-allowed;
+            }
         }
-        select {
-            background-color: transparent;
-            padding: 0px;
+        .page-input {
+            width: 30px;
+            text-align: center;
+            font-size: 14px;
+            border: none;
+            border-radius: 0;
             border-top: none;
             border-left: none;
             border-right: none;
-            border-bottom: 1px solid #000;
-            max-width: 40px;
+            border-bottom: 1px solid #333;
+            color: #333;
+            margin: 0 5px;
+            padding: 0;
+            background: none;
+            outline: none;
+            &:focus {
+                border-color: #007bff;
+                outline: none !important;
+            }
         }
     }
-    
-    .control-page {
+}
+
+// Pulse animation for loading states
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.animate-pulse {
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+// Skeleton item styling for loading placeholders
+.skeleton-item {
+    background-color: #8e8e93;
+    opacity: 0.1;
+    margin: 12px 0;
+}
+
+// Items per page selector styling
+.item-per-page {
+    display: flex;
+    align-items: center;
+    .title {
+        width: 140px;
+        padding-right: 5px;
+    }
+    select {
+        background-color: transparent;
+        padding: 0px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid #000;
+        max-width: 40px;
+    }
+}
+
+// Control page layout styling
+.control-page {
+    display: flex;
+}
+
+// Hide elements when there are no search results
+.nonsearchresults {
+    &.responsive-table,
+    &.total-count,
+    &.control-page,
+    &.button-edit-row {
+        display: none;
+    }
+}
+
+// Courses main dropdown list adjustment
+.courses-main .dropdown .dropdown-list {
+    left: -8px !important;
+}
+
+// Error message styling
+.error {
+    display: none;
+    &.active {
         display: flex;
     }
-    
-    .nonsearchresults {
-        &.responsive-table {
-            display: none;
-        }
-        &.total-count {
-            display: none;
-        }
-        &.control-page {
-            display: none;
-        }
-        &.button-edit-row {
-            display: none;
-        }
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    justify-content: center;
+    border-radius: 16px;
+    padding: 40px;
+    img {
+        max-width: 40px;
     }
-    
-    .courses-main {
-        .dropdown .dropdown-list {
-            left: -8px !important;
-        }
+    .btn {
+        max-width: 130px;
     }
-    
-    .error {
-        display: none;
-        &.active {
-            display: flex;
-        }
-        flex-direction: column;
-        align-items: center;
-        background-color: #fff;
-        justify-content: center;
-        border-radius: 16px;
-        padding: 40px;
-        img {
-            max-width: 40px;
-        }
-        .btn {
-            max-width: 130px;
-        }
-    }
+}
+
+.fullscreen-col {
+    max-width: 172px;
+    margin-left: auto;
+}
+
+// Item rows 2 section styling
+.item-rows-2 .courses-main .new-preset {
+    display: block !important;
+}
+
+// Courses main section preset styling
+.courses-main .new-preset {
+    display: none !important;
+}

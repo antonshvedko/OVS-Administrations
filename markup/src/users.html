@@ -3,6 +3,7 @@
 
 <head>
     //= layout/head.html
+    <script src="js/users.js"></script>
 </head>
 
 <body class="side-menu-closed">
@@ -601,21 +602,33 @@
         <div class="container-fluid users-main" id="mainContent">
             <div class=" ">
                 <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group-toggle custom-radio-group" data-toggle="buttons">
+                    <div class="btn-group-toggle custom-radio-group" data-toggle="buttons" id="user-view">
                         <label class="btn custom-btn active">
-                            <input type="radio" name="options" id="option1" autocomplete="off" checked> All users
+                            <input type="radio" name="options" id="option1" autocomplete="off" value="All users"> All users
                         </label>
                         <label class="btn custom-btn">
-                            <input type="radio" name="options" id="option2" autocomplete="off"> Admin pinned
+                            <input type="radio" name="options" id="option2" autocomplete="off" value="Admin pinned"> Admin pinned
                         </label>
                         <label class="btn custom-btn">
-                            <input type="radio" name="options" id="option3" autocomplete="off"> Pinned for me
+                            <input type="radio" name="options" id="option3" autocomplete="off" value="Pinned for me"> Pinned for me
                         </label>
+                    </div>
+                    <div class="custom-grid-item col-md-2 col-xl-2 ">
+                        <div class="btn-row">
+                            <div class="col  custom-grid-item  fullscreen-col pr-0">
+                                <button class="btn btn-secondary" id="full-screen">
+                                    <div class="holder">
+                                        <i class="icon icomoon-fullscreen"></i>
+                                        <span>Full Screen</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="custom-grid-item col-12 pall-0"><a href="#" class="filterOpen"><i class="icomoon-equalizer"></i> Filter <span><i class="icon icomoon-keyboard_arrow_down"></i></span></a> </div>
                 <div class="custom-grid row dropdown-container filter-container">
-                    <div class="custom-grid-item col-12 col-lg-6 col-xl-5 pb-0">
+                    <div class="custom-grid-item col-12 col-lg-6 col-xl-6 pb-0">
                         <div class="custom-grid">
                             <div class="custom-grid-item col-12 col-xl-6 mobile-hide">
                                 <div class="search-input form-control">
@@ -656,7 +669,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="custom-grid-item dropdown-container col-12 col-lg-6 col-xl-5">
+                    <div class="custom-grid-item dropdown-container col-12 col-lg-6 col-xl-6">
                         <div class="custom-grid">
                             <div class="custom-grid-item col-12 col-xl-6">
                                 <div class="dropdown searchEnable" id="user-status" data-control="checkbox-dropdown">
@@ -752,18 +765,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="custom-grid-item col-md-2 col-xl-2 ">
-                        <div class="btn-row">
-                            <div class="col  custom-grid-item  fullscreen-col pr-0">
-                                <button class="btn btn-secondary" onclick="toggleFullScreen(document.body)">
-                                    <div class="holder">
-                                        <i class="icon icomoon-fullscreen"></i>
-                                        <span>Full Screen</span>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="search-input form-control input-control">
@@ -804,10 +805,17 @@
                 <tbody class="responsive-table__body">
                 </tbody>
             </table>
-            <!-- <div class="error">
-                <img src="images/sad_face_icon_transparent.png" alt="icon">
-                <i class="icomoon-sad1"></i>
-            </div> -->
+            <div class="error">
+                <img src="images/sad.jpg" alt="icon">
+                <h3>Sorry! We didn't find anything</h3>
+                <p>Please clear your previous search query and try again</p>
+                <button class="btn btn-secondary">
+                    <div class="holder">
+                        <i class="icon icomoon-spinner11"></i>
+                        <span>Refresh</span>
+                    </div>
+                </button>
+            </div>
             <div class="button-edit-row">
                 <div class="row-holder-button">
                     <div class="col-custom none-2">
@@ -969,7 +977,6 @@
                     <input type="radio" id="unlimitedQuota" name="courseQuota" value="unlimited">
                     <label class="custom-radio" for="unlimitedQuota"><span></span>Unlimited</label>
                 </div>
-
                 <div class="form-group">
                     <h3>Max File Size</h3>
                     <label for="maxFileSize">Default (1000 MB)</label>
@@ -1049,14 +1056,6 @@
             </div>
         </div>
     </main>
-
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="js/libs.js"></script>
-    <script src="js/main.js"></script>
-
 </body>
 
 </html>

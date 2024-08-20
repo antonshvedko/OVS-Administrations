@@ -28672,28 +28672,6 @@ fieldset:disabled .btn {
     display: none !important;
   }
 }
-@font-face {
-  font-family: "icomoon";
-  src: url("../fonts/icomoon/icomoon.woff2?1uepxe") format("woff2"), url("../fonts/icomoon/icomoon.ttf?1uepxe") format("truetype"), url("../fonts/icomoon/icomoon.woff?1uepxe") format("woff"), url("../fonts/icomoon/icomoon.svg?1uepxe#icomoon") format("svg");
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
-[class^=icomoon-],
-[class*=" icomoon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: "icomoon" !important;
-  speak: never;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 .icomoon-dice:before {
   content: "";
 }
@@ -30288,22 +30266,6 @@ input[type=radio]:checked + .custom-radio span::after, input[type=radio]:checked
   }
 }
 
-@media (min-width: 1100px) {
-  .side-menu-closed main {
-    padding-left: 98px !important;
-    transition: padding-left 0.3s;
-  }
-
-  main {
-    padding-left: 250px !important;
-    transition: padding-left 0.3s;
-  }
-
-  .second-level-menu-opened.side-menu-closed main {
-    padding-left: 360px !important;
-    transition: padding-left 0.3s;
-  }
-}
 html {
   height: 100%;
   background-color: #f8f9fb;
@@ -30314,17 +30276,31 @@ main {
   padding-bottom: 190px !important;
 }
 
-.js-collapse-courses.show {
-  display: block;
-}
+@media (min-width: 1100px) {
+  .side-menu-closed main {
+    padding-left: 98px !important;
+  }
 
+  main {
+    padding-left: 250px !important;
+  }
+
+  .second-level-menu-opened.side-menu-closed main {
+    padding-left: 360px !important;
+  }
+
+  main,
+.side-menu-closed main,
+.second-level-menu-opened.side-menu-closed main {
+    transition: padding-left 0.3s;
+  }
+}
 .btn-row {
   display: flex;
   flex-wrap: wrap;
 }
 @media (min-width: 1324px) {
   .btn-row {
-    display: flex;
     margin: 0 -12px;
     margin-bottom: 0;
   }
@@ -30423,7 +30399,7 @@ main {
   width: 1px;
   background-color: #e6e6e8;
 }
-.btn-group-toggle .btn:last-child::after {
+.btn-group-toggle .btn:last-child .btn-group-toggle .btn::after {
   display: none;
 }
 
@@ -30433,15 +30409,6 @@ main {
 }
 .hover-table:hover .hover-popup {
   display: block;
-}
-
-.hover-trigger {
-  display: none !important;
-}
-@media (min-width: 769px) {
-  .hover-trigger {
-    display: block !important;
-  }
 }
 
 .hover-popup {
@@ -30491,28 +30458,6 @@ main {
 }
 .button-edit-row .desktop-only {
   display: none !important;
-}
-
-@media (max-width: 1023px) {
-  .has-selected-rows.item-rows-1 .button-edit-row .edit {
-    display: block !important;
-  }
-}
-@media (max-width: 1023px) {
-  .has-selected-rows.item-rows-1 .button-edit-row .add {
-    display: none !important;
-  }
-}
-
-@media (max-width: 1023px) {
-  .has-selected-rows.item-rows-2 .button-edit-row .edit {
-    display: none !important;
-  }
-}
-@media (max-width: 1023px) {
-  .has-selected-rows.item-rows-2 .button-edit-row .add {
-    display: block !important;
-  }
 }
 
 .has-selected-rows .button-edit-row {
@@ -30601,27 +30546,6 @@ main {
   }
 }
 
-@media (max-width: 1023px) {
-  .button-edit-row .btn {
-    border-radius: 50% !important;
-    width: 44px;
-    height: 44px;
-    position: relative;
-  }
-  .button-edit-row .btn .icon {
-    padding: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-}
-@media (max-width: 1023px) {
-  .button-edit-row .btn span {
-    display: none;
-  }
-}
-
 .modal {
   z-index: 1200090;
 }
@@ -30645,19 +30569,15 @@ main {
     max-height: 86px;
   }
 }
-
 .responsive-table__row.expanded {
   max-height: 700px;
 }
-
 .responsive-table__row .details {
   display: none;
 }
-
-.responsive-table__row.expanded .details {
+.responsive-table__row .details.expanded {
   display: block;
 }
-
 @media (max-width: 1023px) {
   .responsive-table__row {
     padding: 16px;
@@ -30731,7 +30651,6 @@ main {
   }
 }
 
-/* Modal Styles */
 .modal {
   display: none;
   position: fixed;
@@ -30741,7 +30660,6 @@ main {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: black;
   background-color: rgba(0, 0, 0, 0.4);
   padding-top: 60px;
 }
@@ -30831,10 +30749,6 @@ main {
   margin-bottom: 20px;
 }
 
-h1 {
-  margin-bottom: 20px;
-}
-
 .form-group {
   margin-bottom: 20px;
 }
@@ -30846,6 +30760,10 @@ textarea {
 input[type=checkbox],
 input[type=radio] {
   margin-right: 10px;
+}
+
+h1 {
+  margin-bottom: 20px;
 }
 
 h3 {
@@ -30912,7 +30830,7 @@ h3 {
 .form-new-item .form-actions .btn {
   max-width: 124px;
 }
-.form-new-item .form-actions .btn-transparent {
+.form-new-item .btn-transparent {
   background-color: #EAF5FF;
 }
 .form-new-item h3 {
@@ -30934,7 +30852,6 @@ h3 {
     top: 50%;
     transform: translateY(-50%);
     right: -10px;
-    /* use !important to prevent issues with browser extensions that change fonts */
     font-family: "icomoon" !important;
     speak: never;
     font-style: normal;
@@ -30942,7 +30859,6 @@ h3 {
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-    /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -31218,10 +31134,6 @@ h3 {
   outline: none !important;
 }
 
-.pagination-control .page-btn {
-  position: relative;
-}
-
 @-webkit-keyframes pulse {
   0% {
     opacity: 1;
@@ -31278,16 +31190,7 @@ h3 {
   display: flex;
 }
 
-.nonsearchresults.responsive-table {
-  display: none;
-}
-.nonsearchresults.total-count {
-  display: none;
-}
-.nonsearchresults.control-page {
-  display: none;
-}
-.nonsearchresults.button-edit-row {
+.nonsearchresults.responsive-table, .nonsearchresults.total-count, .nonsearchresults.control-page, .nonsearchresults.button-edit-row {
   display: none;
 }
 
@@ -31312,6 +31215,19 @@ h3 {
 }
 .error .btn {
   max-width: 130px;
+}
+
+.fullscreen-col {
+  max-width: 172px;
+  margin-left: auto;
+}
+
+.item-rows-2 .courses-main .new-preset {
+  display: block !important;
+}
+
+.courses-main .new-preset {
+  display: none !important;
 }
 
 .btn {
@@ -31463,8 +31379,8 @@ h3 {
   font-style: normal;
   font-display: block;
 }
-[class^=icon-],
-[class*=" icon-"] {
+[class^=icomoon-],
+[class*=" icomoon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "icomoon" !important;
   speak: never;
