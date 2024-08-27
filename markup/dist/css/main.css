@@ -30345,7 +30345,6 @@ main {
   .users-main .btn-group-toggle {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
   }
 }
 @media (max-width: 468px) {
@@ -30372,6 +30371,11 @@ main {
 
 .btn-group-toggle {
   position: relative;
+}
+.btn-group-toggle.custom-radio-group {
+  display: flex;
+  flex-wrap: nowrap;
+  min-width: 396px;
 }
 .btn .btn-group-toggle::before {
   position: absolute;
@@ -30458,6 +30462,25 @@ main {
 }
 .button-edit-row .desktop-only {
   display: none !important;
+}
+@media (max-width: 1023px) {
+  .button-edit-row .btn {
+    border-radius: 50% !important;
+    width: 40px;
+    height: 40px;
+    display: flex;
+  }
+  .button-edit-row .btn .holder span {
+    display: none;
+  }
+  .button-edit-row .btn .icon {
+    padding: 0;
+  }
+}
+
+.item-rows-1 .responsive-table,
+.item-rows-2 .responsive-table {
+  border-radius: 10px 10px 0 0;
 }
 
 .has-selected-rows .button-edit-row {
@@ -31228,6 +31251,260 @@ h3 {
 
 .courses-main .new-preset {
   display: none !important;
+}
+
+.datepicker {
+  display: inline-block;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.datepicker table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 0;
+}
+
+.datepicker table th,
+.datepicker table td {
+  width: calc(100% / 7);
+  padding: 0.0625rem;
+}
+
+.datepicker table th {
+  color: #ccc;
+  text-transform: uppercase;
+  font-size: 0.5rem;
+  line-height: 4;
+  font-weight: bold;
+  text-align: center;
+}
+
+.datepicker__wrapper {
+  color: #333;
+  border-radius: 0.125rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0.5rem;
+  position: relative;
+  z-index: 1;
+  background: white;
+  border: 1px solid #ddd;
+  width: 16rem;
+}
+
+.datepicker__wrapper::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.datepicker:not(.is-inline) .datepicker__wrapper {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.2);
+  margin: 0.25rem 0;
+}
+
+.datepicker__header {
+  position: relative;
+  text-align: center;
+  padding: 0.25rem;
+  margin: -0.5rem -0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.datepicker__title {
+  display: inline-block;
+  padding: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  font-weight: bold;
+}
+
+.datepicker__prev,
+.datepicker__next {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  width: 2rem;
+  line-height: 2rem;
+  border-radius: 50%;
+  background: no-repeat center/60%;
+  opacity: 0.8;
+}
+
+.datepicker__prev:hover,
+.datepicker__next:hover {
+  opacity: 1;
+}
+
+.datepicker__prev {
+  float: left;
+}
+
+.datepicker__next {
+  float: right;
+}
+
+.datepicker__prev.is-disabled,
+.datepicker__next.is-disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.4;
+}
+
+.datepicker__time {
+  padding: 0.5rem 1rem;
+  margin: 0 -0.5rem;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.75rem;
+  text-align: right;
+  background: #fafafa;
+}
+
+.datepicker__label {
+  margin-right: 1rem;
+  color: #aaa;
+  float: left;
+}
+
+.datepicker__field {
+  display: inline-block;
+  margin: 0 0.125rem;
+}
+
+.datepicker__day {
+  color: #333;
+}
+
+.datepicker__day div {
+  cursor: pointer;
+  display: block;
+  box-sizing: border-box;
+  border: 0;
+  margin: 0;
+  background: transparent;
+  position: relative;
+}
+
+.datepicker__day div:hover {
+  background: #f8f8f8;
+}
+
+.datepicker__day.is-today .datepicker__daynum {
+  text-decoration: underline;
+}
+
+.datepicker__day.is-selected div {
+  background: #eee;
+}
+
+.datepicker__day.is-selected .datepicker__daynum {
+  font-weight: bold;
+}
+
+.datepicker__day.is-disabled,
+.datepicker__day.is-otherMonth {
+  cursor: default;
+  pointer-events: none;
+  color: #ddd;
+}
+
+.datepicker__day.is-disabled.is-selected .datepicker__daynum,
+.datepicker__day.is-otherMonth.is-selected .datepicker__daynum {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.datepicker__day.is-disabled.is-selected div,
+.datepicker__day.is-otherMonth.is-selected div {
+  background: #ddd;
+}
+
+.datepicker__daynum {
+  display: block;
+  font-size: 0.75rem;
+  line-height: 2rem;
+  text-align: center;
+}
+
+.users-body {
+  border-radius: 16px;
+  background-color: white;
+}
+.users-body .item {
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.users-body .item:last-child {
+  border-bottom: none;
+  border-radius: 0 0 16px 16px;
+}
+.users-body .item:first-child {
+  border-radius: 16px 16px 0 0;
+}
+.users-body .item:nth-child(even) {
+  background-color: #ddd;
+}
+.users-body .item:nth-child(odd) {
+  background-color: #fff;
+}
+.users-body .item .name {
+  padding-right: 10px;
+  font-weight: bold;
+  width: 162px;
+}
+@media (min-width: 1025px) {
+  .users-body .item .name {
+    width: 300px;
+  }
+}
+.users-body .comment {
+  display: flex;
+}
+.users-body .comment .button-icon {
+  margin-right: 10px;
+}
+.users-body textarea {
+  height: 70px;
+}
+.users-body .form {
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+}
+.users-body .form textarea {
+  width: 300px;
+  margin-right: 10px;
+}
+
+.buttont-container .custom-grid {
+  margin: 0;
+}
+.buttont-container .btn {
+  border: 1px solid #ddd;
+  text-align: center;
+}
+.buttont-container .btn .holder {
+  justify-content: center;
+}
+
+.button-icon {
+  border: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #206cff;
+  color: white;
+  display: flex;
+  justify-content: center;
+  transition: 0.3s background-color;
+  align-items: center;
+}
+.button-icon:hover {
+  background-color: rgba(32, 108, 255, 0.8);
+}
+.button-icon .icon {
+  font-size: 12px;
 }
 
 .btn {

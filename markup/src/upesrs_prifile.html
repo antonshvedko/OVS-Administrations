@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
     //= layout/head.html
-    <script src="js/courses.js"></script>
+    <script src="js/users.js"></script>
 </head>
 
 <body class="side-menu-closed">
@@ -24,14 +25,14 @@
                             </a>
                         </div>
                         <div class="mb-10">
-                            <button class="btn-side-menu with-icon collapsed" type="button" data-bs-toggle="collapse" data-bs-target=".js-collapse-users" aria-expanded="false">
+                            <button class="btn-side-menu with-icon active" type="button" data-bs-toggle="collapse" data-bs-target=".js-collapse-users" aria-expanded="false">
                                 <span class="icomoon-people"></span>
                                 <span class="btn-side-menu__text">Users</span>
                             </button>
-                            <div class="js-collapse-users collapse d-lg-none js-sub-menu-collapse" data-bs-parent="#side-menu">
+                            <div class="js-collapse-courses collapse d-lg-none js-sub-menu-collapse show" data-bs-parent="#side-menu">
                                 <div class="px-24 py-16 remove-last-child-margin">
                                     <div class="mb-8">
-                                        <a class="btn-side-menu" href="overview.html">Overview</a>
+                                        <a class="btn-side-menu active" href="overview.html">Overview</a>
                                     </div>
                                     <div class="mb-8">
                                         <a class="btn-side-menu" href="#">Create User Account</a>
@@ -79,14 +80,14 @@
                             </div>
                         </div>
                         <div class="mb-10">
-                            <button class="btn-side-menu with-icon active" type="button" data-bs-toggle="collapse" data-bs-target=".js-collapse-courses" aria-expanded="true">
+                            <button class="btn-side-menu with-icon " type="button" data-bs-toggle="collapse" data-bs-target=".js-collapse-courses" aria-expanded="true" style="background-color: transparent;">
                                 <span class="icomoon-school"></span>
                                 <span class="btn-side-menu__text">Courses</span>
                             </button>
                             <div class="js-collapse-courses collapse d-lg-none js-sub-menu-collapse show" data-bs-parent="#side-menu">
                                 <div class="px-24 py-16 remove-last-child-margin">
                                     <div class="mb-8">
-                                        <a class="btn-side-menu active" href="#">Overview</a>
+                                        <a class="btn-side-menu " href="#">Overview</a>
                                     </div>
                                     <div class="mb-8">
                                         <a class="btn-side-menu" href="#">Create Course</a>
@@ -599,23 +600,26 @@
                 </div>
             </div>
         </aside>
-        <div class="container-fluid courses-main" id="mainContent">
+        <div class="container-fluid users-main" id="mainContent">
             <div class=" ">
                 <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group-toggle custom-radio-group" data-toggle="buttons" id="courses-view">
+                    <div class="btn-group-toggle custom-radio-group" data-toggle="buttons" id="user-view">
                         <label class="btn custom-btn active">
-                            <input type="radio" name="options" id="OVS" autocomplete="off" checked> OVS
+                            <input type="radio" name="options" id="option1" autocomplete="off" value="All users"> Student Report
                         </label>
                         <label class="btn custom-btn">
-                            <input type="radio" name="options" id="Non-OVS" autocomplete="off"> Non-OVS
+                            <input type="radio" name="options" id="option2" autocomplete="off" value="Admin pinned">  Proof of Enrollment
                         </label>
                         <label class="btn custom-btn">
-                            <input type="radio" name="options" id="Hidden" autocomplete="off"> Hidden
+                            <input type="radio" name="options" id="option3" autocomplete="off" value="Pinned for me"> OSSD / OSR
+                        </label>
+                        <label class="btn custom-btn">
+                            <input type="radio" name="options" id="option3" autocomplete="off" value="Pinned for me"> Report Cards
                         </label>
                     </div>
-                    <div class="custom-grid-item col-md-12 col-xl-3">
+                    <div class="custom-grid-item col-md-2 col-xl-2 ">
                         <div class="btn-row">
-                            <div class="col  custom-grid-item  fullscreen-col ">
+                            <div class="col  custom-grid-item  fullscreen-col pr-0">
                                 <button class="btn btn-secondary" id="full-screen">
                                     <div class="holder">
                                         <i class="icon icomoon-fullscreen"></i>
@@ -626,401 +630,408 @@
                         </div>
                     </div>
                 </div>
-                <div class="custom-grid row" style="margin-top: 10px;">
-                    <div class="custom-grid-item col-md-6 col-xl-6">
-                        <div class="search-input form-control">
-                            <input type="text" class="custom-input" id="search-input" placeholder="Course, department, instructor">
+                <div class="custom-grid row buttont-container">
+                    <div class="custom-grid-item col-12 col-lg-2 col-xl-2 pb-0">
+                        <div class="custom-grid">
+                            <button class="btn  btn-secondary"><div class="holder"><span> Print Student Label</span></div></button>
                         </div>
                     </div>
-                    <div class="custom-grid-item dropdown-container col-md-6 col-xl-6">
-                        <div class="dropdown searchEnable" data-control="checkbox-dropdown">
-                            <label class="dropdown-label">Select Preset </label>
-                            <div class="dropdown-list">
-                                <div class="mobile-block">
-                                    <div class="title">Type</div>
-                                    <button class="closeDropdown"><i class="icomoon-x"></i></button>
-                                </div>
-                                <div class="search-input form-control">
-                                    <input type="text" id="search-input" placeholder="Search">
-                                </div>
-                                <div id="no-results" style="display: none; padding: 8px; text-align: center; color: #888;">
-                                    No results found
-                                </div>
-                                <a href="#" data-toggle="check-all" class="select-all">Check All</a>
-                                <label class="custom-checkbox dropdown-option">
-                                    <input type="checkbox" name="dropdown-group" value="Preset 1">
-                                    <span class="checkmark"></span>
-                                    <div class="title">Preset 1 </div>
-                                </label>
-                                <label class="custom-checkbox dropdown-option">
-                                    <input type="checkbox" name="dropdown-group" value="Preset 2">
-                                    <span class="checkmark"></span>
-                                    <div class="title">Preset 2</div>
-                                </label>
-                                <div class="mobile-block button-block">
-                                    <button class="btn btn-transparent">Reset</button>
-                                    <button class="btn btn-transparent">Confirm</button>
-                                </div>
-                            </div>
+                    <div class="custom-grid-item col-12 col-lg-2 col-xl-2 pb-0">
+                        <div class="custom-grid">
+                            <button class="btn  btn-secondary"><div class="holder"><span> View Student PDF Report</span></div></button>
                         </div>
-                        <div class="mobile-buttons-holder">
-                            <div class="row">
-                                <div class="col">
-                                    <button class="btn btn-transparent">
-                                        <div class="holder">
-                                            <span>Reset Filter</span>
-                                        </div>
-                                    </button>
-                                </div>
-                                <div class="col">
-                                    <button class="btn btn-primary">
-                                        <div class="holder">
-                                            <span>Filter</span>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="custom-grid-item col-12 col-lg-2 col-xl-2 pb-0">
+                        <div class="custom-grid">
+                            <button class="btn btn-transparent"><div class="holder"><span> Transcript</span></div></button>
+                        </div>
+                    </div>
+                    <div class="custom-grid-item col-12 col-lg-2 col-xl-2 pb-0">
+                        <div class="custom-grid">
+                            <button class="btn btn-transparent"><div class="holder"><span>  Password Change</span></div></button>
+                        </div>
+                    </div>
+                    <div class="custom-grid-item col-12 col-lg-2 col-xl-2 pb-0">
+                        <div class="custom-grid">
+                            <button class="btn btn-transparent"><div class="holder"><span> Enrollment</span></div></button>
+                        </div>
+                    </div>
+                    <div class="custom-grid-item col-12 col-lg-2 col-xl-2 pb-0">
+                        <div class="custom-grid">
+                            <button class="btn btn-transparent"><div class="holder"><span> Edit</span></div></button>
                         </div>
                     </div>
                 </div>
+                <!-- <div class="custom-grid row dropdown-container">
+                    <div class="custom-grid-item col-12 col-lg-6 col-xl-6 pb-0">
+                        <div class="custom-grid">
+                            <div class="custom-grid-item col-12 col-xl-6 mobile-hide">
+
+                            </div>
+                            <div class="custom-grid-item col-12 col-xl-6 pb-0">
+
+                                <label for="simple">Choose Date</label>
+                                <input type="text" id="simple">
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
             </div>
-            <div class="total-count">Total Count: <span id="total-count-users"></span></div>
-            <table class="responsive-table courses">
-                <thead class="responsive-table__head">
-                    <tr class="responsive-table__row">
-                        <th class="responsive-table__head__title responsive-table__head__title--name">
-                            <div class="d-flex align-items-center">
-                                <label class="custom-checkbox select-all">
-                                    <input type="checkbox" id="select-all">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <div class="title mobile-hide"> Course Title</div>
-                                <div class="title mobile-show">Select All</div>
-                            </div>
-                        </th>
-                        <th class="responsive-table__head__title responsive-table__head__title--department tablet-hide">
-                            <div class="title"> Department</div>
-                        </th>
-                        <th class="responsive-table__head__title responsive-table__head__title--instructor tablet-hide">
-                            <div class="title">Instructor</div>
-                        </th>
-                        <th class="responsive-table__head__title responsive-table__head__title--office tablet-hide">
-                            <div class="title">
-                                Office Hours
-                            </div>
-                        </th>
-                        <th class="responsive-table__head__title responsive-table__head__title--average tablet-hide">
-                            <div class="title">
-                                Average
-                            </div>
-                        </th>
-                        <th class="responsive-table__head__title responsive-table__head__title--enrolled tablet-hide">
-                            <div class="title"> Enrolled
-                            </div>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody class="responsive-table__body">
-                    <tr class="responsive-table__row">
-                        <td class="responsive-table__body__text main-item responsive-table__body__text--name">
-                            <label class="custom-checkbox">
-                                <input type="checkbox"  class="selectRow">
-                                <span class="checkmark"></span>
+            <!-- <div class="search-input form-control input-control">
+                <input type="text" class="custom-input" id="users-search-1" placeholder="Email, name, number">
+            </div> -->
+            <div class="users-body">
+                <div class="item">
+                    <div class="name">Login Name:</div>
+                    <div class="value">mtlhunter+student2@gmail.com</div>
+                </div>
+                <div class="item">
+                    <div class="name">Full Name (Last, First Second):</div>
+                    <div class="value">LS2, MS2</div>
+                </div>
+                <div class="item">
+                    <div class="name">Preferred Name:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="item">
+                    <div class="name">Telephone:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="item">
+                    <div class="name">Email:</div>
+                    <div class="value"><span>mtlhunter+student2@gmail.com</span></div>
+                </div>
+                <div class="item">
+                    <div class="name">Gender:</div>
+                    <div class="value">Other</div>
+                </div>
+                <div class="item">
+                    <div class="name">Day of Birth (YYYY-MM-DD):</div>
+                    <div class="value">1000-01-01 (Age: 1024)</div>
+                </div>
+                <div class="item">
+                    <div class="name">Address:</div>
+                    <div class="value">Test</div>
+                </div>
+                <div class="item">
+                    <div class="name">Home School:</div>
+                    <div class="value">test</div>
+                </div>
+                <div class="item">
+                    <div class="name">Parent #1:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="item">
+                    <div class="name">Parent Telephone:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="item">
+                    <div class="name">Registration Date:</div>
+                    <div class="value">2024-06-19 03:26:57 AM</div>
+                </div>
+                <div class="item">
+                    <div class="name">Last Logged In:</div>
+                    <div class="value">2024-06-19 01:50:45 PM (2 months, 1 week, 16 hours, 39 minutes, 10 seconds ago)</div>
+                </div>
+                <div class="item">
+                    <div class="name">OCAS:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="item">
+                    <div class="name">OEN:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="item">
+                    <div class="name">
+                        Communication Notes<br>
+                        <span style="font-weight:normal">(Admin only - not visible to teachers)</span><br><br>
+                        <label>
+                            <input type="checkbox" name="caution_flag" value="1" onchange="updateStudentFlag(this, 'caution_flag')">
                             </label>
-                            <div class="main-item-holder">
-                                <div class="content">
-                                    <span class="name pr">1CLONE(410)</span>
-                                    <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
-                                </div>
-                                <div class="content autor">
-                                    <div class="">
-                                        <span class="instructor pr">Jane Cooper</span> <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--status">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">
-                                    Department
-                                </div>
-                                <div class=""> English</div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--update tablet-hide">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">
-                                    Instructor
-                                </div>
-                                <div class="d-flex flex-wrap"><span class="instructor pr">
-                                Jane Cooper</span> <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--country">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Office Hours </div>
-                                <div class="d-flex flex-wrap"><span class="pr">Mon - Tue </span><span class="secondary-text">5pm-6pm</span></div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--types">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Average</div>
-                                <div class="d-flex flex-wrap">
-                                    <span class="main-title">Marking Time </span> <span class="hours">8.53 h</span>
-                                    <ul class="detail-list clearfix">
-                                        <li> <span class="title"> Avg</span> <span class="value">90$</span></li>
-                                        <li><span class="title">Med</span><span class="value"> 90%  </span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--country hover-table">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Enrolled</div>
-                                <div class="mobile-show">
-                                    <div class="">
-                                        <div>
-                                            <b>Processed</b> <span>8.53 h</span></div>
-                                        <div>
-                                            <b>Ghost</b> <span>90.9% | 93%</span></div>
-                                        <div>
-                                            <b>Suspend</b> <span>90.9% | 93%</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-wrap hover-trigger">
-                                <span class="pr">12 </span><i class="icomoon-info-1"></i>
-                                <div class="hover-popup">
-                                    <div>
-                                        <p>Processed</p> <span>8.53 h</span></div>
-                                    <div>
-                                        <p>Ghost</p> <span>90.9% | 93%</span></div>
-                                    <div>
-                                        <p>Suspend</p> <span>90.9% | 93%</span></div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="responsive-table__row">
-                        <td class="responsive-table__body__text main-item responsive-table__body__text--name">
-                            <label class="custom-checkbox">
-                                <input type="checkbox"  class="selectRow">
-                                <span class="checkmark"></span>
-                            </label>
-                            <div class="main-item-holder">
-                                <div class="content">
-                                    <span class="name pr">1CLONE(410)</span>
-                                    <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
-                                </div>
-                                <div class="content autor">
-                                    <div class="">
-                                        <span class="instructor pr">Jane Cooper</span> <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--status">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">
-                                    Department
-                                </div>
-                                <div class=""> English</div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--update tablet-hide">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">
-                                    Instructor
-                                </div>
-                                <div class="d-flex flex-wrap"><span class="instructor pr">
-                                Jane Cooper</span> <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--country">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Office Hours </div>
-                                <div class="d-flex flex-wrap"><span class="pr">Mon - Tue </span><span class="secondary-text">5pm-6pm</span></div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--types">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Average</div>
-                                <div class="d-flex flex-wrap">
-                                    <span class="main-title">Marking Time </span> <span class="hours">8.53 h</span>
-                                    <ul class="detail-list clearfix">
-                                        <li> <span class="title"> Avg</span> <span class="value">90$</span></li>
-                                        <li><span class="title">Med</span><span class="value"> 90%  </span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--country hover-table">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Enrolled</div>
-                                <div class="mobile-show">
-                                    <div class="">
-                                        <div>
-                                            <b>Processed</b> <span>8.53 h</span></div>
-                                        <div>
-                                            <b>Ghost</b> <span>90.9% | 93%</span></div>
-                                        <div>
-                                            <b>Suspend</b> <span>90.9% | 93%</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-wrap hover-trigger">
-                                <span class="pr">12 </span><i class="icomoon-info-1"></i>
-                                <div class="hover-popup">
-                                    <div>
-                                        <p>Processed</p> <span>8.53 h</span></div>
-                                    <div>
-                                        <p>Ghost</p> <span>90.9% | 93%</span></div>
-                                    <div>
-                                        <p>Suspend</p> <span>90.9% | 93%</span></div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="responsive-table__row">
-                        <td class="responsive-table__body__text main-item responsive-table__body__text--name">
-                            <label class="custom-checkbox">
-                                <input type="checkbox"  class="selectRow">
-                                <span class="checkmark"></span>
-                            </label>
-                            <div class="main-item-holder">
-                                <div class="content">
-                                    <span class="name pr">1CLONE(410)</span>
-                                    <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
-                                </div>
-                                <div class="content autor">
-                                    <div class="">
-                                        <span class="instructor pr">Jane Cooper</span> <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--status">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">
-                                    Department
-                                </div>
-                                <div class=""> English</div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--update tablet-hide">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">
-                                    Instructor
-                                </div>
-                                <div class="d-flex flex-wrap"><span class="instructor pr">Jane Cooper</span> <span class="stars"><i class="icon icomoon-star-full-1"></i> 4.5</span>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--country">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Office Hours </div>
-                                <div class="d-flex flex-wrap"><span class="pr">Mon - Tue </span><span class="secondary-text">5pm-6pm</span></div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--types">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Average</div>
-                                <div class="d-flex flex-wrap">
-                                    <span class="main-title">Marking Time </span> <span class="hours">8.53 h</span>
-                                    <ul class="detail-list clearfix">
-                                        <li> <span class="title"> Avg</span> <span class="value">90$</span></li>
-                                        <li><span class="title">Med</span><span class="value"> 90%  </span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="responsive-table__body__text responsive-table__body__text--country hover-table">
-                            <div class="mobile-holder">
-                                <div class="lebel-mobile">Enrolled</div>
-                                <div class="mobile-show">
-                                    <div class="">
-                                        <div>
-                                            <b>Processed</b> <span>8.53 h</span></div>
-                                        <div>
-                                            <b>Ghost</b> <span>90.9% | 93%</span></div>
-                                        <div>
-                                            <b>Suspend</b> <span>90.9% | 93%</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-wrap hover-trigger">
-                                <span class="pr">12 </span><i class="icomoon-info-1"></i>
-                                <div class="hover-popup">
-                                    <div>
-                                        <p>Processed</p> <span>8.53 h</span></div>
-                                    <div>
-                                        <p>Ghost</p> <span>90.9% | 93%</span></div>
-                                    <div>
-                                        <p>Suspend</p> <span>90.9% | 93%</span></div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="error">
-                <img src="images/sad.jpg" alt="icon">
-                <h3>Sorry! We didn't find anything</h3>
-                <p>Please clear your previous search query and try again</p>
-                <button class="btn btn-secondary">
-                    <div class="holder">
-                        <i class="icon icomoon-spinner11"></i>
-                        <span>Refresh</span>
+                        <svg id="caution_flag_icon" title="Please contact George for more information." xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:20px;height:20px;color:var(--ovsRed);vertical-align:bottom;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"></path>
+                            </svg>
                     </div>
-                </button>
+                    <div class="value">
+                        <div class="commentBody">
+                            <div class="comment"><button class="button-icon"><i class="icomoon-x"></i></button>
+                                <p>2024-08-27 10:49 AM - George: Caution Flag set</p>
+                            </div>
+                            <div class="comment"><button class="button-icon"><i class="icomoon-x"></i></button>
+                                <p>2024-08-27 10:49 AM - George: Caution Flag set</p>
+                            </div>
+                        </div>
+                        <form action="" class="form">
+                            <textarea name="" id="" cols="30" rows="10"></textarea>
+                            <div class="">
+                                <button class="btn btn-primary">Add Note</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name">Notes:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="item">
+                    <div class="name">Documents (Attachments):</div>
+                    <div class="value"><input type="file" name="attachments[]" multiple="" onchange="addFile(this);"></div>
+                </div>
+                <div class="item">
+                    <div class="name">Account Type:</div>
+                    <div class="value">Student</div>
+                </div>
+                <div class="item">
+                    <div class="name"> Inactivity Notices:</div>
+                    <div class="value">Enabled</div>
+                </div>
+                <div class="item">
+                    <div class="name">
+                        IEP &amp; Accommodation Notes<br>(Visible to teachers)<br>
+                        <label style="font-weight:normal;">
+                        <input type="checkbox" id="iep-flag" name="iep-flag" onchange="updateStudentIEPFlag(this)"> IEP Flag</label>
+                    </div>
+                    <div class="value">
+                        <form action="" class="form">
+                            <textarea name="" id="" cols="30" rows="10"></textarea>
+                            <button class="btn btn-primary">Add IEP</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name"> Teacher Communication Notes:</div>
+                    <div class="value">
+                        <div class="commentBody">
+                            <div class="comment"><button class="button-icon"><i class="icomoon-x"></i></button><button class="button-icon"><i class="icon icomoon-pencil"></i></button>
+                                <p> 2024-06-19 12:57 PM - [MCV4U-03:Proctor System]: Student added a blacklisted proctor</p>
+                            </div>
+                            <div class="comment"><button class="button-icon"><i class="icomoon-x"></i></button><button class="button-icon"><i class="icon icomoon-pencil"></i></button>
+                                <p> 2024-06-19 12:57 PM - [MCV4U-03:Proctor System]: Student added a blacklisted proctor</p>
+                            </div>
+                        </div>
+                        <form action="" class="form">
+                            <textarea name="" id="" cols="30" rows="10"></textarea>
+                            <div class="">
+                                <button class="btn btn-primary">Add Note</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name"> Referred By:</div>
+                    <div class="value"><i>	No data</i></div>
+                </div>
+                <div class="item">
+                    <div class="name"> Web Browsers Used:</div>
+                    <div class="value"> 2024-06-19 16:46:40 - Google Chrome 125 on Windows 10</div>
+                </div>
             </div>
-            <div class="button-edit-row">
-                <div class="row-holder-button">
-                    <div class="col-custom">
-                        <button class="btn btn-transparent"><div class="holder"><i class="icon icomoon-copy"></i><span> Clone Course</span></div></button>
+            <div class="">
+                <p>
+                    Courses currently enrolled in:</p>
+            </div>
+            <div class="container-fluid" id="formContent">
+                <a href="/" class="back-button"> <i class="icon icomoon-keyboard_arrow_left"></i> <span>Back</span></a>
+                <h2 class="form-h">New Course</h2>
+                <form action="#" method="POST" class="form-new-item">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" name="title" class="custom-input" placeholder="Write a title" required>
                     </div>
-                    <div class="col-custom">
-                        <button class="btn btn-transparent"><div class="holder"><i class="icon icomoon-folder"></i><span> Course Resources</span></div></button>
+                    <div class="form-group">
+                        <label for="instructor">Instructor</label>
+                        <div class="dropdown" data-control="checkbox-dropdown">
+                            <div class="dropdown" data-control="checkbox-dropdown">
+                                <select name="" id="" class="custum-select dropdown-label">
+                                <option value="">Select an instructor</option>
+                            </select>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-custom">
-                        <button class="btn btn-transparent"><div class="holder"><i class="icon icomoon-cloud-download"></i><span> Backup</span></div></button>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <div class="dropdown" data-control="checkbox-dropdown">
+                            <div class="dropdown" data-control="checkbox-dropdown">
+                                <select name="" id="" class="custum-select dropdown-label">
+                                <option value="">Select a category</option>
+                            </select>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-custom desktop-only edit">
-                        <button class="btn btn-transparent"><div class="holder"><i class="icon icomoon-pencil"></i><span> Backup</span></div></button>
+                    <div class="form-group">
+                        <label for="icon">Icon</label>
+                        <div class="dropdown" data-control="checkbox-dropdown">
+                            <div class="dropdown" data-control="checkbox-dropdown">
+                                <select name="" id="" class="custum-select dropdown-label">
+                                <option value="">Select an icon</option>
+                            </select>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-custom new-preset">
-                        <button class="btn btn-transparent" type="button" data-toggle="modal" data-target="#newCourse">
-                                    <div class="holder">
-                                        <i class="icon icomoon-circle-with-plus-1"></i>
-                                        <span>New preset</span>
-                                    </div>
-                            </button>
+                    <div class="form-group">
+                        <label for="language">Original Language</label>
+                        <div class="dropdown" data-control="checkbox-dropdown">
+                            <div class="dropdown" data-control="checkbox-dropdown">
+                                <select name="" id="" class="custum-select dropdown-label">
+                                <option value="">Select a language</option>
+                            </select>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-custom delete">
-                        <button class="btn btn-primary"><div class="holder"><i class="icon icomoon-trashcan"></i><span> Delete</span></div></button>
+                    <div class="form-group">
+                        <label class="custom-checkbox dropdown-option">
+                        <input type="checkbox" name="instructor" value="Instructor 1">
+                        <span class="checkmark"></span>
+                        <div class="title">Ignore Prerequisite Information</div>
+                    </label>
+                    </div>
+                    <div class="form-group checkbox">
+                        <label class="custom-checkbox dropdown-option">
+                        <input type="checkbox" name="instructor" value="Instructor 1">
+                        <span class="checkmark"></span>
+                        <div class="title">Non-OVS Course</div>
+                    </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" class="custom-input" placeholder="Write a description for the course"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <h3>Export Content</h3>
+                        <input type="radio" id="notAvailable" name="exportContent" value="notAvailable" checked>
+                        <label class="custom-radio" for="notAvailable"><span></span>Not available on any of the pages</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="radio" id="topLevelPages" name="exportContent" value="topLevelPages">
+                        <label class="custom-radio" for="topLevelPages"><span></span>Available only for top level pages</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="radio" id="everyPage" name="exportContent" value="everyPage">
+                        <label class="custom-radio" for="everyPage"><span></span>Available on every page</label>
+                    </div>
+                    <div class="form-group">
+                        <h3>Syndicate Announcements</h3>
+                        <input type="radio" id="enableRss" name="syndicateAnnouncements" value="enableRss" checked>
+                        <label class="custom-radio" for="enableRss"><span></span>Enable Announcements syndication via <a href="#">RSS</a></label>
+                    </div>
+                    <div class="form-group">
+                        <input type="radio" id="disableRss" name="syndicateAnnouncements" value="disableRss">
+                        <label class="custom-radio" for="disableRss"><span></span>Disable Announcements syndication</label>
+                    </div>
+                    <div class="form-group">
+                        <h3>Access</h3>
+                        <input type="radio" id="public" name="access" value="public" checked>
+                        <label class="custom-radio" for="public"><span></span>Public</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="radio" id="protected" name="access" value="protected">
+                        <label class="custom-radio" for="protected"><span></span>Protected</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="radio" id="private" name="access" value="private">
+                        <label class="custom-radio" for="private"><span></span>Private</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="custom-checkbox dropdown-option">
+                        <input type="checkbox" name="instructor" value="Instructor 1">
+                        <span class="checkmark"></span>
+                        <div class="title">Email me when new enrollments require approval</div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="custom-checkbox dropdown-option">
+                        <input type="checkbox" name="instructor" value="Instructor 1">
+                        <span class="checkmark"></span>
+                        <div class="title">Hide this course from the Browse Courses list</div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <h3>Course Quota</h3>
+                        <input type="radio" id="defaultQuota" name="courseQuota" value="default" checked>
+                        <label class="custom-radio" for="defaultQuota"><span></span>Default (1853/467 MB)</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="radio" id="unlimitedQuota" name="courseQuota" value="unlimited">
+                        <label class="custom-radio" for="unlimitedQuota"><span></span>Unlimited</label>
+                    </div>
+                    <div class="form-group">
+                        <h3>Max File Size</h3>
+                        <label for="maxFileSize">Default (1000 MB)</label>
+                        <input type="text" id="maxFileSize" name="maxFileSize" class="custom-input" placeholder="Maximum system allows 12 MB">
+                    </div>
+                    <div class="form-group button">
+                        <label for="notice">Notice</label>
+                        <textarea id="notice" name="notice" class="custom-input" placeholder="Write a notice for the course"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <a type="reset" class="btn btn-transparent" href="/"> <i class="icomoon-cancel-1"></i> <span>Cancel</span></a>
+                        <button type="submit" class="btn btn-primary"> <i class="icomoon-checkmark-1"></i> <span>Save</span></button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal fade" id="newCourse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="body">
+                                <h4>To create a preset, you need to specify its name</h4>
+                                <p>Please write the name of the preset</p>
+                            </div>
+                            <span>Preset name  </span>
+                            <input type="text" placeholder="Write the name of the preset">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Censel</button>
+                            <button type="button" class="btn btn-primary" type="button" data-toggle="modal" data-target="#newPreset">Create</button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="control-page">
-                <div class="item-per-page">
-                    <div class="title">Item Per Page:</div>
-                    <select name="" id="">
-                        <option value="10">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                    </select>
-                </div>
-                <div class="pagination-container">
-                    <div class="pagination-controls">
-                        <button class="page-btn disabled" id="prev-page"><i class="icomoon-caret-left"></i></button>
-                        <input type="number" class="page-input" id="current-page" value="1" />
-                        <button class="page-btn" id="next-page"><i class="icomoon-caret-right"></i></button>
+            <div class="modal fade" id="newPreset" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="body">
+                                <h4>To create a preset, you need to specify its name 1</h4>
+                                <p>Please write the name of the preset</p>
+                            </div>
+                            <span>Preset name  </span>
+                            <input type="text" placeholder="Write the name of the preset">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Censel</button>
+                            <button type="button" class="btn btn-primary" type="button" data-toggle="modal" data-target="#nextStep">Create</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="modal fade" id="nextStep" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="body">
+                                <i class="icomoon-checkmark-1"></i>
+                                <h4>Congratulations! You have created a new preset</h4>
+                                <p>Now it's available to you on the courses page</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" id="success" data-dismiss="modal">Continue viewing</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </main>
 </body>
 
