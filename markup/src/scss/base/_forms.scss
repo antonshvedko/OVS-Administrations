@@ -306,12 +306,11 @@ input[type="radio"] {
 }
 
 .custom-radio {
-    position: relative;
     display: flex;
     align-items: center;
     cursor: pointer;
-    padding-left: 36px;
     color: #000;
+    padding-bottom: 10px;
     span {
         position: absolute;
         left: 0;
@@ -359,5 +358,102 @@ input[type="radio"] {
 .select-all {
     &.custom-checkbox .checkmark::after {
         content: "\ea0b";
+    }
+}
+
+.form-grid {
+    @include media(">desktop") {
+        display: grid;
+    }
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-radio-group .custom-radio {
+    margin-bottom: 15px;
+}
+
+.custom-radio-group .custom-radio input {
+    display: none;
+}
+
+.custom-radio span {
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    background-color: #ffffff;
+    border: 1px solid #C7C7CC;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.custom-radio span::before,
+.custom-radio span::after {
+    content: '';
+    position: absolute;
+    transition: transform 0.3s ease;
+    transform: scale(0);
+}
+
+.custom-radio span::before {
+    width: 18px;
+    height: 18px;
+    background-color: #206BFF;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.custom-radio span::after {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.custom-radio input:checked+span::before,
+.custom-radio input:checked+span::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.card {
+    border-radius: 8px;
+    border: 1px solid #C7C7CC;
+}
+
+.card-body {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.custom-input,
+.custom-select {
+    border-radius: 10px;
+    border: 1px solid #C7C7CC;
+    padding: 8px 12px;
+    box-shadow: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    &:focus {
+        border-color: #007bff;
+    }
+}
+
+.custom-select {
+    appearance: none;
+    background-color: #fff;
+    &::-ms-expand {
+        display: none;
     }
 }

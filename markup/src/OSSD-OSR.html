@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    //= layout/head.html
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+</head>
+
+<body class="side-menu-closed">
+    <!-- HEADER -->
+    //= layout/header.html
+    <main class="main">
+        <aside class="side-menu offcanvas-lg offcanvas-start js-side-menu" id="offcanvas-side-menu" tabindex="-1">
+            <button class="side-menu__toggle first-level js-toggle-side-menu" type="button">
+                <span class="icomoon-arrow-back-circle"></span>
+            </button>
+            <div class="side-menu__body offcanvas-body w-100">
+                <div id="side-menu">
+                    <div class="side-menu__first-level-menu remove-last-child-margin overflow-hidden">
+                        <div class="mb-10">
+                            <a class="btn-side-menu with-icon" href="index.html">
+                                <span class="icomoon-home"></span>
+                                <span class="btn-side-menu__text">Home</span>
+                            </a>
+                        </div>
+                        <div class="mb-10">
+                            <button class="btn-side-menu with-icon active" type="button" data-bs-toggle="collapse" data-bs-target=".js-collapse-users" aria-expanded="false">
+                                <span class="icomoon-people"></span>
+                                <span class="btn-side-menu__text">Users</span>
+                            </button>
+                            <div class="js-collapse-courses collapse d-lg-none js-sub-menu-collapse show" data-bs-parent="#side-menu">
+                                <div class="px-24 py-16 remove-last-child-margin">
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu active" href="overview.html">Overview</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Create User Account</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Instructors</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Email Users</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Student LMS Notification</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Ontario Student Records (OSR)</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Incomplete Orders</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Potential Full-time Students</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Potential Reach Ahead Students</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Students On Hold</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Student Support</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Missing Prerequisites</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Proctors</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Administrators</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Current Active Students</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-10">
+                            <button class="btn-side-menu with-icon " type="button" data-bs-toggle="collapse" data-bs-target=".js-collapse-courses" aria-expanded="true" style="background-color: transparent;">
+                                <span class="icomoon-school"></span>
+                                <span class="btn-side-menu__text">Courses</span>
+                            </button>
+                            <div class="js-collapse-courses collapse d-lg-none js-sub-menu-collapse show" data-bs-parent="#side-menu">
+                                <div class="px-24 py-16 remove-last-child-margin">
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu " href="#">Overview</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Create Course</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Forum Manager</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Enrollment</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Prerequisites</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Scheduled Exams</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Categories</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Clone Course</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Test Centre</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">List Of Courses (Brochure)</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Course Resources</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Ratings</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Challenge Quizzes</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Academic Integrity Scans</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-10">
+                            <button class="btn-side-menu with-icon collapsed" type="button" data-bs-toggle="collapse" data-bs-target=".js-collapse-gamification" aria-expanded="false">
+                                <span class="icomoon-dice"></span>
+                                <span class="btn-side-menu__text">Gamification</span>
+                            </button>
+                            <div class="js-collapse-gamification collapse d-lg-none js-sub-menu-collapse" data-bs-parent="#side-menu">
+                                <div class="px-24 py-16 remove-last-child-margin">
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Overview</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Manage Avatar Store</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-10">
+                            <a class="btn-side-menu with-icon" href="#">
+                                <span class="icomoon-toggle"></span>
+                                <span class="btn-side-menu__text">Login Slider</span>
+                            </a>
+                        </div>
+                        <div class="mb-10">
+                            <button class="btn-side-menu with-icon collapsed" type="button" data-bs-toggle="collapse" data-bs-target=".js-collapse-partners" aria-expanded="false">
+                                <span class="icomoon-partners"></span>
+                                <span class="btn-side-menu__text">Partners</span>
+                            </button>
+                            <div class="js-collapse-partners collapse d-lg-none js-sub-menu-collapse" data-bs-parent="#side-menu">
+                                <div class="px-24 py-16 remove-last-child-margin">
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Dashboard</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">API Keys</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Partner Commission Report</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">School Commission Report</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Prerequisite Exemption</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Bypass Proctor</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Emails</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Discount Codes</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-10">
+                            <button class="btn-side-menu with-icon collapsed" type="button" data-bs-toggle="collapse" data-bs-target=".js-collapse-statistics" aria-expanded="false">
+                                <span class="icomoon-statistics"></span>
+                                <span class="btn-side-menu__text">Statistics</span>
+                            </button>
+                            <div class="js-collapse-statistics collapse d-lg-none js-sub-menu-collapse" data-bs-parent="#side-menu">
+                                <div class="px-24 py-16 remove-last-child-margin">
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Daily Report</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">All-Time</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Yearly Stats</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Course Stats</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Compare Historical Stats</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Transition Students</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Referral Cheques</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Referral Form Submissions</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Late Teacher Marking</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Partner Commission Report</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-10">
+                            <button class="btn-side-menu with-icon collapsed" type="button" data-bs-toggle="collapse" data-bs-target=".js-collapse-payroll" aria-expanded="false">
+                                <span class="icomoon-cash"></span>
+                                <span class="btn-side-menu__text">Payroll</span>
+                            </button>
+                            <div class="js-collapse-payroll collapse d-lg-none js-sub-menu-collapse" data-bs-parent="#side-menu">
+                                <div class="px-24 py-16 remove-last-child-margin">
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Payroll</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Email Settings</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Work Anniversary</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Office Staff</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-10">
+                            <button class="btn-side-menu with-icon collapsed" type="button" data-bs-toggle="collapse" data-bs-target=".js-collapse-reporting" aria-expanded="false">
+                                <span class="icomoon-bar-chart"></span>
+                                <span class="btn-side-menu__text">Reporting</span>
+                            </button>
+                            <div class="js-collapse-reporting collapse d-lg-none js-sub-menu-collapse" data-bs-parent="#side-menu">
+                                <div class="px-24 py-16 remove-last-child-margin">
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Overview</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Final Report Cards</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Midterm Report Cards</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Graduates</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Transcripts</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Report Cards On-Hold</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-10">
+                            <a class="btn-side-menu with-icon" href="#">
+                                <span class="icomoon-ribbon"></span>
+                                <span class="btn-side-menu__text">OEN</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-none d-lg-block">
+                        <div class="js-collapse-users collapse js-sub-menu-collapse" data-bs-parent="#side-menu">
+                            <div class="side-menu__second-level-menu js-second-level-menu">
+                                <button class="side-menu__toggle second-level js-toggle-second-level-menu" type="button">
+                                    <span class="icomoon-arrow-back-circle"></span>
+                                </button>
+                                <h5>Users</h5>
+                                <div class="remove-last-child-margin">
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="overview.html">Overview</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Create User Account</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Instructors</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Email Users</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Student LMS Notification</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Ontario Student Records (OSR)</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Incomplete Orders</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Potential Full-time Students</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Potential Reach Ahead Students</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Students On Hold</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Student Support</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Missing Prerequisites</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Proctors</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Administrators</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Current Active Students</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="js-collapse-courses collapse js-sub-menu-collapse" data-bs-parent="#side-menu">
+                            <div class="side-menu__second-level-menu js-second-level-menu">
+                                <button class="side-menu__toggle second-level js-toggle-second-level-menu" type="button">
+                                    <span class="icomoon-arrow-back-circle"></span>
+                                </button>
+                                <h5>Courses</h5>
+                                <div class="remove-last-child-margin">
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Overview</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Create Course</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Forum Manager</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Enrollment</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Prerequisites</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Scheduled Exams</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Categories</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Clone Course</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Test Centre</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">List Of Courses (Brochure)</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Course Resources</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Ratings</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Challenge Quizzes</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Academic Integrity Scans</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="js-collapse-gamification collapse js-sub-menu-collapse" data-bs-parent="#side-menu">
+                            <div class="side-menu__second-level-menu js-second-level-menu">
+                                <button class="side-menu__toggle second-level js-toggle-second-level-menu" type="button">
+                                    <span class="icomoon-arrow-back-circle"></span>
+                                </button>
+                                <h5>Gamification</h5>
+                                <div class="remove-last-child-margin">
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Overview</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Manage Avatar Store</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="js-collapse-partners collapse js-sub-menu-collapse" data-bs-parent="#side-menu">
+                            <div class="side-menu__second-level-menu js-second-level-menu">
+                                <button class="side-menu__toggle second-level js-toggle-second-level-menu" type="button">
+                                    <span class="icomoon-arrow-back-circle"></span>
+                                </button>
+                                <h5>Partners</h5>
+                                <div class="remove-last-child-margin">
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Dashboard</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">API Keys</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Partner Commission Report</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">School Commission Report</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Prerequisite Exemption</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Bypass Proctor</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Emails</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Discount Codes</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="js-collapse-statistics collapse js-sub-menu-collapse" data-bs-parent="#side-menu">
+                            <div class="side-menu__second-level-menu js-second-level-menu">
+                                <button class="side-menu__toggle second-level js-toggle-second-level-menu" type="button">
+                                    <span class="icomoon-arrow-back-circle"></span>
+                                </button>
+                                <h5>Statistics</h5>
+                                <div class="remove-last-child-margin">
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Daily Report</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">All-Time</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Yearly Stats</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Course Stats</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Compare Historical Stats</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Transition Students</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Referral Cheques</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Referral Form Submissions</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Late Teacher Marking</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Partner Commission Report</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="js-collapse-payroll collapse js-sub-menu-collapse" data-bs-parent="#side-menu">
+                            <div class="side-menu__second-level-menu js-second-level-menu">
+                                <button class="side-menu__toggle second-level js-toggle-second-level-menu" type="button">
+                                    <span class="icomoon-arrow-back-circle"></span>
+                                </button>
+                                <h5>Payroll</h5>
+                                <div class="remove-last-child-margin">
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Payroll</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Email Settings</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Work Anniversary</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Office Staff</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="js-collapse-reporting collapse js-sub-menu-collapse" data-bs-parent="#side-menu">
+                            <div class="side-menu__second-level-menu js-second-level-menu">
+                                <button class="side-menu__toggle second-level js-toggle-second-level-menu" type="button">
+                                    <span class="icomoon-arrow-back-circle"></span>
+                                </button>
+                                <h5>Reporting</h5>
+                                <div class="remove-last-child-margin">
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Overview</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Final Report Cards</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Midterm Report Cards</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Graduates</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Transcripts</a>
+                                    </div>
+                                    <div class="mb-8">
+                                        <a class="btn-side-menu" href="#">Report Cards On-Hold</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <hr class="side-menu__divider d-none d-lg-block">
+                    <div class="side-menu__first-level-menu remove-last-child-margin overflow-hidden">
+                        <div class="mb-10">
+                            <a class="btn-side-menu with-icon" href="#">
+                                <span class="icomoon-call"></span>
+                                <span class="btn-side-menu__text">Call Logs</span>
+                            </a>
+                        </div>
+                        <div class="mb-10">
+                            <a class="btn-side-menu with-icon" href="#">
+                                <span class="icomoon-book"></span>
+                                <span class="btn-side-menu__text">Schools</span>
+                            </a>
+                        </div>
+                        <div class="mb-10">
+                            <a class="btn-side-menu with-icon" href="#">
+                                <span class="icomoon-library"></span>
+                                <span class="btn-side-menu__text">Teacher Resources</span>
+                            </a>
+                        </div>
+                        <div class="mb-10">
+                            <a class="btn-side-menu with-icon" href="#">
+                                <span class="icomoon-chatbubbles"></span>
+                                <span class="btn-side-menu__text">Staff Chat Room</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-lg-none">
+                        <hr class="side-menu__divider">
+                        <div class="remove-last-child-margin overflow-hidden">
+                            <div class="mb-12">
+                                <a class="btn-account w-100" href="#">
+                                    <span class="btn-account__photo">
+                                        <img class="of-cover" src="images/avatar.svg" alt="Photo">
+                                    </span>
+                                    <span class="btn-account__text">ovsadmin</span>
+                                </a>
+                            </div>
+                            <div class="mb-12">
+                                <a class="btn-side-menu with-icon" href="#">
+                                    <span class="icomoon-settings"></span>
+                                    <span class="btn-side-menu__text">Account Settings</span>
+                                </a>
+                            </div>
+                        </div>
+                        <hr class="side-menu__divider">
+                        <div class="remove-last-child-margin mb-28">
+                            <div class="mb-12">
+                                <a class="link-secondary text-sm" href="#">How-To Video</a>
+                            </div>
+                            <div class="mb-12">
+                                <a class="link-secondary text-sm" href="#">System Checker</a>
+                            </div>
+                            <div class="mb-12">
+                                <a class="link-secondary text-sm" href="#">Help</a>
+                            </div>
+                        </div>
+                        <a class="link-danger text-sm" href="#">
+                            <span class="icomoon-log-out"></span>
+                            <span>Log Out</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <div class="container-fluid users-main" id="mainContent">
+            <div class=" ">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group-toggle custom-radio-group" data-toggle="buttons" id="user-view">
+                        <a class="btn custom-btn" href="/.html">Student Report</a>
+                        <a class="btn custom-btn " href="/proof-of-enrollment.html"> Proof of Enrollment</a>
+                        <a class="btn custom-btn active" href="OSSD-OSR.html">OSSD / OSR</a>
+                        <a class="btn custom-btn " href="report-cards.html"> Report Cards</a>
+                    </div>
+                    <div class="custom-grid-item col-md-3 col-xl-3 ">
+                        <div class="btn-row">
+                            <div class="col  custom-grid-item pr-0">
+                                <button class="btn btn-secondary" id="full-screen">
+                                    <div class="holder">
+                                        <span>Login as Student</span>
+                                    </div>
+                                </button>
+                            </div>
+                            <div class="col  custom-grid-item  fullscreen-col pr-0">
+                                <button class="btn btn-secondary" id="full-screen">
+                                    <div class="holder">
+                                        <i class="icon icomoon-fullscreen"></i>
+                                        <span>Full Screen</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="osr-form">
+                    <fieldset>
+                        <legend>OSSD / OSR</legend>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="custom-radio">
+                                <input type="radio" name="osr_type" value="virtual_osr"> 
+                                <span></span>Virtual OSR
+                            </label>
+                                <label class="custom-radio">
+                                <input type="radio" name="osr_type" value="ovs_no_ossd"> 
+                                <span></span>OVS will NOT issue OSSD
+                            </label>
+                                <label class="custom-radio">
+                                <input type="radio" name="osr_type" value="ovs_ossd"> 
+                                <span></span>OVS will issue OSSD
+                            </label>
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="osr_files">Upload OSR Files:</label>
+                            <input type="file" id="osr_files" name="osr_files" class="form-control">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="uploaded_files">Uploaded:</label>
+                            <div id="uploaded_files" class="form-control">No files uploaded</div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <button type="submit" class="btn btn-primary">Save OSSD/OSR Changes</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+    </main>
+    <div class="custom-alert none">
+        <span>Updated International Status</span>
+    </div>
+</body>
+
+</html>

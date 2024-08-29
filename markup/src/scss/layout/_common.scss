@@ -1205,13 +1205,14 @@ h3 {
 }
 
 .users-body {
-    // padding: 10px;
     border-radius: 16px;
     background-color: white;
     .item {
-        display: flex;
         padding: 10px;
         border-bottom: 1px solid #ddd;
+        @include media(">tablet") {
+            display: flex;
+        }
         &:last-child {
             border-bottom: none;
             border-radius: 0 0 16px 16px;
@@ -1265,6 +1266,115 @@ h3 {
             justify-content: center;
         }
     }
+}
+
+.accordion-header {
+    padding: 10px;
+    border-radius: 16px;
+    cursor: pointer;
+    position: relative;
+    &.green {
+        background-color: #34c759;
+    }
+    &::after {
+        content: "\e918";
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        transform: translateY(-50%);
+        /* use !important to prevent issues with browser extensions that change fonts */
+        font-family: 'icomoon' !important;
+        speak: never;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    a {
+        color: #333;
+    }
+}
+
+.custom-alert {
+    background-color: #34c759;
+    width: 280px;
+    border-radius: 16px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 100000;
+    color: #fff;
+    &.none {
+        display: none;
+    }
+}
+
+.ql-toolbar.ql-snow {
+    border-radius: 16px 16px 0 0;
+}
+
+#editor-container {
+    border-radius: 0 0 16px 16px;
+    overflow: hidden;
+    height: 300px;
+}
+
+.acc-container {
+    display: none;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.accordion-header[aria-expanded="true"]+.acc-container {
+    display: block;
+}
+
+.form-group {
+    .d-flex {
+        margin-bottom: 10px;
+        .checkmark {
+            margin-right: 10px;
+        }
+    }
+    .form-control {
+        margin-bottom: 16px;
+    }
+}
+
+.title-h {
+    padding-top: 20px;
+}
+
+.accordion {
+    margin-bottom: 40px;
+}
+
+.card-body {
+    .btn {
+        max-width: 50%;
+    }
+}
+
+.buttont-container {
+    margin-bottom: 30px !important;
+}
+
+.custom-radio-group {
+    a {
+        margin-right: 10px;
+    }
+}
+
+#edit-userform {
+    display: none;
 }
 
 // !!!

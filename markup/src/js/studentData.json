@@ -1,0 +1,43 @@
+{
+    "loginName": "mtlhunter+student2@gmail.com",
+    "fullName": "LS2, MS2",
+    "preferredName": "John",
+    "telephone": "123-456-7890",
+    "email": "mtlhunter+student2@gmail.com",
+    "gender": "Other",
+    "dateOfBirth": "1000-01-01",
+    "age": 1024,
+    "address": "123 Main St, Test City",
+    "homeSchool": "Test School",
+    "parent1": "Parent Name",
+    "parentTelephone": "987-654-3210",
+    "registrationDate": "2024-06-19 03:26:57 AM",
+    "lastLoggedIn": "2024-06-19 01:50:45 PM",
+    "lastLoggedInDuration": "2 months, 1 week, 16 hours, 39 minutes, 10 seconds ago",
+    "ocas": "OCAS123",
+    "oen": "OEN456",
+    "cautionFlag": true,
+    "communicationNotes": [{
+            "date": "2024-08-27 10:49 AM",
+            "author": "George",
+            "note": "Caution Flag set"
+        },
+        {
+            "date": "2024-08-28 09:12 AM",
+            "author": "George",
+            "note": "Reminder to check with parent."
+        }
+    ],
+    "notes": "",
+    "documents": [],
+    "accountType": "Student",
+    "inactivityNotices": true,
+    "iepFlag": true,
+    "teacherCommunicationNotes": [{
+        "date": "2024-06-19 12:57 PM",
+        "course": "[MCV4U-03:Proctor System]",
+        "note": "Student added a blacklisted proctor"
+    }],
+    "referredBy": "No data",
+    "webBrowsersUsed": "2024-06-19 16:46:40 - Google Chrome 125 on Windows 10"
+}

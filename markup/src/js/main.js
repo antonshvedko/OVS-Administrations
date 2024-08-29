@@ -1009,3 +1009,32 @@ function changeCoursesView(state) {
 document.addEventListener("DOMContentLoaded", function() {
     var simple = new Datepicker('#simple');
 })
+
+document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', function() {
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+        document.querySelectorAll('.accordion-header').forEach(h => {
+            h.setAttribute('aria-expanded', 'false');
+        });
+
+        if (!isExpanded) {
+            this.setAttribute('aria-expanded', 'true');
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const editButton = document.getElementById('edit-user-button');
+    const userBody = document.getElementById('user-body');
+    const editUserForm = document.getElementById('edit-userform');
+
+    if (editButton) {
+        editButton.addEventListener('click', function() {
+            if (userBody && editUserForm) {
+                userBody.style.display = 'none';
+                editUserForm.style.display = 'block';
+            }
+        });
+    }
+});

@@ -29976,12 +29976,11 @@ input[type=radio] {
 }
 
 .custom-radio {
-  position: relative;
   display: flex;
   align-items: center;
   cursor: pointer;
-  padding-left: 36px;
   color: #000;
+  padding-bottom: 10px;
 }
 .custom-radio span {
   position: absolute;
@@ -30027,6 +30026,108 @@ input[type=radio]:checked + .custom-radio span::after, input[type=radio]:checked
 
 .select-all.custom-checkbox .checkmark::after {
   content: "";
+}
+
+.form-grid {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+@media (min-width: 1025px) {
+  .form-grid {
+    display: grid;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-radio-group .custom-radio {
+  margin-bottom: 15px;
+}
+
+.custom-radio-group .custom-radio input {
+  display: none;
+}
+
+.custom-radio span {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  background-color: #ffffff;
+  border: 1px solid #C7C7CC;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.custom-radio span::before,
+.custom-radio span::after {
+  content: "";
+  position: absolute;
+  transition: transform 0.3s ease;
+  transform: scale(0);
+}
+
+.custom-radio span::before {
+  width: 18px;
+  height: 18px;
+  background-color: #206BFF;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.custom-radio span::after {
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.custom-radio input:checked + span::before,
+.custom-radio input:checked + span::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.card {
+  border-radius: 8px;
+  border: 1px solid #C7C7CC;
+}
+
+.card-body {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.custom-input,
+.custom-select {
+  border-radius: 10px;
+  border: 1px solid #C7C7CC;
+  padding: 8px 12px;
+  box-shadow: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.custom-input:focus,
+.custom-select:focus {
+  border-color: #007bff;
+}
+
+.custom-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #fff;
+}
+.custom-select::-ms-expand {
+  display: none;
 }
 
 /* Responsive Table Style */
@@ -31431,9 +31532,13 @@ h3 {
   background-color: white;
 }
 .users-body .item {
-  display: flex;
   padding: 10px;
   border-bottom: 1px solid #ddd;
+}
+@media (min-width: 769px) {
+  .users-body .item {
+    display: flex;
+  }
 }
 .users-body .item:last-child {
   border-bottom: none;
@@ -31486,6 +31591,109 @@ h3 {
 }
 .buttont-container .btn .holder {
   justify-content: center;
+}
+
+.accordion-header {
+  padding: 10px;
+  border-radius: 16px;
+  cursor: pointer;
+  position: relative;
+}
+.accordion-header.green {
+  background-color: #34c759;
+}
+.accordion-header::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icomoon" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.accordion-header a {
+  color: #333;
+}
+
+.custom-alert {
+  background-color: #34c759;
+  width: 280px;
+  border-radius: 16px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 100000;
+  color: #fff;
+}
+.custom-alert.none {
+  display: none;
+}
+
+.ql-toolbar.ql-snow {
+  border-radius: 16px 16px 0 0;
+}
+
+#editor-container {
+  border-radius: 0 0 16px 16px;
+  overflow: hidden;
+  height: 300px;
+}
+
+.acc-container {
+  display: none;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.accordion-header[aria-expanded=true] + .acc-container {
+  display: block;
+}
+
+.form-group .d-flex {
+  margin-bottom: 10px;
+}
+.form-group .d-flex .checkmark {
+  margin-right: 10px;
+}
+.form-group .form-control {
+  margin-bottom: 16px;
+}
+
+.title-h {
+  padding-top: 20px;
+}
+
+.accordion {
+  margin-bottom: 40px;
+}
+
+.card-body .btn {
+  max-width: 50%;
+}
+
+.buttont-container {
+  margin-bottom: 30px !important;
+}
+
+.custom-radio-group a {
+  margin-right: 10px;
+}
+
+#edit-userform {
+  display: none;
 }
 
 .button-icon {
