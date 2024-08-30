@@ -1396,3 +1396,75 @@ h3 {
         font-size: 12px;
     }
 }
+
+
+/* Контейнер для вложений */
+
+.container-control-add {}
+
+.attachments-list {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* Стиль для каждого элемента в списке */
+
+.attachment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+}
+
+
+/* Ссылка на файл */
+
+.attachment-item a {
+    color: #555;
+    text-decoration: none;
+    flex-grow: 1;
+    padding-right: 10px;
+}
+
+
+/* Стили для кнопки Remove */
+
+.attachment-item .btn-danger {
+    background-color: #d9534f;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+
+/* Выровняйте элементы в столбик */
+
+#fileInput,
+#addFileButton {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+
+/* Стили для кнопки Add Files */
+
+#addFileButton {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}

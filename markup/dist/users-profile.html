@@ -812,8 +812,24 @@
                     <div class="value" id="oen"></div>
                 </div>
                 <div class="item">
-                    <div class="name">Communication Notes</div>
-                    <div class="value" id="communicationNotes"></div>
+                    <div class="name">Communication Notes:
+                        <label>
+                            <input type="checkbox" name="caution_flag" value="1">
+                            Caution Flag
+                        </label>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <div class="value" id="teacherCommunicationNotes">
+                            <div class="commentBody">
+                            </div>
+                        </div>
+                        <form action="" class="form">
+                            <textarea name="note" id="newNote" cols="30" rows="3" placeholder="Add Note"></textarea>
+                            <div>
+                                <button class="btn btn-primary" type="button">Add Note</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 <div class="item">
                     <div class="name">Notes:</div>
@@ -821,8 +837,20 @@
                 </div>
                 <div class="item">
                     <div class="name">Documents (Attachments):</div>
-                    <div class="value" id="documents"></div>
+                    <div class="container-control-add">
+                        <div class="attachments-list" id="attachmentsList">
+                        </div>
+                        <input type="file" id="fileInput" multiple>
+                        <button class="btn btn-primary" id="addFileButton">Add Files</button>
+                    </div>
                 </div>
+                <!-- <div class="item">
+                    <div class="name">Applications Attachments:</div>
+                    <div class="attachments-list" id="attachmentsListApplications">
+                    </div>
+                    <input type="file" id="fileInput" multiple>
+                    <button class="btn btn-primary" id="addFileButton">Add Files</button>
+                </div> -->
                 <div class="item">
                     <div class="name">Account Type:</div>
                     <div class="value" id="accountType"></div>
@@ -832,9 +860,21 @@
                     <div class="value" id="inactivityNotices"></div>
                 </div>
                 <div class="item">
-                    <div class="name">IEP &amp; Accommodation Notes:</div>
-                    <div class="value" id="iepFlag"></div>
+                    <div class="name">IEP & Accommodation Notes: </div>
+                    <div class="d-flex flex-column">
+                        <div class="value" id="iepAccommodationNotes">
+                            <div class="commentBody">
+                            </div>
+                        </div>
+                        <form action="" class="form">
+                            <textarea name="note" id="newIepNote" cols="30" rows="3" placeholder="Add Note"></textarea>
+                            <div>
+                                <button class="btn btn-primary" type="button">Add Note</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+
                 <div class="item">
                     <div class="name">Teacher Communication Notes: </div>
                     <div class="d-flex flex-column">
@@ -937,6 +977,7 @@
                         <div class="name">
                             Communication Notes<br>
                             <span style="font-weight:normal">(Admin only - not visible to teachers)</span><br><br>
+
                             <label>
                                 <input type="checkbox" name="caution_flag" value="1">
                                 Caution Flag
