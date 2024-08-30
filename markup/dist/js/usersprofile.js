@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         ]
     };
-
+    console.log(data.loginName); // Check if this logs the expected value
     // Функция для добавления файла в список
     function addAttachment(file, attachmentsListElement) {
         const attachmentItem = document.createElement('div');
@@ -116,22 +116,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Обработчик нажатия на кнопку "Add Files" для Applications Attachments
     const fileInputApplications = document.getElementById('fileInputApplications');
-    const addFileButtonApplications = document.getElementById('addFileButtonApplications');
+    // const addFileButtonApplications = document.getElementById('addFileButtonApplications');
 
-    addFileButtonApplications.addEventListener('click', function() {
-        const files = fileInputApplications.files;
-        if (files.length > 0) {
-            for (let i = 0; i < files.length; i++) {
-                addAttachment({ name: files[i].name, url: '#' }, attachmentsListApplications);
-            }
-            // Очищаем input после добавления файлов
-            fileInputApplications.value = '';
-        }
-    });
+    // addFileButtonApplications.addEventListener('click', function() {
+    //     const files = fileInputApplications.files;
+    //     if (files.length > 0) {
+    //         for (let i = 0; i < files.length; i++) {
+    //             addAttachment({ name: files[i].name, url: '#' }, attachmentsListApplications);
+    //         }
+    //         // Очищаем input после добавления файлов
+    //         fileInputApplications.value = '';
+    //     }
+    // });
 
     // Заполнение teacherCommunicationNotes
-    const teacherCommunicationNotesDiv = document.getElementById('teacherCommunicationNotes');
-    teacherCommunicationNotesDiv.innerHTML = ''; // Очистка существующего содержимого
+    // const teacherCommunicationNotesDiv = document.getElementById('teacherCommunicationNotes');
+    // teacherCommunicationNotesDiv.innerHTML = ''; // Очистка существующего содержимого
 
     data.teacherCommunicationNotes.forEach(note => {
         const commentDiv = document.createElement('div');
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
         commentDiv.appendChild(editButton);
         commentDiv.appendChild(p);
 
-        teacherCommunicationNotesDiv.appendChild(commentDiv);
+        // teacherCommunicationNotesDiv.appendChild(commentDiv);
     });
 
     // Заполнение секции IEP & Accommodation Notes
@@ -198,17 +198,17 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('ocas').textContent = data.ocas;
     document.getElementById('oen').textContent = data.oen;
 
-    const communicationNotesDiv = document.getElementById('communicationNotes');
-    data.communicationNotes.forEach(note => {
-        const p = document.createElement('p');
-        p.textContent = `${note.date} - ${note.author}: ${note.note}`;
-        communicationNotesDiv.appendChild(p);
-    });
+    // const communicationNotesDiv = document.getElementById('communicationNotes');
+    // data.communicationNotes.forEach(note => {
+    //     const p = document.createElement('p');
+    //     p.textContent = `${note.date} - ${note.author}: ${note.note}`;
+    //     communicationNotesDiv.appendChild(p);
+    // });
 
     document.getElementById('notes').textContent = data.notes || 'No additional notes';
     document.getElementById('accountType').textContent = data.accountType;
     document.getElementById('inactivityNotices').textContent = data.inactivityNotices ? 'Enabled' : 'Disabled';
-    document.getElementById('iepFlag').textContent = data.iepFlag ? 'IEP Active' : 'No IEP';
+
     document.getElementById('referredBy').textContent = data.referredBy;
     document.getElementById('webBrowsersUsed').textContent = data.webBrowsersUsed;
 });

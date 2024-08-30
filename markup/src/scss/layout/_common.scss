@@ -1354,7 +1354,14 @@ h3 {
 }
 
 .accordion {
-    margin-bottom: 40px;
+    margin-bottom: 10px;
+}
+
+.acc-section {
+    background-color: rgba($color: #8E8E93, $alpha: .2);
+    padding: 20px 10px;
+    margin: 20px 0;
+    border-radius: 16px;
 }
 
 .card-body {
@@ -1397,9 +1404,6 @@ h3 {
     }
 }
 
-
-/* Контейнер для вложений */
-
 .container-control-add {}
 
 .attachments-list {
@@ -1412,9 +1416,6 @@ h3 {
     gap: 10px;
 }
 
-
-/* Стиль для каждого элемента в списке */
-
 .attachment-item {
     display: flex;
     justify-content: space-between;
@@ -1424,18 +1425,12 @@ h3 {
     border-radius: 5px;
 }
 
-
-/* Ссылка на файл */
-
 .attachment-item a {
     color: #555;
     text-decoration: none;
     flex-grow: 1;
     padding-right: 10px;
 }
-
-
-/* Стили для кнопки Remove */
 
 .attachment-item .btn-danger {
     background-color: #d9534f;
@@ -1447,18 +1442,12 @@ h3 {
     margin-left: 10px;
 }
 
-
-/* Выровняйте элементы в столбик */
-
 #fileInput,
 #addFileButton {
     display: block;
     width: 100%;
     margin-bottom: 10px;
 }
-
-
-/* Стили для кнопки Add Files */
 
 #addFileButton {
     background-color: #007bff;
