@@ -601,7 +601,29 @@
             </div>
         </aside>
         <div class="container-fluid users-main" id="mainContent">
-            <h2>Student Report</h2>
+            <div class="d-flex justify-content-between">
+                <h2>Student Report</h2>
+                <div class="">
+                    <div class="pin_container">
+                        <div id="pinned_for_you">
+                            <div title="Pin student down for you" class="button" onclick="togglePin(1, true)" style="display: none;">
+                                <svg fill="#c9af5f" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill-rule="evenodd" clip-rule="evenodd"><path d="M5 0v24l7-6 7 6v-24h-14zm1 1h12v20.827l-6-5.144-6 5.144v-20.827z"></path></svg>
+                            </div>
+                            <div title="Pinned for you" class=" button selected" onclick="togglePin(1, false)">
+                                <svg fill="#ffc107" stroke="#000" stroke-width="1px" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 24l-7-6-7 6v-24h14v24z"></path></svg>
+                            </div>
+                        </div>
+                        <div id="pinned_for_all_admins">
+                            <div title="Pin student down for all admins" class="button" onclick="togglePin(0, true)" style="display: none;">
+                                <svg fill="#a50d0d" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill-rule="evenodd" clip-rule="evenodd"><path d="M5 0v24l7-6 7 6v-24h-14zm1 1h12v20.827l-6-5.144-6 5.144v-20.827z"></path></svg>
+                            </div>
+                            <div title="Pinned for all admins" class="button selected" onclick="togglePin(0, false)">
+                                <svg fill="#a50d0d" stroke="#000" stroke-width="1px" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 24l-7-6-7 6v-24h14v24z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class=" ">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group-toggle custom-radio-group" data-toggle="buttons" id="user-view">
@@ -631,16 +653,16 @@
                     </div>
                 </div>
                 <div class="custom-grid row buttont-container">
-                    <div class="custom-grid-item col-12 col-lg-2 col-xl-2 pb-0">
+                    <!-- <div class="custom-grid-item col-12 col-lg-2 col-xl-2 pb-0">
                         <div class="custom-grid">
                             <button class="btn  btn-secondary"><div class="holder"><span> Print Student Label</span></div></button>
                         </div>
-                    </div>
-                    <div class="custom-grid-item col-12 col-lg-2 col-xl-2 pb-0">
+                    </div> -->
+                    <!-- <div class="custom-grid-item col-12 col-lg-2 col-xl-2 pb-0">
                         <div class="custom-grid">
                             <button class="btn  btn-secondary"><div class="holder"><span> View Student PDF Report</span></div></button>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="custom-grid-item col-12 col-lg-2 col-xl-2 pb-0">
                         <div class="custom-grid">
                             <button class="btn btn-transparent"><div class="holder"><span> Transcript</span></div></button>
@@ -1611,6 +1633,679 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="acc-section">
+                                    <h4 class="title-h">
+                                        Courses previously enrolled in:</h4>
+                                    <div class="accordion">
+                                        <div class="accordion-header yelow" role="tab" aria-expanded="false" aria-selected="false" tabindex="0">
+                                            <span><strong>ENG4U-03</strong> (<a class="teacher_profile_link" href="https://staging.myvirtualschool.com/mods/_core/student_report/index.php?id=61642">YT2 KT2</a>) [48]</span>
+                                            <span>Mark: <strong>0 %</strong></span>
+                                            <span>Enrollment: <strong>Jun 19, 2024</strong></span>
+                                            <span>Days in Course: <strong>70</strong></span> | Expiring on: <strong>Jun 26, 2025</strong>
+                                        </div>
+                                        <div class="acc-container">
+                                            <div class="">
+                                                <form class="student-form">
+                                                    <h3>LAN7G-01</h3>
+                                                    <p>
+                                                        Current Progress: <strong>6/6 assessments completed</strong> (6/6 mandatory)<br> (0/0 optional)
+                                                    </p>
+                                                    <p>Dropbox: 0/6</p>
+                                                    <p>Test Centre: 0/0</p>
+                                                    <p>
+                                                        <strong>Latest Mark:</strong> Unit 1 Summative: Write your own news story on <em>Mar. 5th, 2021 04:54 PM</em><br> Teacher Last Login: <em>3 months, 1 week, 16 hours, 24 minutes, 31 seconds ago</em>
+                                                    </p>
+                                                    <p>
+                                                        Attendance (Lessons Watched): 0/26<br> Prerequisite: <strong>Submitted</strong>
+                                                    </p>
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group mt-3">
+                                                                <label for="midterm_report_submitted">Midterm Report Submitted:</label>
+                                                                <input type="text" id="midterm_report_submitted" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="final_report_submitted">Final Report Submitted:</label>
+                                                                <input type="text" id="final_report_submitted" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="final_mark">Final Mark:</label>
+                                                                <input type="text" id="final_mark" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="absences"># of Absences:</label>
+                                                                <input type="text" id="absences" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="ouac_number">OUAC Number:</label>
+                                                                <input type="text" id="ouac_number" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="ocas_number">OCAS Number:</label>
+                                                                <input type="text" id="ocas_number" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group mt-4">
+                                                                <button type="button" class="btn btn-primary mb-3">View Attendance & Learning Report</button>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="contact_info">Contact Info:</label>
+                                                                <input type="text" id="contact_info" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="fax_number">Fax Number:</label>
+                                                                <input type="text" id="fax_number" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="contact_email">Contact Email:</label>
+                                                                <input type="email" id="contact_email" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="student_note_box">Student Note Box:</label>
+                                                                <textarea id="student_note_box" class="form-control"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <h4 class="mt-4">Additional Information</h4>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-3">
+                                                                <input type="checkbox" id="textbook_mailed_out">
+                                                                <span class="checkmark"></span>
+                                                                <div class="title">Textbook mailed out</div>
+                                                            </label>
+
+                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-3">
+                                                                <input type="checkbox" id="textbook_deposit_mailed_out">
+                                                                <span class="checkmark"></span>
+                                                                <div class="title">Textbook Deposit mailed out</div>
+                                                            </label>
+
+                                                            <div class="form-group mt-3 mb-3">
+                                                                <label for="referred_by">Referred by:</label>
+                                                                <input type="text" id="referred_by" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group mb-3">
+                                                                <label for="referral_cheque">Referral Cheque:</label>
+                                                                <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-2">
+                                                                    <input type="checkbox" id="referral_cheque_sent">
+                                                                    <span class="checkmark"></span>
+                                                                    <div class="title">Sent</div>
+                                                                </label>
+                                                                <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-3">
+                                                                    <input type="checkbox" id="referral_cheque_cashed">
+                                                                    <span class="checkmark"></span>
+                                                                    <div class="title">Cashed</div>
+                                                                </label>
+                                                                <input type="email" id="referral_email" class="form-control mt-2" placeholder="Referral Email Address">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-3">
+                                                                <input type="checkbox" id="textbook_returned">
+                                                                <span class="checkmark"></span>
+                                                                <div class="title">Textbook returned</div>
+                                                            </label>
+
+                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-3">
+                                                                <input type="checkbox" id="cheque_cashed">
+                                                                <span class="checkmark"></span>
+                                                                <div class="title">Cheque Cashed</div>
+                                                            </label>
+
+                                                            <div class="form-group mt-3 mb-3">
+                                                                <label for="onsis_status">ONSIS Status:</label>
+                                                                <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-2">
+                                                                    <input type="checkbox" id="onsis_entered">
+                                                                    <span class="checkmark"></span>
+                                                                    <div class="title">Entered</div>
+                                                                </label>
+                                                                <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-3">
+                                                                    <input type="checkbox" id="onsis_ended">
+                                                                    <span class="checkmark"></span>
+                                                                    <div class="title">Ended</div>
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="form-group mt-3 mb-3">
+                                                                <label for="notes">Notes:</label>
+                                                                <textarea id="notes" class="form-control"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group text-center mt-4">
+                                                        <button type="submit" class="btn btn-primary">Save Additional Information</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="accordion">
+                                        <div class="accordion-header yelow" role="tab" aria-expanded="false" aria-selected="false" tabindex="0">
+                                            <span><strong>ENG4U-03</strong> (<a class="teacher_profile_link" href="https://staging.myvirtualschool.com/mods/_core/student_report/index.php?id=61642">YT2 KT2</a>) [48]</span>
+                                            <span>Mark: <strong>0 %</strong></span>
+                                            <span>Enrollment: <strong>Jun 19, 2024</strong></span>
+                                            <span>Days in Course: <strong>70</strong></span> | Expiring on: <strong>Jun 26, 2025</strong>
+                                        </div>
+                                        <div class="acc-container">
+                                            <div class="">
+                                                <form class="student-form">
+                                                    <h3>LAN7G-01</h3>
+                                                    <p>
+                                                        Current Progress: <strong>6/6 assessments completed</strong> (6/6 mandatory)<br> (0/0 optional)
+                                                    </p>
+                                                    <p>Dropbox: 0/6</p>
+                                                    <p>Test Centre: 0/0</p>
+                                                    <p>
+                                                        <strong>Latest Mark:</strong> Unit 1 Summative: Write your own news story on <em>Mar. 5th, 2021 04:54 PM</em><br> Teacher Last Login: <em>3 months, 1 week, 16 hours, 24 minutes, 31 seconds ago</em>
+                                                    </p>
+                                                    <p>
+                                                        Attendance (Lessons Watched): 0/26<br> Prerequisite: <strong>Submitted</strong>
+                                                    </p>
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group mt-3">
+                                                                <label for="midterm_report_submitted">Midterm Report Submitted:</label>
+                                                                <input type="text" id="midterm_report_submitted" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="final_report_submitted">Final Report Submitted:</label>
+                                                                <input type="text" id="final_report_submitted" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="final_mark">Final Mark:</label>
+                                                                <input type="text" id="final_mark" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="absences"># of Absences:</label>
+                                                                <input type="text" id="absences" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="ouac_number">OUAC Number:</label>
+                                                                <input type="text" id="ouac_number" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="ocas_number">OCAS Number:</label>
+                                                                <input type="text" id="ocas_number" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group mt-4">
+                                                                <button type="button" class="btn btn-primary mb-3">View Attendance & Learning Report</button>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="contact_info">Contact Info:</label>
+                                                                <input type="text" id="contact_info" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="fax_number">Fax Number:</label>
+                                                                <input type="text" id="fax_number" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="contact_email">Contact Email:</label>
+                                                                <input type="email" id="contact_email" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="student_note_box">Student Note Box:</label>
+                                                                <textarea id="student_note_box" class="form-control"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <h4 class="mt-4">Additional Information</h4>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-3">
+                                                                <input type="checkbox" id="textbook_mailed_out">
+                                                                <span class="checkmark"></span>
+                                                                <div class="title">Textbook mailed out</div>
+                                                            </label>
+
+                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-3">
+                                                                <input type="checkbox" id="textbook_deposit_mailed_out">
+                                                                <span class="checkmark"></span>
+                                                                <div class="title">Textbook Deposit mailed out</div>
+                                                            </label>
+
+                                                            <div class="form-group mt-3 mb-3">
+                                                                <label for="referred_by">Referred by:</label>
+                                                                <input type="text" id="referred_by" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group mb-3">
+                                                                <label for="referral_cheque">Referral Cheque:</label>
+                                                                <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-2">
+                                                                    <input type="checkbox" id="referral_cheque_sent">
+                                                                    <span class="checkmark"></span>
+                                                                    <div class="title">Sent</div>
+                                                                </label>
+                                                                <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-3">
+                                                                    <input type="checkbox" id="referral_cheque_cashed">
+                                                                    <span class="checkmark"></span>
+                                                                    <div class="title">Cashed</div>
+                                                                </label>
+                                                                <input type="email" id="referral_email" class="form-control mt-2" placeholder="Referral Email Address">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-3">
+                                                                <input type="checkbox" id="textbook_returned">
+                                                                <span class="checkmark"></span>
+                                                                <div class="title">Textbook returned</div>
+                                                            </label>
+
+                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-3">
+                                                                <input type="checkbox" id="cheque_cashed">
+                                                                <span class="checkmark"></span>
+                                                                <div class="title">Cheque Cashed</div>
+                                                            </label>
+
+                                                            <div class="form-group mt-3 mb-3">
+                                                                <label for="onsis_status">ONSIS Status:</label>
+                                                                <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-2">
+                                                                    <input type="checkbox" id="onsis_entered">
+                                                                    <span class="checkmark"></span>
+                                                                    <div class="title">Entered</div>
+                                                                </label>
+                                                                <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-3">
+                                                                    <input type="checkbox" id="onsis_ended">
+                                                                    <span class="checkmark"></span>
+                                                                    <div class="title">Ended</div>
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-group mt-3 mb-3">
+                                                                <label for="notes">Notes:</label>
+                                                                <textarea id="notes" class="form-control"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group text-center mt-4">
+                                                        <button type="submit" class="btn btn-primary">Save Additional Information</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="acc-section">
+                                    <h4 class="title-h">
+                                        Withdrawn Courses:</h4>
+                                    <div class="accordion">
+                                        <div class="accordion-header pink" role="tab" aria-expanded="false" aria-selected="false" tabindex="0">
+                                            <span><strong>ENG4U-03</strong> (<a class="teacher_profile_link" href="https://staging.myvirtualschool.com/mods/_core/student_report/index.php?id=61642">YT2 KT2</a>) [48]</span>
+                                            <span>Mark: <strong>0 %</strong></span>
+                                            <span>Enrollment: <strong>Jun 19, 2024</strong></span>
+                                            <span>Days in Course: <strong>70</strong></span> | Expiring on: <strong>Jun 26, 2025</strong>
+                                        </div>
+                                        <div class="acc-container">
+                                            <div class="">
+                                                <form class="student-form">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <h4>OVS10-01</h4>
+                                                            <p>Current Progress 5/6 assessments completed <br> (5/6 mandatory) <br> (0/0 optional)</p>
+                                                            <p>Attendance (Lessons Watched): 0/28</p>
+                                                            <p>
+                                                                Prerequisite:
+                                                                <label class="custom-checkbox dropdown-option d-flex align-items-center">
+                                                                    <input type="checkbox" id="prerequisite_submitted">
+                                                                    <span class="checkmark"></span>
+                                                                    <div class="title">Submitted</div>
+                                                                </label>
+                                                            </p>
+                                                            <div class="form-group">
+                                                                <label for="upload_prerequisite">Upload Prerequisite:</label>
+                                                                <input type="file" id="upload_prerequisite" class="form-control">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="custom-checkbox dropdown-option d-flex align-items-center">
+                                                                    <input type="checkbox" id="ignore_eligibility">
+                                                                    <span class="checkmark"></span>
+                                                                    <div class="title">Ignore Eligibility Date for Report Cards:</div>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="midterm_report_submitted">Midterm Report Submitted:</label>
+                                                                <input type="text" id="midterm_report_submitted" class="form-control">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="midterm_report_card">Midterm Report Card:</label>
+                                                                <input type="text" id="midterm_report_card" class="form-control">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="final_report_submitted">Final Report Submitted:</label>
+                                                                <input type="text" id="final_report_submitted" class="form-control">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="final_report_card">Final Report Card:</label>
+                                                                <input type="text" id="final_report_card" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h5>Additional Information</h5>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3">
+                                                                <input type="checkbox" id="textbook_mailed_out">
+                                                                <span class="checkmark"></span>
+                                                                <div class="title">Textbook mailed out</div>
+                                                            </label>
+                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3">
+                                                                <input type="checkbox" id="textbook_returned">
+                                                                <span class="checkmark"></span>
+                                                                <div class="title">Textbook returned</div>
+                                                            </label>
+                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3">
+                                                                <input type="checkbox" id="textbook_deposit_mailed_out">
+                                                                <span class="checkmark"></span>
+                                                                <div class="title">Textbook Deposit mailed out</div>
+                                                            </label>
+                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3">
+                                                                <input type="checkbox" id="cheque_cashed">
+                                                                <span class="checkmark"></span>
+                                                                <div class="title">Cheque Cashed</div>
+                                                            </label>
+                                                            <div class="form-group mt-3">
+                                                                <label for="referred_by">Referred by:</label>
+                                                                <input type="text" id="referred_by" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="referral_cheque">Referral Cheque:</label>
+                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3">
+                                                                <input type="checkbox" id="referral_cheque_sent">
+                                                                <span class="checkmark"></span>
+                                                                <div class="title">Sent</div>
+                                                            </label>
+                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3">
+                                                                <input type="checkbox" id="referral_cheque_cashed">
+                                                                <span class="checkmark"></span>
+                                                                <div class="title">Cashed</div>
+                                                            </label>
+                                                            <input type="email" id="referral_email" class="form-control mt-2" placeholder="Referral Email Address">
+                                                            <div class="form-group mt-3">
+                                                                <label for="onsis_status">ONSIS:</label>
+                                                                <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3">
+                                                                    <input type="checkbox" id="onsis_entered">
+                                                                    <span class="checkmark"></span>
+                                                                    <div class="title">Entered</div>
+                                                                </label>
+                                                                <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3">
+                                                                    <input type="checkbox" id="onsis_ended">
+                                                                    <span class="checkmark"></span>
+                                                                    <div class="title">Ended</div>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group mt-3">
+                                                        <label for="notes">Notes:</label>
+                                                        <textarea id="notes" class="form-control"></textarea>
+                                                    </div>
+                                                    <div class=" mt-3">
+                                                        <button type="submit" class="btn btn-primary">Save Additional Information</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="acc-section">
+                                    <h4 class="title-h">
+                                        Expired Courses: </h4>
+                                    <div class="accordion">
+                                        <div class="accordion-header white" role="tab" aria-expanded="false" aria-selected="false" tabindex="0">
+                                            <span><strong>ENG4U-03</strong> (<a class="teacher_profile_link" href="https://staging.myvirtualschool.com/mods/_core/student_report/index.php?id=61642">YT2 KT2</a>) [48]</span>
+                                            <span>Mark: <strong>0 %</strong></span>
+                                            <span>Enrollment: <strong>Jun 19, 2024</strong></span>
+                                            <span>Days in Course: <strong>70</strong></span> | Expiring on: <strong>Jun 26, 2025</strong>
+                                        </div>
+                                        <div class="acc-container">
+                                            <div class="">
+                                                <form class="student-form">
+                                                    <h4>Current Mark: 72%</h4>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <p>
+                                                                Current Progress 1/10 assessments completed<br> (1/8 mandatory)<br> (0/2 optional)
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <p>
+                                                                Attendance (Lessons Watched): 47/56<br> Prerequisite: Submitted <br>
+                                                                <small>Approved by Unknown</small>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+
+                                                    <h5>Test Centre 5/6</h5>
+                                                    <ul>
+                                                        <li>Unit 3 Test Curve Sketching & Optimization was started on Oct. 1st, 2020 02:24 PM and submitted on Oct. 29th, 2020 02:37 PM</li>
+                                                        <li>Unit 1 Test Rates of Change was started on Oct. 12th, 2020 08:52 PM and submitted on Jun. 4th, 2021 04:53 PM</li>
+                                                        <li>Unit 5 Test Cartesian & Geometric Vectors was started on Mar. 4th, 2022 02:37 PM and is still ongoing (approx. 2 years ago)</li>
+                                                        <li>Unit 2 Test Derivatives was started on Mar. 4th, 2022 03:08 PM and is still ongoing (approx. 2 years ago)</li>
+                                                        <li>Unit 4 Test Trigonometry & Exponential Functions was started on Nov. 28th, 2022 08:21 PM and is still ongoing (approx. 1 year ago)</li>
+                                                    </ul>
+
+                                                    <p>
+                                                        Lastest Mark: Unit 1 on Jan. 25th, 2024 01:42 PM <br> Teacher Last Login: 1 month, 3 weeks, 3 days, 17 hours, 17 minutes, 25 seconds ago
+                                                    </p>
+
+                                                    <div class="text-right">
+                                                        <button type="button" class="btn btn-primary mb-3">Download Student Progress Report</button>
+                                                        <button type="button" class="btn btn-secondary mb-3">View Student Submission</button>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="midterm_report_submitted">Midterm Report Submitted:</label>
+                                                                <input type="text" id="midterm_report_submitted" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="midterm_mark">Midterm Mark:</label>
+                                                                <input type="text" id="midterm_mark" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="ouac_number">OUAC Number:</label>
+                                                                <input type="text" id="ouac_number" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="ocas_number">OCAS Number:</label>
+                                                                <input type="text" id="ocas_number" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="contact_info">Contact Info:</label>
+                                                                <input type="text" id="contact_info" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="fax_number">Fax Number:</label>
+                                                                <input type="text" id="fax_number" class="form-control">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="contact_email">Contact Email:</label>
+                                                                <input type="email" id="contact_email" class="form-control">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="student_note_box">Student Note Box:</label>
+                                                                <textarea id="student_note_box" class="form-control"></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="final_report_submitted">Final Report Submitted:</label>
+                                                                <input type="text" id="final_report_submitted" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="text-success">
+                                                                    <strong>YES</strong> Processed:
+                                                                </label>
+                                                                <input type="text" id="processed_yes" class="form-control" value="74">
+                                                                <button type="button" class="btn btn-secondary mt-2">Edit</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label class="text-danger">
+                                                                    <strong>NO</strong> Processed:
+                                                                </label>
+                                                                <input type="text" id="processed_no" class="form-control" value="12">
+                                                                <button type="button" class="btn btn-secondary mt-2">Edit</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-right mt-3">
+                                                        <button type="submit" class="btn btn-primary">Submit to OUAC</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="acc-section">
+                                    <h4 class="title-h">
+                                        Hold Courses:</h4>
+                                    <div class="accordion">
+                                        <div class="accordion-header orange" role="tab" aria-expanded="false" aria-selected="false" tabindex="0">
+                                            <span><strong>ENG4U-03</strong> (<a class="teacher_profile_link" href="https://staging.myvirtualschool.com/mods/_core/student_report/index.php?id=61642">YT2 KT2</a>) [48]</span>
+                                            <span>Mark: <strong>0 %</strong></span>
+                                            <span>Enrollment: <strong>Jun 19, 2024</strong></span>
+                                            <span>Days in Course: <strong>70</strong></span> | Expiring on: <strong>Jun 26, 2025</strong>
+                                        </div>
+                                        <div class="acc-container">
+                                            <div class="container mt-4">
+                                                <div class="row">
+                                                    <!-- Left Column -->
+                                                    <div class="col-md-6">
+                                                        <h5>SBI4U-AE2</h5>
+                                                        <p>
+                                                            Current Progress 0/11 evaluations<br> (0/11 mandatory)<br> (0/0 optional)
+                                                        </p>
+                                                        <p>
+                                                            Attendance (Lessons Watched): 23/76
+                                                        </p>
+                                                    </div>
+
+                                                    <!-- Right Column -->
+                                                    <div class="col-md-6 text-right">
+                                                        <p>
+                                                            <strong>Mark:</strong> 0%
+                                                        </p>
+                                                        <button type="button" class="btn btn-primary mb-3">Download Student Progress Report</button>
+                                                        <p>
+                                                            <strong>Dropbox 0/10</strong> <a href="#">Show All</a>
+                                                        </p>
+                                                        <p>
+                                                            <strong>Test Centre 0/5</strong>
+                                                        </p>
+                                                        <p>
+                                                            <strong>Lastest Mark:</strong><br> Teacher Last Login: 3 months, 1 week, 16 hours, 24 minutes, 37 seconds ago
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="acc-section">
+                                    <h4 class="title-h">
+                                        Transactions:</h4>
+                                    <div class="accordion">
+                                        <div class="accordion-header blue" role="tab" aria-expanded="false" aria-selected="false" tabindex="0">
+                                            <span><strong>ENG4U-03</strong> (<a class="teacher_profile_link" href="https://staging.myvirtualschool.com/mods/_core/student_report/index.php?id=61642">YT2 KT2</a>) [48]</span>
+                                            <span>Mark: <strong>0 %</strong></span>
+                                            <span>Enrollment: <strong>Jun 19, 2024</strong></span>
+                                            <span>Days in Course: <strong>70</strong></span> | Expiring on: <strong>Jun 26, 2025</strong>
+                                        </div>
+                                        <div class="acc-container">
+                                            <div class="container mt-4">
+                                                <div class="form-group">
+                                                    <label for="notes" class="font-weight-bold">NOTES:</label>
+                                                    <div class="mt-2">
+                                                        <button type="button" class="btn btn-secondary mb-3">Send Receipt</button>
+                                                        <button type="button" class="btn btn-secondary mb-3">Send Receipt to Email</button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group mt-4">
+                                                    <label for="actual_paid" class="font-weight-bold">Actual Paid:</label>
+                                                    <div class=" align-items-center mt-2">
+                                                        <span>$</span>
+                                                        <input type="text" id="actual_paid" class="form-control ml-2" value="574.00" style="width: 100px;">
+                                                        <button type="button" class="btn btn-secondary ml-2">Save</button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group mt-4">
+                                                    <label class="custom-checkbox dropdown-option d-flex align-items-center">
+                                                        <input type="checkbox" id="international_fees_paid" checked>
+                                                        <span class="checkmark"></span>
+                                                        <div class="title ml-2">International Fees Paid</div>
+                                                    </label>
+                                                </div>
+
+                                                <div class="form-group mt-4">
+                                                    <label for="refund" class="font-weight-bold">Refund</label>
+                                                    <input type="text" id="refund" class="form-control mt-2" value="MCV4U" style="width: 150px;">
+                                                </div>
+
+                                                <hr class="mt-4">
+
+                                                <div class="form-group">
+                                                    <p><strong>Name:</strong></p>
+                                                    <p><strong>Email:</strong></p>
+                                                    <p><strong>Phone:</strong></p>
+                                                    <p><strong>Referral Account:</strong> None Found</p>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="">
                                     <div class="row">
                                         <div class="col-md-8">
@@ -1737,9 +2432,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
                             </div>
                             <div class="container-fluid" id="formContent">
                                 <a href="/" class="back-button"> <i class="icon icomoon-keyboard_arrow_left"></i> <span>Back</span></a>
@@ -1928,7 +2620,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
+                                                <span aria-hidden="true">&times;</span></button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="body">
@@ -1943,6 +2635,11 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <div class="custom-alert none">
         <span>Updated International Status</span>
