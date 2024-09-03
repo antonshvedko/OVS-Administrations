@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Данные о пользователе
+
     const data = {
         "loginName": "mtlhunter+student2@gmail.com",
         "fullName": "LS2, MS2",
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { "name": "document1.pdf", "url": "#" },
             { "name": "document2.png", "url": "#" }
         ],
-        "attachmentsList": [ // Вложенные файлы
+        "attachmentsList": [
             { "name": "attachment1.pdf", "url": "#" },
             { "name": "attachment2.docx", "url": "#" }
         ],
@@ -62,20 +62,20 @@ document.addEventListener('DOMContentLoaded', function() {
         ]
     };
     console.log(data.loginName); // Check if this logs the expected value
-    // Функция для добавления файла в список
+
     function addAttachment(file, attachmentsListElement) {
         const attachmentItem = document.createElement('div');
         attachmentItem.className = 'attachment-item';
 
         const fileLink = document.createElement('a');
-        fileLink.href = file.url || '#'; // Ссылка для скачивания или просмотра файла
+        fileLink.href = file.url || '#';
         fileLink.textContent = file.name;
 
         const removeButton = document.createElement('button');
         removeButton.className = 'btn btn-danger';
         removeButton.textContent = 'Remove';
 
-        // Обработчик для удаления файла из списка
+
         removeButton.addEventListener('click', function() {
             attachmentItem.remove();
         });
@@ -85,13 +85,13 @@ document.addEventListener('DOMContentLoaded', function() {
         attachmentsListElement.appendChild(attachmentItem);
     }
 
-    // Заполнение существующих вложений для Documents (Attachments)
+
     const attachmentsList = document.getElementById('attachmentsList');
     data.attachmentsList.forEach(file => {
         addAttachment(file, attachmentsList);
     });
 
-    // Обработчик нажатия на кнопку "Add Files" для Documents (Attachments)
+
     const fileInput = document.getElementById('fileInput');
     const addFileButton = document.getElementById('addFileButton');
 
@@ -101,20 +101,19 @@ document.addEventListener('DOMContentLoaded', function() {
             for (let i = 0; i < files.length; i++) {
                 addAttachment({ name: files[i].name, url: '#' }, attachmentsList);
             }
-            // Очищаем input после добавления файлов
+
             fileInput.value = '';
         }
     });
 
-    // Заполнение существующих вложений для Applications Attachments
+
     const attachmentsListApplications = document.getElementById('attachmentsListApplications');
-    // Если есть уже данные для applicationsAttachments, можно их добавить аналогично
-    // Пример:
+
     // data.applicationsAttachments.forEach(file => {
     //     addAttachment(file, attachmentsListApplications);
     // });
 
-    // Обработчик нажатия на кнопку "Add Files" для Applications Attachments
+
     const fileInputApplications = document.getElementById('fileInputApplications');
     // const addFileButtonApplications = document.getElementById('addFileButtonApplications');
 
@@ -129,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //     }
     // });
 
-    // Заполнение teacherCommunicationNotes
+
     // const teacherCommunicationNotesDiv = document.getElementById('teacherCommunicationNotes');
     // teacherCommunicationNotesDiv.innerHTML = ''; // Очистка существующего содержимого
 
@@ -155,9 +154,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // teacherCommunicationNotesDiv.appendChild(commentDiv);
     });
 
-    // Заполнение секции IEP & Accommodation Notes
+
     const iepAccommodationNotesDiv = document.getElementById('iepAccommodationNotes');
-    iepAccommodationNotesDiv.innerHTML = ''; // Очистка существующего содержимого
+    iepAccommodationNotesDiv.innerHTML = '';
 
     data.iepAccommodationNotes.forEach(note => {
         const commentDiv = document.createElement('div');
@@ -181,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
         iepAccommodationNotesDiv.appendChild(commentDiv);
     });
 
-    // Заполнение других данных
+
     document.getElementById('loginName').textContent = data.loginName;
     document.getElementById('fullName').textContent = data.fullName;
     document.getElementById('preferredName').textContent = data.preferredName;

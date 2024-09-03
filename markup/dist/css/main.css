@@ -31844,6 +31844,11 @@ h3 {
   pointer-events: none;
 }
 
+.holder-users .logo {
+  max-width: 100px;
+  margin-left: 20px;
+}
+
 .btn {
   display: inline-block;
   vertical-align: top;
