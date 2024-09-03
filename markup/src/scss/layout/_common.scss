@@ -87,8 +87,13 @@ main {
         position: relative;
         padding-left: 0;
         padding-right: 0;
-        @include media("<tablet") {}
+        @include media("<tablet") {
+            &.users-profile {
+                display: none;
+            }
+        }
         .btn {
+            cursor: pointer;
             @include media("<tablet") {
                 padding-left: 10px;
                 padding-right: 10px;
@@ -1492,6 +1497,9 @@ h3 {
 
 .pin_container {
     display: flex;
+    @include media(">tablet") {
+        margin-right: 10px;
+    }
     .button {
         cursor: pointer;
         &:hover::after {
@@ -1530,9 +1538,139 @@ h3 {
     }
 }
 
-.holder-users {
+.button-users-prifile-holder {
     .logo {
-        max-width: 100px;
-        margin-left: 20px;
+        margin-bottom: 16px;
+    }
+    .btn-row {
+        flex-wrap: wrap;
+        display: flex !important;
+        // .col-full {
+        //     width: 100%;
+        // }
+        @include media(">tablet") {
+            align-items: center;
+            justify-content: flex-end;
+        }
+    }
+    .logo-block {
+        @include media("<tablet") {
+            order: -1;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.btn-group-toggle.users-profile {
+    .btn {
+        &::after {
+            display: none;
+        }
+    }
+}
+
+.users-profile-main {
+    .fullscreen-col {
+        min-width: 180px;
+        .holder {
+            justify-content: center;
+        }
+    }
+}
+
+// .button-users-profile-holder {
+//     .btn-group-toggle.users-profile.custom-radio-group {
+//         @include media("<tablet") {
+//             display: none !important;
+//         }
+//     }
+// }
+.logo-block {
+    .dropdown-icon {
+        display: none;
+    }
+    .name {
+        display: none;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+        img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+    }
+    @include media("<tablet") {
+        background-color: #fff;
+        border-radius: 16px;
+        width: 100%;
+        position: relative;
+        padding: 10px 40px 10px 20px;
+        cursor: pointer;
+        .name {
+            display: block;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            img {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+            }
+        }
+        .btn-row {
+            display: flex;
+            align-items: center;
+            .icon-row {
+                display: flex;
+                align-items: center;
+                .icon {
+                    margin-right: 5px; // Отступ между иконками
+                }
+            }
+            .dropdown-icon {
+                display: block;
+                position: absolute;
+                top: 50%;
+                right: 20px;
+                display: flex;
+                align-items: center;
+                margin-left: auto;
+                cursor: pointer;
+                transform: translateY(-50%);
+            }
+        }
+    }
+}
+
+.button-block-user-profile {
+    .btn {
+        display: flex;
+        .icon {
+            @include media(">tablet") {
+                display: none;
+            }
+        }
+        @include media("<tablet") {
+            min-height: 100px;
+        }
+    }
+    .link {
+        @include media(">=tablet") {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    #button-block-user-profile {
+        display: none;
+    }
+    #button-block-user-profile.active {
+        display: flex;
+        flex-wrap: wrap;
     }
 }

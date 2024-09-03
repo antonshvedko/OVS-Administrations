@@ -1038,3 +1038,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    var logoBlock = document.getElementById("logo-block");
+    var buttonBlockUserProfile = document.getElementById("button-block-user-profile");
+
+    // Проверяем, существует ли элемент с id "logo-block"
+    if (logoBlock) {
+        logoBlock.addEventListener("click", function() {
+            if (window.innerWidth <= 767) { // Проверяем ширину экрана
+                buttonBlockUserProfile.classList.toggle("active"); // Переключаем класс "active"
+            }
+        });
+    } else {
+        console.log('Element with id "logo-block" does not exist.');
+    }
+});

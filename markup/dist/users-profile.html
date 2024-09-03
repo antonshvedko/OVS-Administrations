@@ -687,7 +687,7 @@
                 </div>
             </div>
         </aside>
-        <div class="container-fluid users-main" id="mainContent">
+        <div class="container-fluid users-main users-profile-main" id="mainContent">
             <div class="d-flex justify-content-between holder-users">
                 <h2>Student Report</h2>
                 <div class="d-flex align-items-center">
@@ -709,68 +709,122 @@
                             </div>
                         </div>
                     </div>
-                    <div class="logo">
-                        <img src="/images/school-logo.jpg" alt="">
+                    <div class="fullscreen-col">
+                        <button class="btn btn-secondary">
+                            <div class="holder">
+                                <span>Login as Student</span>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </div>
-            <div class=" ">
+            <div class="button-users-prifile-holder">
                 <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group-toggle custom-radio-group" data-toggle="buttons" id="user-view">
+                    <div class="btn-group-toggle users-profile custom-radio-group" data-toggle="buttons" id="user-view">
                         <a class="btn custom-btn active" href="users-profile.html">Student Report</a>
                         <a class="btn custom-btn" href="/proof-of-enrollment.html"> Proof of Enrollment</a>
                         <a class="btn custom-btn" href="OSSD-OSR.html">OSSD / OSR</a>
                         <a class="btn custom-btn" href="report-cards.html"> Report Cards</a>
                     </div>
-                    <div class="custom-grid-item col-md-3 col-xl-3 ">
+                    <div class="logo-block custom-grid-item col-md-3 col-xl-3" id="logo-block">
                         <div class="btn-row">
-                            <div class="col  custom-grid-item pr-0">
-                                <button class="btn btn-secondary">
-                                    <div class="holder">
-                                        <span>Login as Student</span>
-                                    </div>
-                                </button>
+                            <div class="logo">
+                                <img src="/images/school-logo.jpg" alt="School Logo">
                             </div>
-                            <div class="col  custom-grid-item  fullscreen-col pr-0">
-                                <button class="btn btn-secondary" id="full-screen">
-                                    <div class="holder">
-                                        <i class="icon icomoon-fullscreen"></i>
-                                        <span>Full Screen</span>
-                                    </div>
-                                </button>
+                            <div class="d-flex flex-column">
+                                <h5 class="name">Test Name test name test name </h5>
+                                <div class="icon-row">
+                                    <span class="icon" title="18+">18+</span>
+                                    <i class="icon icomoon-briefcase" title="Business"></i>
+                                    <i class="icon icomoon-flag red" title="Red Flag"></i>
+                                    <i class="icon icomoon-man" title="Adult"></i>
+                                </div>
+                            </div>
+                            <div class="dropdown-icon">
+                                <i class="icon icomoon-caret-down" title="Dropdown"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="custom-grid row buttont-container">
-                    <!-- <div class="custom-grid-item col-12 col-lg-2 col-xl-2 pb-0">
+                <div class="custom-grid row buttont-container button-block-user-profile" id="button-block-user-profile">
+                    <div class="custom-grid-item col-6 col-lg-2 col-xl-2 pb-0 link">
                         <div class="custom-grid">
-                            <button class="btn  btn-secondary"><div class="holder"><span> Print Student Label</span></div></button>
-                        </div>
-                    </div> -->
-                    <!-- <div class="custom-grid-item col-12 col-lg-2 col-xl-2 pb-0">
-                        <div class="custom-grid">
-                            <button class="btn  btn-secondary"><div class="holder"><span> View Student PDF Report</span></div></button>
-                        </div>
-                    </div> -->
-                    <div class="custom-grid-item col-12 col-lg-2 col-xl-2 pb-0">
-                        <div class="custom-grid">
-                            <button class="btn btn-transparent"><div class="holder"><span> Transcript</span></div></button>
+                            <a href="users-profile.html" class=" btn btn-transparent">
+                                <div class="holder">
+                                    <i class="icon icomoon-home"></i>
+                                    <span>Student Report</span>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="custom-grid-item col-12 col-lg-2 col-xl-2 pb-0">
+                    <div class="custom-grid-item col-6 col-lg-2 col-xl-2 pb-0 link">
                         <div class="custom-grid">
-                            <button class="btn btn-transparent"><div class="holder"><span>  Password Change</span></div></button>
+                            <a href="users-profile.html" class=" btn btn-transparent">
+                                <div class="holder">
+                                    <i class="icon icomoon-home"></i>
+                                    <span> Proof of Enrollment</span>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="custom-grid-item col-12 col-lg-2 col-xl-2 pb-0">
+                    <div class="custom-grid-item col-6 col-lg-2 col-xl-2 pb-0 link">
                         <div class="custom-grid">
-                            <button class="btn btn-transparent"><div class="holder"><span> Enrollment</span></div></button>
+                            <a href="OSSD-OSR.html" class=" btn btn-transparent">
+                                <div class="holder">
+                                    <i class="icon icomoon-home"></i>
+                                    <span>OSSD / OSR</span>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="custom-grid-item col-12 col-lg-2 col-xl-2 pb-0">
+                    <div class="custom-grid-item col-6 col-lg-2 col-xl-2 pb-0 link">
                         <div class="custom-grid">
-                            <button class="btn btn-transparent" id="edit-user-button"><div class="holder"><span> Edit</span></div></button>
+                            <a href="report-cards.html" class=" btn btn-transparent">
+                                <div class="holder">
+                                    <i class="icon icomoon-home"></i>
+                                    <span>Report Cards</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="custom-grid-item col-6 col-lg-2 col-xl-2 pb-0">
+                        <div class="custom-grid">
+                            <button class="btn btn-transparent">
+                                <div class="holder">
+                                    <i class="icon icomoon-home"></i>
+                                    <span>Transcript</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="custom-grid-item col-6 col-lg-2 col-xl-2 pb-0">
+                        <div class="custom-grid">
+                            <button class="btn btn-transparent">
+                                <div class="holder">
+                                    <i class="icon icomoon-home"></i>
+                                    <span>Password Change</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="custom-grid-item col-6 col-lg-2 col-xl-2 pb-0">
+                        <div class="custom-grid">
+                            <button class="btn btn-transparent">
+                                <div class="holder">
+                                    <i class="icon icomoon-home"></i>
+                                    <span>Enrollment</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="custom-grid-item col-6 col-lg-2 col-xl-2 pb-0">
+                        <div class="custom-grid">
+                            <button class="btn btn-transparent" id="edit-user-button">
+                                <div class="holder">
+                                    <i class="icon icomoon-home"></i>
+                                    <span> Edit</span>
+                                </div>
+                            </button>
                         </div>
                     </div>
                 </div>
