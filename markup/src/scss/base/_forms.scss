@@ -315,12 +315,14 @@ input[type="radio"] {
         position: absolute;
         left: 0;
         top: 50%;
-        transform: translateY(-50%);
         width: 24px;
         height: 24px;
         border: 1px solid #C7C7CC;
         border-radius: 50%;
         background-color: white;
+        @include media(">desktop") {
+            transform: translateY(-50%);
+        }
         &::after {
             content: '';
             position: absolute;

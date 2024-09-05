@@ -688,8 +688,8 @@
             </div>
         </aside>
         <div class="container-fluid users-main users-profile-main" id="mainContent">
-            <div class="d-flex justify-content-between holder-users">
-                <h2>Student Report</h2>
+            <div class="d-flex justify-content-md-between holder-users">
+                <h2 class="main-title">Student Report</h2>
                 <div class="d-flex align-items-center">
                     <div class="pin_container">
                         <div id="pinned_for_you">
@@ -717,6 +717,7 @@
                         </button>
                     </div>
                 </div>
+                <button class="button-edit"><img src="images/icons/edit.png" alt=""></button>
             </div>
             <div class="button-users-prifile-holder">
                 <div class="d-flex justify-content-between align-items-center">
@@ -732,7 +733,8 @@
                                 <img src="/images/school-logo.jpg" alt="School Logo">
                             </div>
                             <div class="d-flex flex-column">
-                                <h5 class="name">Test Name test name test name </h5>
+                                <h5 class="name">First Name </h5>
+                                <h5 class="name">Last Name </h5>
                                 <div class="icon-row">
                                     <span class="icon" title="18+">18+</span>
                                     <i class="icon icomoon-briefcase" title="Business"></i>
@@ -747,7 +749,7 @@
                     </div>
                 </div>
                 <div class="custom-grid row buttont-container button-block-user-profile" id="button-block-user-profile">
-                    <div class="custom-grid-item col-6 col-lg-2 col-xl-2 pb-0 link">
+                    <div class="custom-grid-item col-6 col-lg-2 col-xl-2 pb-0 link display-desktop">
                         <div class="custom-grid">
                             <a href="users-profile.html" class=" btn btn-transparent">
                                 <div class="holder">
@@ -761,7 +763,7 @@
                         <div class="custom-grid">
                             <a href="users-profile.html" class=" btn btn-transparent">
                                 <div class="holder">
-                                    <i class="icon icomoon-home"></i>
+                                    <img src="images/icons/proofofenrollment.png" alt="icon">
                                     <span> Proof of Enrollment</span>
                                 </div>
                             </a>
@@ -771,7 +773,7 @@
                         <div class="custom-grid">
                             <a href="OSSD-OSR.html" class=" btn btn-transparent">
                                 <div class="holder">
-                                    <i class="icon icomoon-home"></i>
+                                    <img src="images/icons/ossdosr.png" alt="icon">
                                     <span>OSSD / OSR</span>
                                 </div>
                             </a>
@@ -781,7 +783,7 @@
                         <div class="custom-grid">
                             <a href="report-cards.html" class=" btn btn-transparent">
                                 <div class="holder">
-                                    <i class="icon icomoon-home"></i>
+                                    <img src="images/icons/reportcard.png" alt="icon">
                                     <span>Report Cards</span>
                                 </div>
                             </a>
@@ -791,7 +793,7 @@
                         <div class="custom-grid">
                             <button class="btn btn-transparent">
                                 <div class="holder">
-                                    <i class="icon icomoon-home"></i>
+                                    <img src="images/icons/transcript.png" alt="icon">
                                     <span>Transcript</span>
                                 </div>
                             </button>
@@ -801,7 +803,7 @@
                         <div class="custom-grid">
                             <button class="btn btn-transparent">
                                 <div class="holder">
-                                    <i class="icon icomoon-home"></i>
+                                    <img src="images/icons/password.png" alt="icon">
                                     <span>Password Change</span>
                                 </div>
                             </button>
@@ -811,23 +813,39 @@
                         <div class="custom-grid">
                             <button class="btn btn-transparent">
                                 <div class="holder">
-                                    <i class="icon icomoon-home"></i>
+                                    <img src="images/icons/enrollment.png" alt="icon">
                                     <span>Enrollment</span>
                                 </div>
                             </button>
                         </div>
                     </div>
-                    <div class="custom-grid-item col-6 col-lg-2 col-xl-2 pb-0">
+                    <div class="custom-grid-item col-6 col-lg-2 col-xl-2 pb-0 display-desktop">
                         <div class="custom-grid">
                             <button class="btn btn-transparent" id="edit-user-button">
                                 <div class="holder">
                                     <i class="icon icomoon-home"></i>
-                                    <span> Edit</span>
+                                    <span>Edit</span>
                                 </div>
                             </button>
                         </div>
                     </div>
+                    <div class="custom-grid-item col-6 col-lg-2 col-xl-2 pb-0 display-desktop">
+                        <div class="custom-grid">
+                        </div>
+                    </div>
+                    <div class="custom-grid-item col-6 col-lg-2 col-xl-2 pb-0 display-desktop">
+                        <div class="custom-grid">
+                            <button class="btn btn-secondary" id="full-screen">
+                                <div class="holder">
+                                    <i class="icon icomoon-fullscreen"></i>
+                                    <span>Full Screen</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
             <div class="users-body" id="user-body">
                 <div class="item">
@@ -1038,11 +1056,11 @@
                     </div>
                     <div class="item">
                         <div class="name">Registration Date:</div>
-                        <div class="value"><input class="form-control custom-input" type="datetime-local" value="2024-06-19T03:26:57"></div>
+                        <div class="value"><input class="form-control custom-input" type="datetime-local" value="2024-06-19T03:26:57" disabled></div>
                     </div>
                     <div class="item">
                         <div class="name">Last Logged In:</div>
-                        <div class="value"><input class="form-control custom-input" type="datetime-local" value="2024-06-19T13:50:45"></div>
+                        <div class="value"><input class="form-control custom-input" type="datetime-local" value="2024-06-19T13:50:45" disabled></div>
                     </div>
                     <div class="item">
                         <div class="name">OCAS:</div>
@@ -1145,7 +1163,7 @@
                     </div>
                     <div class="item">
                         <div class="name">Web Browsers Used:</div>
-                        <div class="value"><input type="text" class="form-control" value="2024-06-19 16:46:40 - Google Chrome 125 on Windows 10"></div>
+                        <div class="value"><input type="text" class="form-control" value="2024-06-19 16:46:40 - Google Chrome 125 on Windows 10" disabled></div>
                     </div>
                 </div>
             </div>
@@ -1213,7 +1231,7 @@
                                             <label class="custom-checkbox dropdown-option d-flex align-items-center">
                                         <input type="checkbox" id="ignore_eligibility">
                                         <span class="checkmark"></span>
-                                        <div class="title">Letter of Enrollment:</div>
+                                        <div class="title">Letter of Enrollment: Ignore Eligibility Date for Report Cards</div>
                                     </label>
                                         </div>
 
@@ -1262,7 +1280,7 @@
                                             </div>
 
                                             <!-- Referral Section -->
-                                            <div class="form-group full-width">
+                                            <div class="form-group full-width mb-3">
                                                 <label for="referred_by">Referred by:</label>
                                                 <input type="text" id="referred_by" class="form-control">
                                             </div>
@@ -1314,7 +1332,7 @@
                                 <span><strong>ENG4U-03</strong> (<a class="teacher_profile_link" href="https://staging.myvirtualschool.com/mods/_core/student_report/index.php?id=61642">YT2 KT2</a>) [48]</span>
                                 <span>Mark: <strong>0 %</strong></span>
                                 <span>Enrollment: <strong>Jun 19, 2024</strong></span>
-                                <span>Days in Course: <strong>70</strong></span> | Expiring on: <strong>Jun 26, 2025</strong>
+                                <span>Days in Course: <strong>70</strong></span> Expiring on: <strong>Jun 26, 2025</strong>
                             </div>
                             <div class="acc-container">
                                 <form class="student-form">
@@ -1419,7 +1437,7 @@
                                                 </div>
 
                                                 <!-- Referral Section -->
-                                                <div class="form-group full-width">
+                                                <div class="form-group full-width mb-3">
                                                     <label for="referred_by">Referred by:</label>
                                                     <input type="text" id="referred_by" class="form-control">
                                                 </div>
@@ -1576,7 +1594,7 @@
                                                     </div>
 
                                                     <!-- Referral Section -->
-                                                    <div class="form-group full-width">
+                                                    <div class="form-group full-width mb-3">
                                                         <label for="referred_by">Referred by:</label>
                                                         <input type="text" id="referred_by" class="form-control">
                                                     </div>
@@ -1731,7 +1749,7 @@
                                                         </div>
 
                                                         <!-- Referral Section -->
-                                                        <div class="form-group full-width">
+                                                        <div class="form-group full-width mb-3">
                                                             <label for="referred_by">Referred by:</label>
                                                             <input type="text" id="referred_by" class="form-control">
                                                         </div>
@@ -1866,13 +1884,13 @@
                                                     <h4 class="mt-4">Additional Information</h4>
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-3">
+                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3">
                                                                 <input type="checkbox" id="textbook_mailed_out">
                                                                 <span class="checkmark"></span>
                                                                 <div class="title">Textbook mailed out</div>
                                                             </label>
 
-                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-3">
+                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 ">
                                                                 <input type="checkbox" id="textbook_deposit_mailed_out">
                                                                 <span class="checkmark"></span>
                                                                 <div class="title">Textbook Deposit mailed out</div>
@@ -1885,7 +1903,7 @@
 
                                                             <div class="form-group mb-3">
                                                                 <label for="referral_cheque">Referral Cheque:</label>
-                                                                <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-2">
+                                                                <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3">
                                                                     <input type="checkbox" id="referral_cheque_sent">
                                                                     <span class="checkmark"></span>
                                                                     <div class="title">Sent</div>
@@ -1900,13 +1918,13 @@
                                                         </div>
 
                                                         <div class="col-md-6">
-                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-3">
+                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 ">
                                                                 <input type="checkbox" id="textbook_returned">
                                                                 <span class="checkmark"></span>
                                                                 <div class="title">Textbook returned</div>
                                                             </label>
 
-                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-3">
+                                                            <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 ">
                                                                 <input type="checkbox" id="cheque_cashed">
                                                                 <span class="checkmark"></span>
                                                                 <div class="title">Cheque Cashed</div>
@@ -1919,7 +1937,7 @@
                                                                     <span class="checkmark"></span>
                                                                     <div class="title">Entered</div>
                                                                 </label>
-                                                                <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3 mb-3">
+                                                                <label class="custom-checkbox dropdown-option d-flex align-items-center mt-3">
                                                                     <input type="checkbox" id="onsis_ended">
                                                                     <span class="checkmark"></span>
                                                                     <div class="title">Ended</div>
@@ -2398,11 +2416,11 @@
                                     <h4 class="title-h">
                                         Transactions:</h4>
                                     <div class="accordion">
-                                        <div class="accordion-header blue" role="tab" aria-expanded="false" aria-selected="false" tabindex="0">
-                                            <span><strong>ENG4U-03</strong> (<a class="teacher_profile_link" href="https://staging.myvirtualschool.com/mods/_core/student_report/index.php?id=61642">YT2 KT2</a>) [48]</span>
-                                            <span>Mark: <strong>0 %</strong></span>
-                                            <span>Enrollment: <strong>Jun 19, 2024</strong></span>
-                                            <span>Days in Course: <strong>70</strong></span> | Expiring on: <strong>Jun 26, 2025</strong>
+                                        <div class="accordion-header blue" role="tab" aria-expanded="false" aria-selected="false" tabindex="0" id="transaction">
+                                            <span>Transaction ID: <strong>80036</strong> </span>
+                                            <span>Courses: <strong>SCH4U</strong>, Chemistry</span>
+                                            <span>ECoupon: <strong>INTERNATIONAL FEE APPLIED</strong></span>
+                                            <span>Checkout Paid: <strong>$824.00</strong></span>
                                         </div>
                                         <div class="acc-container">
                                             <div class="container mt-4">
@@ -2483,13 +2501,25 @@
                                                             <option>YYYY</option>
                                                         </select>
                                                                     <select id="graduation_month" class="form-control custom-select">
-                                                            <option>MMM</option>
+                                                            <option value="" disabled selected>MMM</option>
+                                                            <option value="01">January</option>
+                                                            <option value="02">February</option>
+                                                            <option value="03">March</option>
+                                                            <option value="04">April</option>
+                                                            <option value="05">May</option>
+                                                            <option value="06">June</option>
+                                                            <option value="07">July</option>
+                                                            <option value="08">August</option>
+                                                            <option value="09">September</option>
+                                                            <option value="10">October</option>
+                                                            <option value="11">November</option>
+                                                            <option value="12">December</option>
                                                         </select>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label class="custom-radio">
                                                             <input type="radio" name="future_plans" value="College"> 
-                                                            <span></span>College
+                                                            <span></span> <div>College</div>
                                                         </label>
                                                                     <label class="custom-radio">
                                                             <input type="radio" name="future_plans" value="University"> 
@@ -2533,6 +2563,29 @@
                                                     </form>
                                                 </div>
                                             </div>
+                                            <div class="col-md-12">
+                                                <div class="card mb-4">
+                                                    <div class="card-body">
+                                                        <fieldset>
+                                                            <legend>International Status</legend>
+                                                            <div class="form-group custom-radio-group">
+                                                                <label class="custom-radio">
+                                                        <input type="radio" name="future_plans" value=" No"> 
+                                                        <span></span> <div> No</div>
+                                                    </label>
+                                                                <label class="custom-radio">
+                                                        <input type="radio" name="future_plans" value="Yes, without Visa."> 
+                                                        <span></span>Yes, without Visa.
+                                                    </label>
+                                                                <label class="custom-radio">
+                                                        <input type="radio" name="future_plans" value="Yes, with Visa."> 
+                                                        <span></span>Yes, with Visa.
+                                                    </label>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="card mb-4">
@@ -2551,10 +2604,28 @@
                                                     </fieldset>
                                                 </div>
                                             </div>
+                                            <div class="checkbox-box">
+                                                <label class="custom-checkbox d-flex align-items-center">
+                                                <input type="checkbox" name="reach_ahead">
+                                                <span class="checkmark"></span>
+                                                <div class="title">Hide "Add Course" Button</div>
+                                            </label>
+                                                <label class="custom-checkbox d-flex align-items-center">
+                                                <input type="checkbox" name="reach_ahead">
+                                                <span class="checkmark"></span>
+                                                <div class="title">Hide "Marks"</div>
+                                            </label>
+                                            </div>
                                             <div class="card">
                                                 <div class="card-body">
                                                     <fieldset>
                                                         <legend>Administrative Fees</legend>
+                                                        <div>$50.25 - testing admin fee (2021-03-22 : Transaction ID 28174) <span style="color: red; cursor: pointer;">&#10060;</span></div>
+                                                        <div>$25.99 - some general fee (2021-03-22) <span style="color: red; cursor: pointer;">&#10060;</span></div>
+                                                        <div>$20.11 - fee 3 (2021-03-22 : Transaction ID 28174) <span style="color: red; cursor: pointer;">&#10060;</span></div>
+                                                        <div>$5.00 - mailing fee (2021-03-23) <span style="color: red; cursor: pointer;">&#10060;</span></div>
+                                                        <div>$12.23 - note55 (2024-07-24) <span style="color: red; cursor: pointer;">&#10060;</span></div>
+                                                        <hr>
                                                         <div class="form-group">
                                                             <label for="fee">Fee:</label>
                                                             <input type="text" id="fee" class="form-control custom-input" placeholder="0.00">

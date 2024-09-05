@@ -523,7 +523,7 @@ main {
 
 // Form group styling
 .form-group {
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
 }
 
 // Textarea resizing enabled
@@ -1280,8 +1280,14 @@ h3 {
 .accordion-header {
     padding: 10px;
     border-radius: 16px;
+    padding-right: 40px;
     cursor: pointer;
     position: relative;
+    span {
+        @include media("<tablet") {
+            display: block;
+        }
+    }
     &.green {
         background-color: #34c759;
     }
@@ -1366,6 +1372,7 @@ h3 {
         margin-bottom: 10px;
         .checkmark {
             margin-right: 10px;
+            flex-shrink: 0;
         }
     }
     .form-control {
@@ -1390,7 +1397,9 @@ h3 {
 
 .card-body {
     .btn {
-        max-width: 50%;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
     }
 }
 
@@ -1559,6 +1568,12 @@ h3 {
             margin-bottom: 10px;
         }
     }
+    .display-desktop {
+        display: block;
+        @include media("<desktop") {
+            display: none;
+        }
+    }
 }
 
 .btn-group-toggle.users-profile {
@@ -1574,6 +1589,11 @@ h3 {
         min-width: 180px;
         .holder {
             justify-content: center;
+        }
+    }
+    .btn-row {
+        .icon-row {
+            margin-bottom: 16px;
         }
     }
 }
@@ -1657,6 +1677,9 @@ h3 {
         @include media("<tablet") {
             min-height: 100px;
         }
+        .icomoon-fullscreen {
+            display: block !important;
+        }
     }
     .link {
         @include media(">=tablet") {
@@ -1672,5 +1695,64 @@ h3 {
     #button-block-user-profile.active {
         display: flex;
         flex-wrap: wrap;
+    }
+}
+
+.button-block-user-profile {
+    .btn {
+        position: relative;
+        img {
+            @include media(">tablet") {
+                display: none;
+            }
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+    }
+}
+
+.main-title {
+    margin-right: 16px;
+}
+
+.button-edit {
+    border-color: transparent;
+    background-color: transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+    transition: .3s transform;
+    margin-left: auto;
+    &:hover {
+        transform: scale(1.1);
+    }
+    @include media(">desktop") {
+        display: none;
+    }
+}
+
+.student-form {
+    .mb-3 {
+        margin-bottom: 20px !important;
+    }
+}
+
+.custom-radio-group {
+    display: flex;
+    gap: 20px;
+    @include media(">desktop") {
+        justify-content: space-between;
+        flex-direction: row;
+    }
+}
+
+.checkbox-box {
+    padding: 20px 0;
+    .custom-checkbox {
+        margin-bottom: 16px;
+    }
+    .checkmark {
+        margin-right: 10px;
     }
 }

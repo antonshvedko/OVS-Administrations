@@ -29986,12 +29986,16 @@ input[type=radio] {
   position: absolute;
   left: 0;
   top: 50%;
-  transform: translateY(-50%);
   width: 24px;
   height: 24px;
   border: 1px solid #C7C7CC;
   border-radius: 50%;
   background-color: white;
+}
+@media (min-width: 1025px) {
+  .custom-radio span {
+    transform: translateY(-50%);
+  }
 }
 .custom-radio span::after {
   content: "";
@@ -30881,10 +30885,6 @@ main {
   margin-bottom: 20px;
 }
 
-.form-group {
-  margin-bottom: 20px;
-}
-
 textarea {
   resize: vertical;
 }
@@ -31608,8 +31608,14 @@ h3 {
 .accordion-header {
   padding: 10px;
   border-radius: 16px;
+  padding-right: 40px;
   cursor: pointer;
   position: relative;
+}
+@media (max-width: 767px) {
+  .accordion-header span {
+    display: block;
+  }
 }
 .accordion-header.green {
   background-color: #34c759;
@@ -31694,6 +31700,7 @@ h3 {
 }
 .form-group .d-flex .checkmark {
   margin-right: 10px;
+  flex-shrink: 0;
 }
 .form-group .form-control {
   margin-bottom: 16px;
@@ -31715,7 +31722,9 @@ h3 {
 }
 
 .card-body .btn {
-  max-width: 50%;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .buttont-container {
@@ -31876,6 +31885,14 @@ h3 {
     margin-bottom: 10px;
   }
 }
+.button-users-prifile-holder .display-desktop {
+  display: block;
+}
+@media (max-width: 1023px) {
+  .button-users-prifile-holder .display-desktop {
+    display: none;
+  }
+}
 
 .btn-group-toggle.users-profile .btn::after {
   display: none;
@@ -31886,6 +31903,9 @@ h3 {
 }
 .users-profile-main .fullscreen-col .holder {
   justify-content: center;
+}
+.users-profile-main .btn-row .icon-row {
+  margin-bottom: 16px;
 }
 
 .logo-block .dropdown-icon {
@@ -31962,6 +31982,9 @@ h3 {
     min-height: 100px;
   }
 }
+.button-block-user-profile .btn .icomoon-fullscreen {
+  display: block !important;
+}
 @media (min-width: 768px) {
   .button-block-user-profile .link {
     display: none;
@@ -31978,6 +32001,67 @@ h3 {
     flex-wrap: wrap;
   }
 }
+.button-block-user-profile .btn {
+  position: relative;
+}
+.button-block-user-profile .btn img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+@media (min-width: 769px) {
+  .button-block-user-profile .btn img {
+    display: none;
+  }
+}
+
+.main-title {
+  margin-right: 16px;
+}
+
+.button-edit {
+  border-color: transparent;
+  background-color: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+  transition: 0.3s transform;
+  margin-left: auto;
+}
+.button-edit:hover {
+  transform: scale(1.1);
+}
+@media (min-width: 1025px) {
+  .button-edit {
+    display: none;
+  }
+}
+
+.student-form .mb-3 {
+  margin-bottom: 20px !important;
+}
+
+.custom-radio-group {
+  display: flex;
+  gap: 20px;
+}
+@media (min-width: 1025px) {
+  .custom-radio-group {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}
+
+.checkbox-box {
+  padding: 20px 0;
+}
+.checkbox-box .custom-checkbox {
+  margin-bottom: 16px;
+}
+.checkbox-box .checkmark {
+  margin-right: 10px;
+}
+
 .btn {
   display: inline-block;
   vertical-align: top;
