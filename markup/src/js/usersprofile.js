@@ -59,6 +59,49 @@ document.addEventListener('DOMContentLoaded', function() {
                 "author": "Mr. Brown",
                 "note": "Accommodation for note-taking has been arranged."
             }
+        ],
+        "transactions": [{
+                "transactionId": "80036",
+                "courses": ["SCH4U", "Chemistry"],
+                "ecoupon": "INTERNATIONAL FEE APPLIED",
+                "checkoutPaid": 824.00,
+                "actualPaid": 574.00,
+                "internationalFeesPaid": true,
+                "refund": "MCV4U",
+                "notes": "Important transaction",
+                "name": "John Doe",
+                "email": "john.doe@example.com",
+                "phone": "123-456-7890",
+                "referralAccount": "None Found"
+            },
+            {
+                "transactionId": "80037",
+                "courses": ["ENG4U", "English"],
+                "ecoupon": "DISCOUNT 20%",
+                "checkoutPaid": 500.00,
+                "actualPaid": 500.00,
+                "internationalFeesPaid": false,
+                "refund": "ENG3U",
+                "notes": "Standard transaction",
+                "name": "Jane Smith",
+                "email": "jane.smith@example.com",
+                "phone": "987-654-3210",
+                "referralAccount": "Referred by Friend"
+            },
+            {
+                "transactionId": "80038",
+                "courses": ["MCV4U", "Mathematics"],
+                "ecoupon": "NO COUPON",
+                "checkoutPaid": 1000.00,
+                "actualPaid": 750.00,
+                "internationalFeesPaid": true,
+                "refund": "N/A",
+                "notes": "Partial refund applied",
+                "name": "Alex Brown",
+                "email": "alex.brown@example.com",
+                "phone": "555-123-4567",
+                "referralAccount": "None Found"
+            }
         ]
     };
     console.log(data.loginName); // Check if this logs the expected value
@@ -106,31 +149,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-
     const attachmentsListApplications = document.getElementById('attachmentsListApplications');
-
-    // data.applicationsAttachments.forEach(file => {
-    //     addAttachment(file, attachmentsListApplications);
-    // });
-
-
     const fileInputApplications = document.getElementById('fileInputApplications');
-    // const addFileButtonApplications = document.getElementById('addFileButtonApplications');
-
-    // addFileButtonApplications.addEventListener('click', function() {
-    //     const files = fileInputApplications.files;
-    //     if (files.length > 0) {
-    //         for (let i = 0; i < files.length; i++) {
-    //             addAttachment({ name: files[i].name, url: '#' }, attachmentsListApplications);
-    //         }
-    //         // Очищаем input после добавления файлов
-    //         fileInputApplications.value = '';
-    //     }
-    // });
-
-
-    // const teacherCommunicationNotesDiv = document.getElementById('teacherCommunicationNotes');
-    // teacherCommunicationNotesDiv.innerHTML = ''; // Очистка существующего содержимого
 
     data.teacherCommunicationNotes.forEach(note => {
         const commentDiv = document.createElement('div');
@@ -150,8 +170,6 @@ document.addEventListener('DOMContentLoaded', function() {
         commentDiv.appendChild(deleteButton);
         commentDiv.appendChild(editButton);
         commentDiv.appendChild(p);
-
-        // teacherCommunicationNotesDiv.appendChild(commentDiv);
     });
 
 
@@ -196,81 +214,89 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('lastLoggedIn').textContent = `${data.lastLoggedIn} (${data.lastLoggedInDuration})`;
     document.getElementById('ocas').textContent = data.ocas;
     document.getElementById('oen').textContent = data.oen;
-
-    // const communicationNotesDiv = document.getElementById('communicationNotes');
-    // data.communicationNotes.forEach(note => {
-    //     const p = document.createElement('p');
-    //     p.textContent = `${note.date} - ${note.author}: ${note.note}`;
-    //     communicationNotesDiv.appendChild(p);
-    // });
-
     document.getElementById('notes').textContent = data.notes || 'No additional notes';
     document.getElementById('accountType').textContent = data.accountType;
     document.getElementById('inactivityNotices').textContent = data.inactivityNotices ? 'Enabled' : 'Disabled';
-
     document.getElementById('referredBy').textContent = data.referredBy;
     document.getElementById('webBrowsersUsed').textContent = data.webBrowsersUsed;
+
+    function renderTransaction(transaction, index) {
+        const transactionSection = document.getElementById('transaction-item');
+
+        const accordionHeader = document.createElement('div');
+        accordionHeader.className = 'accordion-header blue';
+        accordionHeader.setAttribute('role', 'tab');
+        accordionHeader.setAttribute('aria-expanded', 'false');
+        accordionHeader.setAttribute('aria-selected', 'false');
+        accordionHeader.setAttribute('tabindex', '0');
+        accordionHeader.id = `transaction-${index}`;
+
+        accordionHeader.innerHTML = `
+            <span>Transaction ID: <strong>${transaction.transactionId}</strong></span>
+            <span>Courses: <strong>${transaction.courses.join(', ')}</strong></span>
+            <span>ECoupon: <strong>${transaction.ecoupon}</strong></span>
+            <span>Checkout Paid: <strong>$${transaction.checkoutPaid.toFixed(2)}</strong></span>
+        `;
+
+        const accContainer = document.createElement('div');
+        accContainer.className = 'acc-container';
+        accContainer.style.display = 'none';
+
+        accContainer.innerHTML = `
+            <div class="container mt-4">
+                <div class="form-group">
+                    <label for="notes-${index}" class="font-weight-bold">NOTES:</label>
+                    <div class="mt-2">
+                        <button type="button" class="btn btn-secondary mb-3">Send Receipt</button>
+                        <button type="button" class="btn btn-secondary mb-3">Send Receipt to Email</button>
+                    </div>
+                    <p>${transaction.notes || 'No additional notes'}</p>
+                </div>
+
+                <div class="form-group mt-4">
+                    <label for="actual_paid-${index}" class="font-weight-bold">Actual Paid:</label>
+                    <div class="align-items-center mt-2">
+                        <span>$</span>
+                        <input type="text" id="actual_paid-${index}" class="form-control ml-2" value="${transaction.actualPaid.toFixed(2)}" style="width: 100px;">
+                        <button type="button" class="btn btn-secondary ml-2">Save</button>
+                    </div>
+                </div>
+
+                <div class="form-group mt-4">
+                    <label class="custom-checkbox dropdown-option d-flex align-items-center">
+                        <input type="checkbox" id="international_fees_paid-${index}" ${transaction.internationalFeesPaid ? 'checked' : ''}>
+                        <span class="checkmark"></span>
+                        <div class="title ml-2">International Fees Paid</div>
+                    </label>
+                </div>
+
+                <div class="form-group mt-4">
+                    <label for="refund-${index}" class="font-weight-bold">Refund</label>
+                    <input type="text" id="refund-${index}" class="form-control mt-2" value="${transaction.refund}" style="width: 150px;">
+                </div>
+
+                <hr class="mt-4">
+
+                <div class="form-group">
+                    <p><strong>Name:</strong> ${transaction.name}</p>
+                    <p><strong>Email:</strong> ${transaction.email}</p>
+                    <p><strong>Phone:</strong> ${transaction.phone}</p>
+                    <p><strong>Referral Account:</strong> ${transaction.referralAccount}</p>
+                </div>
+            </div>
+        `;
+
+        accordionHeader.addEventListener('click', function() {
+            const isExpanded = accordionHeader.getAttribute('aria-expanded') === 'true';
+            accordionHeader.setAttribute('aria-expanded', !isExpanded);
+            accContainer.style.display = isExpanded ? 'none' : 'block';
+        });
+
+        transactionSection.appendChild(accordionHeader);
+        transactionSection.appendChild(accContainer);
+    }
+
+    data.transactions.forEach((transaction, index) => {
+        renderTransaction(transaction, index);
+    });
 });
-
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-
-//     const jsonFilePath = 'js/studentData.json';
-
-
-//     fetch(jsonFilePath)
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error(`HTTP error! status: ${response.status}`);
-//             }
-//             return response.json();
-//         })
-//         .then(data => {
-
-//             document.getElementById('loginName').textContent = data.loginName;
-//             document.getElementById('fullName').textContent = data.fullName;
-//             document.getElementById('preferredName').textContent = data.preferredName;
-//             document.getElementById('telephone').textContent = data.telephone;
-//             document.getElementById('email').textContent = data.email;
-//             document.getElementById('gender').textContent = data.gender;
-//             document.getElementById('dateOfBirth').textContent = `${data.dateOfBirth} (Age: ${data.age})`;
-//             document.getElementById('address').textContent = data.address;
-//             document.getElementById('homeSchool').textContent = data.homeSchool;
-//             document.getElementById('parent1').textContent = data.parent1;
-//             document.getElementById('parentTelephone').textContent = data.parentTelephone;
-//             document.getElementById('registrationDate').textContent = data.registrationDate;
-//             document.getElementById('lastLoggedIn').textContent = `${data.lastLoggedIn} (${data.lastLoggedInDuration})`;
-//             document.getElementById('ocas').textContent = data.ocas;
-//             document.getElementById('oen').textContent = data.oen;
-
-//             const communicationNotesDiv = document.getElementById('communicationNotes');
-//             data.communicationNotes.forEach(note => {
-//                 const p = document.createElement('p');
-//                 p.textContent = `${note.date} - ${note.author}: ${note.note}`;
-//                 communicationNotesDiv.appendChild(p);
-//             });
-
-//             document.getElementById('notes').textContent = data.notes || 'No additional notes';
-
-//             document.getElementById('accountType').textContent = data.accountType;
-
-//             document.getElementById('inactivityNotices').textContent = data.inactivityNotices ? 'Enabled' : 'Disabled';
-
-//             document.getElementById('iepFlag').textContent = data.iepFlag ? 'IEP Active' : 'No IEP';
-
-//             const teacherCommunicationNotesDiv = document.getElementById('teacherCommunicationNotes');
-//             data.teacherCommunicationNotes.forEach(note => {
-//                 const p = document.createElement('p');
-//                 p.textContent = `${note.date} - ${note.course}: ${note.note}`;
-//                 teacherCommunicationNotesDiv.appendChild(p);
-//             });
-
-//             document.getElementById('referredBy').textContent = data.referredBy;
-
-//             document.getElementById('webBrowsersUsed').textContent = data.webBrowsersUsed;
-//         })
-//         .catch(error => {
-//             console.error('Error loading JSON data:', error);
-//         });
-// });

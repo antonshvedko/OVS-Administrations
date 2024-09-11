@@ -453,9 +453,6 @@ input[type="radio"] {
 }
 
 .custom-select {
-    appearance: none;
-    background-color: #fff;
-    &::-ms-expand {
-        display: none;
-    }
+    appearance: auto;
+    &::-ms-expand {}
 }

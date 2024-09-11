@@ -2412,61 +2412,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="acc-section">
+                                <!-- Секция для динамической загрузки транзакций -->
+                                <div class="acc-section" id="transaction-section">
                                     <h4 class="title-h">
                                         Transactions:</h4>
-                                    <div class="accordion">
-                                        <div class="accordion-header blue" role="tab" aria-expanded="false" aria-selected="false" tabindex="0" id="transaction">
-                                            <span>Transaction ID: <strong>80036</strong> </span>
-                                            <span>Courses: <strong>SCH4U</strong>, Chemistry</span>
-                                            <span>ECoupon: <strong>INTERNATIONAL FEE APPLIED</strong></span>
-                                            <span>Checkout Paid: <strong>$824.00</strong></span>
-                                        </div>
-                                        <div class="acc-container">
-                                            <div class="container mt-4">
-                                                <div class="form-group">
-                                                    <label for="notes" class="font-weight-bold">NOTES:</label>
-                                                    <div class="mt-2">
-                                                        <button type="button" class="btn btn-secondary mb-3">Send Receipt</button>
-                                                        <button type="button" class="btn btn-secondary mb-3">Send Receipt to Email</button>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group mt-4">
-                                                    <label for="actual_paid" class="font-weight-bold">Actual Paid:</label>
-                                                    <div class=" align-items-center mt-2">
-                                                        <span>$</span>
-                                                        <input type="text" id="actual_paid" class="form-control ml-2" value="574.00" style="width: 100px;">
-                                                        <button type="button" class="btn btn-secondary ml-2">Save</button>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group mt-4">
-                                                    <label class="custom-checkbox dropdown-option d-flex align-items-center">
-                                                        <input type="checkbox" id="international_fees_paid" checked>
-                                                        <span class="checkmark"></span>
-                                                        <div class="title ml-2">International Fees Paid</div>
-                                                    </label>
-                                                </div>
-
-                                                <div class="form-group mt-4">
-                                                    <label for="refund" class="font-weight-bold">Refund</label>
-                                                    <input type="text" id="refund" class="form-control mt-2" value="MCV4U" style="width: 150px;">
-                                                </div>
-
-                                                <hr class="mt-4">
-
-                                                <div class="form-group">
-                                                    <p><strong>Name:</strong></p>
-                                                    <p><strong>Email:</strong></p>
-                                                    <p><strong>Phone:</strong></p>
-                                                    <p><strong>Referral Account:</strong> None Found</p>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
+                                    <div id="transaction-item"></div>
                                 </div>
                                 <div class="">
                                     <div class="row">
@@ -2637,6 +2587,14 @@
                                                         <div class="form-group">
                                                             <label for="date">Date:</label>
                                                             <input type="date" id="date" class="form-control custom-input">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="date">Transaction ID:</label>
+                                                            <select id="graduation_month" class="form-control custom-select">
+                                                            <option value="" disabled="" selected="">N/A</option>
+                                                            <option value="Type 1">Type 1</option>
+                                                            <option value="Type 2">Type 2</option>
+                                                        </select>
                                                         </div>
                                                         <div class="form-group">
                                                             <button type="submit" class="btn btn-primary">Add Fee</button>

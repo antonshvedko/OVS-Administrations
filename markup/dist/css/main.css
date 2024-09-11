@@ -30125,15 +30125,10 @@ input[type=radio]:checked + .custom-radio span::after, input[type=radio]:checked
 }
 
 .custom-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: #fff;
+  -webkit-appearance: auto;
+  -moz-appearance: auto;
+  appearance: auto;
 }
-.custom-select::-ms-expand {
-  display: none;
-}
-
 /* Responsive Table Style */
 .responsive-table__head__title .title {
   font-weight: 300;
@@ -32060,6 +32055,10 @@ h3 {
 }
 .checkbox-box .checkmark {
   margin-right: 10px;
+}
+
+#transaction-item .accordion-header {
+  margin-bottom: 10px;
 }
 
 .btn {
